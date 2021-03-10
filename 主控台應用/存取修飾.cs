@@ -22,9 +22,7 @@ namespace Console
             //b._private();
             //b._protected();
             b._c_interal();
-            //6985
 
-            //
             類別庫A _類別庫A = new 類別庫A();
             _類別庫A.PublicDo();
 
