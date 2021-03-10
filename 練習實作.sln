@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC網站", "MVC網站\MVC網站.csproj", "{44AD1C68-BDC7-45F6-8782-55C1F40EF967}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebForm網站", "WebForm網站\WebForm網站.csproj", "{3F9AE9B4-6F26-458C-A313-99C09BDE98C6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "主控台應用", "主控台應用\主控台應用.csproj", "{5221F943-E176-4B35-B8F0-1AE3C3B48AF3}"
@@ -13,16 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "類別庫A", "類別庫A\�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "類別庫B", "類別庫B\類別庫B.csproj", "{041E7E5B-CC24-429F-951F-ABBF1EE10810}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC網站", "MVC網站\MVC網站.csproj", "{17C3C54E-0643-4F57-AA06-644D8A855169}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{44AD1C68-BDC7-45F6-8782-55C1F40EF967}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{44AD1C68-BDC7-45F6-8782-55C1F40EF967}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{44AD1C68-BDC7-45F6-8782-55C1F40EF967}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{44AD1C68-BDC7-45F6-8782-55C1F40EF967}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3F9AE9B4-6F26-458C-A313-99C09BDE98C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3F9AE9B4-6F26-458C-A313-99C09BDE98C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F9AE9B4-6F26-458C-A313-99C09BDE98C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{041E7E5B-CC24-429F-951F-ABBF1EE10810}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{041E7E5B-CC24-429F-951F-ABBF1EE10810}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{041E7E5B-CC24-429F-951F-ABBF1EE10810}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17C3C54E-0643-4F57-AA06-644D8A855169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17C3C54E-0643-4F57-AA06-644D8A855169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17C3C54E-0643-4F57-AA06-644D8A855169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17C3C54E-0643-4F57-AA06-644D8A855169}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
