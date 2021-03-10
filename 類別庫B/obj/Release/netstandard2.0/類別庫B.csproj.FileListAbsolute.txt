@@ -1,0 +1,9 @@
+D:\專案\類別庫B\bin\Release\netstandard2.0\類別庫B.deps.json
+D:\專案\類別庫B\bin\Release\netstandard2.0\類別庫B.dll
+D:\專案\類別庫B\bin\Release\netstandard2.0\類別庫B.pdb
+D:\專案\類別庫B\obj\Release\netstandard2.0\類別庫B.csprojAssemblyReference.cache
+D:\專案\類別庫B\obj\Release\netstandard2.0\類別庫B.AssemblyInfoInputs.cache
+D:\專案\類別庫B\obj\Release\netstandard2.0\類別庫B.AssemblyInfo.cs
+D:\專案\類別庫B\obj\Release\netstandard2.0\類別庫B.csproj.CoreCompileInputs.cache
+D:\專案\類別庫B\obj\Release\netstandard2.0\類別庫B.dll
+D:\專案\類別庫B\obj\Release\netstandard2.0\類別庫B.pdb

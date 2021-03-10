@@ -1,0 +1,6 @@
+D:\專案\類別庫A\bin\Debug\類別庫A.dll
+D:\專案\類別庫A\bin\Debug\類別庫A.pdb
+D:\專案\類別庫A\obj\Debug\類別庫A.csprojAssemblyReference.cache
+D:\專案\類別庫A\obj\Debug\類別庫A.csproj.CoreCompileInputs.cache
+D:\專案\類別庫A\obj\Debug\類別庫A.dll
+D:\專案\類別庫A\obj\Debug\類別庫A.pdb

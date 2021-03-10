@@ -1,0 +1,5 @@
+D:\專案\類別庫A\bin\Release\類別庫A.dll
+D:\專案\類別庫A\bin\Release\類別庫A.pdb
+D:\專案\類別庫A\obj\Release\類別庫A.csproj.CoreCompileInputs.cache
+D:\專案\類別庫A\obj\Release\類別庫A.dll
+D:\專案\類別庫A\obj\Release\類別庫A.pdb

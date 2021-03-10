@@ -1,0 +1,12 @@
+D:\專案\類別庫B\bin\Debug\netstandard2.0\類別庫B.deps.json
+D:\專案\類別庫B\bin\Debug\netstandard2.0\類別庫B.dll
+D:\專案\類別庫B\bin\Debug\netstandard2.0\類別庫B.pdb
+D:\專案\類別庫B\obj\Debug\netstandard2.0\類別庫B.csprojAssemblyReference.cache
+D:\專案\類別庫B\obj\Debug\netstandard2.0\類別庫B.AssemblyInfoInputs.cache
+D:\專案\類別庫B\obj\Debug\netstandard2.0\類別庫B.AssemblyInfo.cs
+D:\專案\類別庫B\obj\Debug\netstandard2.0\類別庫B.csproj.CoreCompileInputs.cache
+D:\專案\類別庫B\obj\Debug\netstandard2.0\類別庫B.dll
+D:\專案\類別庫B\obj\Debug\netstandard2.0\類別庫B.pdb
+D:\專案\類別庫B\bin\Debug\netstandard2.0\類別庫A.dll
+D:\專案\類別庫B\bin\Debug\netstandard2.0\類別庫A.pdb
+D:\專案\類別庫B\obj\Debug\netstandard2.0\類別庫B.csproj.CopyComplete
