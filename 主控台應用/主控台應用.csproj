@@ -125,5 +125,15 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\類別庫A\類別庫A.csproj">
+      <Project>{225933ff-ba14-4d32-8ad8-7d1c9cd91cf3}</Project>
+      <Name>類別庫A</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\類別庫B\類別庫B.csproj">
+      <Project>{041e7e5b-cc24-429f-951f-abbf1ee10810}</Project>
+      <Name>類別庫B</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

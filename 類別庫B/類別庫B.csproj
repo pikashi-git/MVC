@@ -4,4 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\類別庫A\類別庫A.csproj" />
+  </ItemGroup>
+
 </Project>
