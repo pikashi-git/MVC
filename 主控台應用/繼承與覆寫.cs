@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Console
 {
+    //測試
     class 繼承與覆寫
     {
         static void Main(string[] args)
