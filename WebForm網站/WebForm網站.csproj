@@ -66,8 +66,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\test.mdf" />
+    <Content Include="App_Data\test_log.ldf">
+      <DependentUpon>test.mdf</DependentUpon>
+    </Content>
     <Content Include="static測試A.aspx" />
     <Content Include="static測試B.aspx" />
+    <Content Include="測試mdf.aspx" />
     <Content Include="測試route.aspx" />
     <Content Include="Global.asax" />
     <Content Include="index.aspx" />
@@ -87,6 +92,13 @@
     </Compile>
     <Compile Include="static測試B.aspx.designer.cs">
       <DependentUpon>static測試B.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="測試mdf.aspx.cs">
+      <DependentUpon>測試mdf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="測試mdf.aspx.designer.cs">
+      <DependentUpon>測試mdf.aspx</DependentUpon>
     </Compile>
     <Compile Include="測試static數值固定.cs" />
     <Compile Include="測試route.aspx.cs">
@@ -108,6 +120,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
