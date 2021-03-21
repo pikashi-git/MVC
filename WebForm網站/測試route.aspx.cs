@@ -7,13 +7,10 @@ using System.Web.UI.WebControls;
 
 namespace Test
 {
-    public partial class b : System.Web.UI.Page
+    public partial class 測試route : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Write(c.code);
-            c.code = "b";
-            Response.Write(c.code);
         }
     }
 }

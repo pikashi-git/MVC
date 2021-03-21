@@ -1,0 +1,7 @@
+D:\專案\Git\WebForm網站\bin\Test.dll.config
+D:\專案\Git\WebForm網站\bin\Test.dll
+D:\專案\Git\WebForm網站\bin\Test.pdb
+D:\專案\Git\WebForm網站\obj\Debug\WebForm網站.csprojAssemblyReference.cache
+D:\專案\Git\WebForm網站\obj\Debug\WebForm網站.csproj.CoreCompileInputs.cache
+D:\專案\Git\WebForm網站\obj\Debug\Test.dll
+D:\專案\Git\WebForm網站\obj\Debug\Test.pdb

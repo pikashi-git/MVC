@@ -66,27 +66,39 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="a.aspx" />
-    <Content Include="b.aspx" />
+    <Content Include="static測試A.aspx" />
+    <Content Include="static測試B.aspx" />
+    <Content Include="測試route.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="a.aspx.cs">
-      <DependentUpon>a.aspx</DependentUpon>
+    <Compile Include="static測試A.aspx.cs">
+      <DependentUpon>static測試A.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="a.aspx.designer.cs">
-      <DependentUpon>a.aspx</DependentUpon>
+    <Compile Include="static測試A.aspx.designer.cs">
+      <DependentUpon>static測試A.aspx</DependentUpon>
     </Compile>
-    <Compile Include="b.aspx.cs">
-      <DependentUpon>b.aspx</DependentUpon>
+    <Compile Include="static測試B.aspx.cs">
+      <DependentUpon>static測試B.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="b.aspx.designer.cs">
-      <DependentUpon>b.aspx</DependentUpon>
+    <Compile Include="static測試B.aspx.designer.cs">
+      <DependentUpon>static測試B.aspx</DependentUpon>
     </Compile>
-    <Compile Include="c.cs" />
+    <Compile Include="測試static數值固定.cs" />
+    <Compile Include="測試route.aspx.cs">
+      <DependentUpon>測試route.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="測試route.aspx.designer.cs">
+      <DependentUpon>測試route.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

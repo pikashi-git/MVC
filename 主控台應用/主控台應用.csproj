@@ -84,13 +84,13 @@
       <DependentUpon>bhpModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="函式.cs" />
     <Compile Include="user01.cs">
       <DependentUpon>bhpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="user02.cs">
       <DependentUpon>bhpModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="存取修飾.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

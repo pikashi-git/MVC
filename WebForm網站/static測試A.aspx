@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Test.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="static測試A.aspx.cs" Inherits="Test.static測試A" %>
 
 <!DOCTYPE html>
 
@@ -9,7 +9,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div></div>
+        <div>
+        </div>
     </form>
 </body>
 </html>

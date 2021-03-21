@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="a.aspx.cs" Inherits="Test.a" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="測試route.aspx.cs" Inherits="Test.測試route" %>
 
 <!DOCTYPE html>
 
@@ -9,8 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
+        <div>我是測試route.aspx</div>
     </form>
 </body>
 </html>

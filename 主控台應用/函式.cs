@@ -6,15 +6,22 @@ using System.Text;
 
 namespace Console
 {
-    class TOLIST函式
+    class 函式
     {
         static void Main(string[] args)
         {
-            TestToList();
+            string s;
+            TestDefaultArgs(s = "aaa");
+            TestDefaultArgs(arg: "aaa");
+
+            //TestToList();
 
             System.Console.ReadLine();
         }
-
+        static void TestDefaultArgs(string arg)
+        {
+            System.Console.WriteLine(arg);
+        }
         static void TestToList()
         {
             string[] a = { "a", "b", "c", "d", "e", "f", "g" };

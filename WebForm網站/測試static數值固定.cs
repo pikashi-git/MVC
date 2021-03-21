@@ -5,8 +5,8 @@ using System.Web;
 
 namespace Test
 {
-    public class c
+    public class 測試static數值固定
     {
-        public static string code = "c";
+        public static string code = "預設";
     }
 }
