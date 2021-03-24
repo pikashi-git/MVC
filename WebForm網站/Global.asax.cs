@@ -18,6 +18,7 @@ namespace Test
         static void RegisterRoutes(RouteCollection routes)
         {
             routes.MapPageRoute(routeName: "", routeUrl: "{category}/{action}/{categoryName}", physicalFile: "~/測試route.aspx");
+            //routes.MapPageRoute(routeName: "", routeUrl: "test/route/1", physicalFile: "~/測試route.aspx");
         }
         protected void Session_Start(object sender, EventArgs e)
         {
