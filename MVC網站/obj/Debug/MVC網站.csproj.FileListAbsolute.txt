@@ -72,7 +72,6 @@ D:\專案\Git\MVC網站\bin\System.Web.WebPages.Razor.xml
 D:\專案\Git\MVC網站\bin\Newtonsoft.Json.xml
 D:\專案\Git\MVC網站\bin\Antlr3.Runtime.pdb
 D:\專案\Git\MVC網站\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\專案\Git\MVC網站\obj\Debug\MVC網站.csprojAssemblyReference.cache
 D:\專案\Git\MVC網站\obj\Debug\MVC網站.csproj.CoreCompileInputs.cache
 D:\專案\Git\MVC網站\obj\Debug\MVC網站.csproj.CopyComplete
 D:\專案\Git\MVC網站\obj\Debug\MVC網站.dll
@@ -81,3 +80,4 @@ D:\專案\Git\MVC網站\bin\EntityFramework.dll
 D:\專案\Git\MVC網站\bin\EntityFramework.SqlServer.dll
 D:\專案\Git\MVC網站\bin\EntityFramework.xml
 D:\專案\Git\MVC網站\bin\EntityFramework.SqlServer.xml
+D:\專案\Git\MVC網站\obj\Debug\MVC網站.csprojAssemblyReference.cache

@@ -5,9 +5,6 @@ D:\專案\Git\主控台應用\bin\Debug\類別庫A.dll
 D:\專案\Git\主控台應用\bin\Debug\類別庫B.dll
 D:\專案\Git\主控台應用\bin\Debug\類別庫A.pdb
 D:\專案\Git\主控台應用\bin\Debug\類別庫B.pdb
-D:\專案\Git\主控台應用\bin\Debug\EntityFramework.xml
-D:\專案\Git\主控台應用\bin\Debug\EntityFramework.SqlServer.xml
-D:\專案\Git\主控台應用\bin\Debug\zh-Hant\EntityFramework.resources.dll
 D:\專案\Git\主控台應用\obj\Debug\主控台應用.csprojAssemblyReference.cache
 D:\專案\Git\主控台應用\obj\Debug\主控台應用.csproj.CoreCompileInputs.cache
 D:\專案\Git\主控台應用\obj\Debug\主控台應用.csproj.CopyComplete
