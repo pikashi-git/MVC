@@ -10,3 +10,7 @@ D:\專案\Git\主控台應用\obj\Debug\主控台應用.csproj.CoreCompileInputs
 D:\專案\Git\主控台應用\obj\Debug\主控台應用.csproj.CopyComplete
 D:\專案\Git\主控台應用\obj\Debug\Console.exe
 D:\專案\Git\主控台應用\obj\Debug\Console.pdb
+D:\專案\Git\主控台應用\bin\Debug\EntityFramework.dll
+D:\專案\Git\主控台應用\bin\Debug\EntityFramework.SqlServer.dll
+D:\專案\Git\主控台應用\bin\Debug\EntityFramework.xml
+D:\專案\Git\主控台應用\bin\Debug\EntityFramework.SqlServer.xml

@@ -20,5 +20,7 @@ namespace MVC網站.Models
         }
 
         public System.Data.Entity.DbSet<MVC網站.Models.Department> Departments { get; set; }
+
+        public System.Data.Entity.DbSet<MVC網站.Models.Location> Locations { get; set; }
     }
 }
