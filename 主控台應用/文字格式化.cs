@@ -17,8 +17,9 @@ namespace Console
         static void 文字格式()
         {
             string name = System.Console.ReadLine();
-            System.Console.WriteLine(@"我是{0}", name);
             System.Console.WriteLine(string.Format(@"我是{0}", name));
+            System.Console.WriteLine(@"我是{0}", name);
+            System.Console.WriteLine($"我是{name}");
         }
     }
 }
