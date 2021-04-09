@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="testDBModelStoreContainer" CdmEntityContainer="testDBEntities">
-    <EntitySetMapping Name="users">
-      <EntityTypeMapping TypeName="testDBModel.users">
-        <MappingFragment StoreEntitySet="users">
-          <ScalarProperty Name="userID" ColumnName="userID" />
-          <ScalarProperty Name="userName" ColumnName="userName" />
-          <ScalarProperty Name="age" ColumnName="age" />
-          <ScalarProperty Name="address" ColumnName="address" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="groups">
       <EntityTypeMapping TypeName="testDBModel.groups">
         <MappingFragment StoreEntitySet="groups">
@@ -18,6 +8,17 @@
           <ScalarProperty Name="area" ColumnName="area" />
           <ScalarProperty Name="groupName" ColumnName="groupName" />
           <ScalarProperty Name="groupID" ColumnName="groupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="testDBModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="groupID" ColumnName="groupID" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

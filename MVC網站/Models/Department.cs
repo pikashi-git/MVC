@@ -9,7 +9,7 @@ namespace MVC網站.Models
 {
     public class Department
     {
-        [Required]
+        [Key]
         [DisplayName("部門編號")]
         public int DepartmentID { get; set; }
         [Required]
@@ -19,5 +19,6 @@ namespace MVC網站.Models
         public string DepartmentAddress { get; set; } 
         [DisplayName("備註")]
         public string Misc { get; set; }
+        //public Location Location { get; set; }
     }
 }

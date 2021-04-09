@@ -25,9 +25,7 @@ namespace MVC網站.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<users> users { get; set; }
         public virtual DbSet<groups> groups { get; set; }
-
-        public System.Data.Entity.DbSet<MVC網站.Models.Department> Departments { get; set; }
+        public virtual DbSet<users> users { get; set; }
     }
 }
