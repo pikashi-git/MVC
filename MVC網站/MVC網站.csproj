@@ -135,6 +135,7 @@
     <Compile Include="Controllers\groupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\Test1Controller.cs" />
     <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -271,9 +272,11 @@
     <Content Include="Views\groups\Details.cshtml" />
     <Content Include="Views\groups\Edit.cshtml" />
     <Content Include="Views\groups\Index.cshtml" />
+    <Content Include="Views\Test1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
