@@ -18,5 +18,6 @@ namespace MVC網站.Models
         public string userName { get; set; }
         public Nullable<short> age { get; set; }
         public string address { get; set; }
+        public Nullable<short> groupID { get; set; }
     }
 }

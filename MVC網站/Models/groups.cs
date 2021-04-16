@@ -11,7 +11,7 @@ namespace MVC網站.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class groups
     {
         public short groupID { get; set; }

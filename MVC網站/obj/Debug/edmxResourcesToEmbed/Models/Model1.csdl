@@ -1,17 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="testDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="users">
-    <Key>
-      <PropertyRef Name="userID" />
-    </Key>
-    <Property Name="userID" Type="Int16" Nullable="false" />
-    <Property Name="userName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="age" Type="Int16" />
-    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityContainer Name="testDBEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="users" EntityType="testDBModel.users" />
     <EntitySet Name="groups" EntityType="testDBModel.groups" />
+    <EntitySet Name="users" EntityType="testDBModel.users" />
+    <AssociationSet Name="usersgroups" Association="testDBModel.usersgroups">
+      <End Role="users" EntitySet="users" />
+      <End Role="groups" EntitySet="groups" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="groups">
     <Key>
@@ -22,5 +17,29 @@
     <Property Name="groupName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="area" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="misc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="users" Relationship="testDBModel.usersgroups" FromRole="groups" ToRole="users" />
   </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="Int16" Nullable="false" />
+    <Property Name="userName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="age" Type="Int16" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="groupID" Type="Int16" />
+    <NavigationProperty Name="groups" Relationship="testDBModel.usersgroups" FromRole="users" ToRole="groups" />
+  </EntityType>
+  <Association Name="usersgroups">
+    <End Type="testDBModel.users" Role="users" Multiplicity="0..1" />
+    <End Type="testDBModel.groups" Role="groups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="groups">
+        <PropertyRef Name="users_userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

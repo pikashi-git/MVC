@@ -132,34 +132,61 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\groupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103251546315_InitialCreate.cs" />
+    <Compile Include="Migrations\202103251546315_InitialCreate.designer.cs">
+      <DependentUpon>202103251546315_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103281007198_AddLocations.cs" />
+    <Compile Include="Migrations\202103281007198_AddLocations.designer.cs">
+      <DependentUpon>202103281007198_AddLocations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103281331463_AddMiscDef.cs" />
+    <Compile Include="Migrations\202103281331463_AddMiscDef.designer.cs">
+      <DependentUpon>202103281331463_AddMiscDef.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103281357388_Add202103282157.cs" />
+    <Compile Include="Migrations\202103281357388_Add202103282157.designer.cs">
+      <DependentUpon>202103281357388_Add202103282157.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103281359572_Add202103282159.cs" />
+    <Compile Include="Migrations\202103281359572_Add202103282159.designer.cs">
+      <DependentUpon>202103281359572_Add202103282159.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103281410226_Add202103282209.cs" />
+    <Compile Include="Migrations\202103281410226_Add202103282209.designer.cs">
+      <DependentUpon>202103281410226_Add202103282209.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DepartmentContext.cs" />
     <Compile Include="Models\groups.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TestDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Location.cs" />
-    <Compile Include="Models\Model1.Context.cs">
+    <Compile Include="Models\TestDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>TestDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.cs">
+    <Compile Include="Models\TestDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TestDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
+    <Compile Include="Models\TestDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>TestDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\users.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>TestDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="測試EF.aspx.cs">
@@ -179,15 +206,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Models\TestDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>TestDB.edmx</DependentUpon>
+      <LastGenOutput>TestDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Models\TestDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>TestDB.edmx</DependentUpon>
+      <LastGenOutput>TestDB.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -197,12 +224,12 @@
     <Content Include="Views\Locations\Edit.cshtml" />
     <Content Include="Views\Locations\Index.cshtml" />
     <Content Include="測試EF.aspx" />
-    <EntityDeploy Include="Models\Model1.edmx">
+    <EntityDeploy Include="Models\TestDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>TestDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\TestDB.edmx.diagram">
+      <DependentUpon>TestDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -234,6 +261,16 @@
     <Content Include="Views\Departments\Details.cshtml" />
     <Content Include="Views\Departments\Edit.cshtml" />
     <Content Include="Views\Departments\Index.cshtml" />
+    <Content Include="Views\users\Create.cshtml" />
+    <Content Include="Views\users\Delete.cshtml" />
+    <Content Include="Views\users\Details.cshtml" />
+    <Content Include="Views\users\Edit.cshtml" />
+    <Content Include="Views\users\Index.cshtml" />
+    <Content Include="Views\groups\Create.cshtml" />
+    <Content Include="Views\groups\Delete.cshtml" />
+    <Content Include="Views\groups\Details.cshtml" />
+    <Content Include="Views\groups\Edit.cshtml" />
+    <Content Include="Views\groups\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -254,6 +291,26 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202103251546315_InitialCreate.resx">
+      <DependentUpon>202103251546315_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103281007198_AddLocations.resx">
+      <DependentUpon>202103281007198_AddLocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103281331463_AddMiscDef.resx">
+      <DependentUpon>202103281331463_AddMiscDef.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103281357388_Add202103282157.resx">
+      <DependentUpon>202103281357388_Add202103282157.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103281359572_Add202103282159.resx">
+      <DependentUpon>202103281359572_Add202103282159.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103281410226_Add202103282209.resx">
+      <DependentUpon>202103281410226_Add202103282209.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
