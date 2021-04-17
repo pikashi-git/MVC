@@ -20,6 +20,5 @@ namespace MVC網站.Models
         [Required]
         [DisplayName("區域編碼")]
         public string AreaCode { get; set; }
-        //public Department Department { get; set; }
     }
 }

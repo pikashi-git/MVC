@@ -19,6 +19,5 @@ namespace MVC網站.Models
         public string DepartmentAddress { get; set; } 
         [DisplayName("備註")]
         public string Misc { get; set; }
-        //public Location Location { get; set; }
     }
 }

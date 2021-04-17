@@ -94,3 +94,4 @@ D:\專案\Git\MVC網站\obj\Debug\MVC網站.Migrations.AddMiscDef.resources
 D:\專案\Git\MVC網站\obj\Debug\MVC網站.Migrations.Add202103282157.resources
 D:\專案\Git\MVC網站\obj\Debug\MVC網站.Migrations.Add202103282159.resources
 D:\專案\Git\MVC網站\obj\Debug\MVC網站.Migrations.Add202103282209.resources
+D:\專案\Git\MVC網站\obj\Debug\MVC網站.csprojAssemblyReference.cache

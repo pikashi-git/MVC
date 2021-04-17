@@ -136,6 +136,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\usersController.cs" />
+    <Compile Include="Controllers\測試Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -265,12 +266,16 @@
     <Content Include="Views\users\Delete.cshtml" />
     <Content Include="Views\users\Details.cshtml" />
     <Content Include="Views\users\Edit.cshtml" />
-    <Content Include="Views\users\Index.cshtml" />
+    <Content Include="Views\users\Default.cshtml" />
     <Content Include="Views\groups\Create.cshtml" />
     <Content Include="Views\groups\Delete.cshtml" />
     <Content Include="Views\groups\Details.cshtml" />
     <Content Include="Views\groups\Edit.cshtml" />
     <Content Include="Views\groups\Index.cshtml" />
+    <Content Include="Views\測試\Index.cshtml" />
+    <Content Include="Views\測試\ForViewResult.cshtml" />
+    <Content Include="Views\測試\ForViewResult2.cshtml" />
+    <Content Include="Views\測試\ForPartialViewResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
