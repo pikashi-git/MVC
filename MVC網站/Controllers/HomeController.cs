@@ -26,5 +26,9 @@ namespace MVC網站.Controllers
 
             return View();
         }
+        public ContentResult ForContentResult1()
+        {
+            return Content("這是測試" + TempData["TestName"] + "; " + ViewData["TestName1"]);
+        }
     }
 }

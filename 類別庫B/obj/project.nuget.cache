@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "D8EauYESmJsTVtYMBYmDTirJjTPdROm4btPW4Vqqb/+W978iVtWBuCjlv6ZvVtw9PEifinims+RuFJ/lx+Dwgw==",
+  "dgSpecHash": "waOMHyj3y9rdhxLlszz6Hmb8XczCWm9h5AHJZog3H65uWeKNYRzOuJEi0TmEifUpmSZhpSUQV9G5A7CGm0SzZg==",
   "success": true,
-  "projectFilePath": "D:\\專案\\Git\\類別庫B\\類別庫B.csproj",
+  "projectFilePath": "C:\\Users\\Webfuture\\Desktop\\Git\\類別庫B\\類別庫B.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\vincent\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\vincent\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

@@ -13,6 +13,7 @@ namespace Console
             string s;
             TestDefaultArgs(s = "aaa");
             TestDefaultArgs(arg: "aaa");
+            TestDefaultArgs(arg: "aaa", arg1: "bbb");
 
             //TestToList();
 
@@ -21,6 +22,10 @@ namespace Console
         static void TestDefaultArgs(string arg)
         {
             System.Console.WriteLine(arg);
+        }
+        static void TestDefaultArgs(string arg, string arg1)
+        {
+            System.Console.WriteLine(arg+","+arg1);
         }
         static void TestToList()
         {

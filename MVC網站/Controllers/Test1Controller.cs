@@ -9,9 +9,44 @@ namespace MVC網站.Controllers
 {
     public class Test1Controller : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string name)
+        {
+            ViewBag.Title = "Test Home Page";
+            ViewBag.Page = "Test!";
+            ViewData["name"] = name;
+            return View();
+        }
+        public ContentResult ForContentResult()
+        {
+            return Content("這是測試Content");
+        }        
+        public EmptyResult ForEmptyResult()
+        {
+            return null;
+        }
+        public RedirectResult ForRedirectResult()
+        {
+            return Redirect(@"https://www.yahoo.com.tw/");
+        }
+        public RedirectToRouteResult ForRedirectToRoute()
+        {
+            return RedirectToAction("Index", "Home", null);
+        }
+        public ViewResult ForViewResult()
         {
             return View();
+        }
+        public ActionResult ForViewResult2()
+        {
+            return View();
+        }
+        public PartialViewResult ForPartialViewResult()
+        {
+            return PartialView();
+        }
+        public HttpUnauthorizedResult ForHttpUnauthorizedResult()//401
+        {
+            return new HttpUnauthorizedResult();
         }
         public HttpNotFoundResult ForHttpNotFound()
         {
@@ -21,11 +56,6 @@ namespace MVC網站.Controllers
         {
             string js = "<script>alert(\"這是javascript範例\")</script>";
             return JavaScript(js);
-        }
-        public ContentResult ForContentResult()
-        {
-            string js = "<script>alert(\"這是javascript範例\")</script>";
-            return Content(js);
         }
         public JsonResult ForJsonResult()
         {
@@ -50,6 +80,10 @@ namespace MVC網站.Controllers
             var path = Server.MapPath("~/images/image1.png");
             FileStream fs = new FileStream(path, FileMode.Open);
             return File(fs, "text/plain", "FileStreamResult.png");
+        }
+        public ContentResult ForContentResult1(string TestName)
+        {
+            return Content("這是測試" + TempData["TestName"]);
         }
     }
 }
