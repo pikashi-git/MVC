@@ -14,13 +14,14 @@ namespace MVC網站.Controllers
     {
         private testDBEntities db = new testDBEntities();
 
-        // GET: users
+        [ActionName("Default")]
+        //[HttpPost]
         public ActionResult Index()
         {
             return View(db.users.ToList());
         }
 
-        // GET: users/Details/5
+        
         public ActionResult Details(short? id)
         {
             if (id == null)
@@ -35,7 +36,7 @@ namespace MVC網站.Controllers
             return View(users);
         }
 
-        // GET: users/Create
+        [NonAction]
         public ActionResult Create()
         {
             return View();
