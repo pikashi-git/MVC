@@ -13,11 +13,36 @@
 {
     <div>
         @Html.Label("輸入訊息:")
-        <input type="text" name="name" />
+        <input type="text" name="name" value='@ViewData["name"]' />
+    </div>
+    <div>
+        @Html.Label("輸入訊息:")
+        <input type="text" name="age" value='@ViewData["age"]' />
+    </div>
+    <div>
+        @Html.Label("輸入訊息:")
+        <input type="text" name="phone" value='@ViewData["phone"]' />
+    </div>
+    <div>
+        @Html.Label("輸入訊息:")
+        <input type="text" name="time" value='@ViewData["time"]' />
     </div>
     <div>
         使用者輸入姓名:@ViewData["name"]
     </div>
-    @*<input type="submit" value="送出" />*@
-    <input type="submit" value="送出" formaction="/Home/ForContentResult1" />
+    <div>
+        使用者輸入AGE:@ViewData["age"]
+    </div>
+    <div>
+        使用者輸入PHONE:@ViewData["phone"]
+    </div>
+    <div>
+        使用者輸入預約時間:@ViewData["time"]
+    </div>
+    <div>
+        驗證訊息:@ViewData["Message"]
+    </div>
+    <input type="submit" value="送出" />
+
+    @*<input type="submit" value="送出" formaction="/Home/ForContentResult1" />*@
 }
