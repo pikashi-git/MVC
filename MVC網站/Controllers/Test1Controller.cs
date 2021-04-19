@@ -5,8 +5,10 @@ using System.Web.Mvc;
 
 namespace MVC網站.Controllers
 {
+    [Authorize]
     public class Test1Controller : Controller
     {
+        [RequireHttps]
         public ActionResult Index(string name, int? age, string phone, DateTime? time, FormCollection form, [Bind(Exclude = "phone,time")] Test1Model testNodel)
         {
             ViewBag.Title = "Test Home Page";
@@ -58,7 +60,7 @@ namespace MVC網站.Controllers
         public ContentResult ForContentResult()
         {
             return Content("這是測試Content");
-        }        
+        }
         public EmptyResult ForEmptyResult()
         {
             return null;
@@ -75,10 +77,13 @@ namespace MVC網站.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
         public ActionResult ForViewResult2()
         {
             return View();
         }
+        [AllowAnonymous]
+        [ChildActionOnly]
         public PartialViewResult ForPartialViewResult()
         {
             return PartialView();
@@ -126,6 +131,13 @@ namespace MVC網站.Controllers
         }
         [Authorize(Users = "vincent")]
         public ActionResult ForCreate()
+        {
+            return View();
+        }
+        [AllowAnonymous]
+        [RequireHttps]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login()
         {
             return View();
         }

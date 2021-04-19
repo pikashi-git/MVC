@@ -277,6 +277,7 @@
     <Content Include="Views\Test1\ForPartialViewResult.cshtml" />
     <Content Include="Views\Test1\ForViewResult.cshtml" />
     <Content Include="Views\Test1\ForViewResult2.cshtml" />
+    <Content Include="Views\Test1\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
