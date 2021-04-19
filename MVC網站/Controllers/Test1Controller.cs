@@ -28,14 +28,31 @@ namespace MVC網站.Controllers
                 ViewData["age"] = testNodel.age != null ? testNodel.age.ToString() : "";
                 ViewData["phone"] = testNodel.phone;
                 ViewData["time"] = testNodel.time;
-
                 ViewBag.Message = "資料通過驗證";
             }
             else
             {
-                ModelState.Clear();
                 ViewBag.Message = "資料未通過驗證";
+                if (ModelState != null && ModelState.Count > 0)
+                    ModelState.Clear();
             }
+
+            //UpdateModel<Test1Model>(testNodel);
+            //ViewData["name"] = testNodel.name;
+            //ViewData["age"] = testNodel.age != null ? testNodel.age.ToString() : "";
+            //ViewData["phone"] = testNodel.phone;
+            //ViewData["time"] = testNodel.time;
+            //ViewBag.Message = "資料通過驗證";
+
+            //if (TryUpdateModel<Test1Model>(testNodel))
+            //{
+            //    ViewData["name"] = testNodel.name;
+            //    ViewData["age"] = testNodel.age != null ? testNodel.age.ToString() : "";
+            //    ViewData["phone"] = testNodel.phone;
+            //    ViewData["time"] = testNodel.time;
+            //    ViewBag.Message = "資料通過驗證";
+            //}
+
             return View();
         }
         public ContentResult ForContentResult()
@@ -106,6 +123,11 @@ namespace MVC網站.Controllers
         public ContentResult ForContentResult1(string TestName)
         {
             return Content("這是測試" + TempData["TestName"]);
+        }
+        [Authorize(Users = "vincent")]
+        public ActionResult ForCreate()
+        {
+            return View();
         }
     }
 }
