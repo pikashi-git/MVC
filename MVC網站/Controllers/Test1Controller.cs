@@ -1,4 +1,5 @@
-﻿using MVC網站.ViewModels.Test1;
+﻿using MVC網站.Filters;
+using MVC網站.ViewModels.Test1;
 using System;
 using System.IO;
 using System.Web.Mvc;
@@ -8,7 +9,11 @@ namespace MVC網站.Controllers
     [Authorize]
     public class Test1Controller : Controller
     {
-        [RequireHttps]
+        [AllowAnonymous]
+        //[RequireHttps]
+        //[ValidateInput(false)]
+        [OutputCache(Duration = 30)]   
+        [CustomFilter]
         public ActionResult Index(string name, int? age, string phone, DateTime? time, FormCollection form, [Bind(Exclude = "phone,time")] Test1Model testNodel)
         {
             ViewBag.Title = "Test Home Page";
