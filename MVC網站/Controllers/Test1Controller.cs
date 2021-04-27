@@ -14,7 +14,9 @@ namespace MVC網站.Controllers
         //[ValidateInput(false)]
         [OutputCache(Duration = 30)]
         [CustomFilter]
-        public ActionResult Index(string name, int? age, string phone, DateTime? time, FormCollection form, [Bind(Exclude = "phone,time")] Test1Model testNodel)
+        public ActionResult Index(string name, int? age, int? reage, string phone, string email, string website, DateTime? time
+            , FormCollection form
+            , [Bind(Exclude = "time")] Test1Model testNodel)
         {
             ViewBag.Title = "Test Home Page";
             ViewBag.Page = "Test!";
@@ -24,7 +26,10 @@ namespace MVC網站.Controllers
              */
             //ViewData["name"] = name;
             //ViewData["age"] = age;
+            //ViewData["reage"] = reage;
             //ViewData["phone"] = phone;
+            //ViewData["email"] = email;
+            //ViewData["website"] = website;
             //ViewData["time"] = time;
 
             /*
@@ -32,15 +37,21 @@ namespace MVC網站.Controllers
              */
             //ViewData["name"] = form["name"];
             //ViewData["age"] = form["age"];
+            //ViewData["reage"] = form["reage"];
             //ViewData["phone"] = form["phone"];
+            //ViewData["email"] = form["email"];
+            //ViewData["website"] = form["website"];
             //ViewData["time"] = form["time"];
 
-           /*
-            * 物件Model方式
-            */
+            /*
+             * 物件Model方式
+             */
             ViewData["name"] = testNodel.name;
             ViewData["age"] = testNodel.age != null ? testNodel.age.ToString() : "";
+            ViewData["reage"] = testNodel.reage != null ? testNodel.reage.ToString() : "";
             ViewData["phone"] = testNodel.phone;
+            ViewData["email"] = testNodel.Email;
+            ViewData["website"] = testNodel.Website;
             ViewData["time"] = testNodel.time;
             if (ModelState.IsValid)
             {
@@ -58,14 +69,20 @@ namespace MVC網站.Controllers
             //UpdateModel<Test1Model>(testNodel);
             //ViewData["name"] = testNodel.name;
             //ViewData["age"] = testNodel.age != null ? testNodel.age.ToString() : "";
+            //ViewData["reage"] = testNodel.reage != null ? testNodel.reage.ToString() : "";
             //ViewData["phone"] = testNodel.phone;
+            //ViewData["email"] = testNodel.Email;
+            //ViewData["website"] = testNodel.Website;
             //ViewData["time"] = testNodel.time;
             //ViewBag.Message = "資料通過驗證";
             //if (TryUpdateModel<Test1Model>(testNodel))
             //{
             //    ViewData["name"] = testNodel.name;
             //    ViewData["age"] = testNodel.age != null ? testNodel.age.ToString() : "";
+            //    ViewData["reage"] = testNodel.reage != null ? testNodel.reage.ToString() : "";
             //    ViewData["phone"] = testNodel.phone;
+            //    ViewData["email"] = testNodel.Email;
+            //    ViewData["website"] = testNodel.Website;
             //    ViewData["time"] = testNodel.time;
             //    ViewBag.Message = "資料通過驗證";
             //}

@@ -11,8 +11,9 @@
 <table class="table">
     Index
 </table>
-@{ TempData["TestName"] = "Test name";}
+@{TempData["TestName"] = "Test name"; }
 @{ ViewData["TestName1"] = "Test name1";}
+<div>@TempData["TestName"]</div>
 @using (Html.BeginForm())
 {
     <div>
@@ -26,8 +27,24 @@
         @Html.ValidationMessageFor(model => model.age)
     </div>
     <div>
+        @Html.LabelFor(model => model.reage)
+        <input type="text" name="reage" value='@ViewData["reage"]' />
+        @Html.ValidationMessageFor(model => model.reage)
+    </div>
+    <div>
         @Html.LabelFor(model => model.phone)
         <input type="text" name="phone" value='@ViewData["phone"]' />
+        @Html.ValidationMessageFor(model => model.phone)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Email)
+        <input type="text" name="email" value='@ViewData["email"]' />
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Website)
+        <input type="text" name="website" value='@ViewData["website"]' />
+        @Html.ValidationMessageFor(model => model.Website)
     </div>
     <div>
         @Html.LabelFor(model => model.time)
