@@ -12,45 +12,55 @@ namespace MVC網站.Controllers
         [AllowAnonymous]
         //[RequireHttps]
         //[ValidateInput(false)]
-        [OutputCache(Duration = 30)]   
+        [OutputCache(Duration = 30)]
         [CustomFilter]
         public ActionResult Index(string name, int? age, string phone, DateTime? time, FormCollection form, [Bind(Exclude = "phone,time")] Test1Model testNodel)
         {
             ViewBag.Title = "Test Home Page";
             ViewBag.Page = "Test!";
 
+            /*
+             * 參數方式
+             */
             //ViewData["name"] = name;
             //ViewData["age"] = age;
             //ViewData["phone"] = phone;
             //ViewData["time"] = time;
 
+            /*
+             * FormCollection方式
+             */
             //ViewData["name"] = form["name"];
             //ViewData["age"] = form["age"];
             //ViewData["phone"] = form["phone"];
             //ViewData["time"] = form["time"];
 
+           /*
+            * 物件Model方式
+            */
+            ViewData["name"] = testNodel.name;
+            ViewData["age"] = testNodel.age != null ? testNodel.age.ToString() : "";
+            ViewData["phone"] = testNodel.phone;
+            ViewData["time"] = testNodel.time;
             if (ModelState.IsValid)
             {
-                ViewData["name"] = testNodel.name;
-                ViewData["age"] = testNodel.age != null ? testNodel.age.ToString() : "";
-                ViewData["phone"] = testNodel.phone;
-                ViewData["time"] = testNodel.time;
                 ViewBag.Message = "資料通過驗證";
             }
-            else
-            {
+            else {
                 ViewBag.Message = "資料未通過驗證";
-                if (ModelState != null && ModelState.Count > 0)
-                    ModelState.Clear();
+                //if (ModelState != null && ModelState.Count > 0)
+                //    ModelState.Clear();
             }
 
+            /*
+             * TryUpdate
+             */
             //UpdateModel<Test1Model>(testNodel);
             //ViewData["name"] = testNodel.name;
             //ViewData["age"] = testNodel.age != null ? testNodel.age.ToString() : "";
             //ViewData["phone"] = testNodel.phone;
             //ViewData["time"] = testNodel.time;
             //ViewBag.Message = "資料通過驗證";
-
             //if (TryUpdateModel<Test1Model>(testNodel))
             //{
             //    ViewData["name"] = testNodel.name;

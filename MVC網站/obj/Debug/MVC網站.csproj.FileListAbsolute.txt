@@ -190,4 +190,3 @@ C:\Users\Webfuture\Desktop\Git\MVC網站\obj\Debug\MVC網站.csproj.CoreCompileI
 C:\Users\Webfuture\Desktop\Git\MVC網站\obj\Debug\MVC網站.csproj.CopyComplete
 C:\Users\Webfuture\Desktop\Git\MVC網站\obj\Debug\MVC網站.dll
 C:\Users\Webfuture\Desktop\Git\MVC網站\obj\Debug\MVC網站.pdb
-C:\Users\Webfuture\Desktop\Git\MVC網站\obj\Debug\MVC網站.csprojAssemblyReference.cache

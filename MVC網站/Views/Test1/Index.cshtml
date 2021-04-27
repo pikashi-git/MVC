@@ -1,9 +1,13 @@
-﻿@{
+﻿
+@model MVC網站.ViewModels.Test1.Test1Model
+@{
     Response.Write("AAA");
 }
 
 <h2>@ViewBag.Page</h2>
-
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <table class="table">
     Index
 </table>
@@ -12,19 +16,21 @@
 @using (Html.BeginForm())
 {
     <div>
-        @Html.Label("輸入訊息:")
+        @Html.LabelFor(model => model.name)
         <input type="text" name="name" value='@ViewData["name"]' />
+        @Html.ValidationMessageFor(model => model.name)
     </div>
     <div>
-        @Html.Label("輸入訊息:")
+        @Html.LabelFor(model => model.age)
         <input type="text" name="age" value='@ViewData["age"]' />
+        @Html.ValidationMessageFor(model => model.age)
     </div>
     <div>
-        @Html.Label("輸入訊息:")
+        @Html.LabelFor(model => model.phone)
         <input type="text" name="phone" value='@ViewData["phone"]' />
     </div>
     <div>
-        @Html.Label("輸入訊息:")
+        @Html.LabelFor(model => model.time)
         <input type="text" name="time" value='@ViewData["time"]' />
     </div>
     <div>
@@ -44,5 +50,6 @@
     </div>
     <input type="submit" value="送出" />
 
-@*<input type="submit" value="送出" formaction="/Home/ForContentResult1" />*@
+    @*<input type="submit" value="送出" formaction="/Home/ForContentResult1" />*@
+
 }
