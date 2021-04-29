@@ -2,6 +2,7 @@
 @model MVC網站.ViewModels.Test1.Test1Model
 @{
     Response.Write("AAA");
+    //var model = (IEnumerable<MVC網站.ViewModels.Test1.Test1Model>)Model;
 }
 
 <h2>@ViewBag.Page</h2>
@@ -45,6 +46,11 @@
         @Html.LabelFor(model => model.Website)
         <input type="text" name="website" value='@ViewData["website"]' />
         @Html.ValidationMessageFor(model => model.Website)
+    </div>
+    <div>
+        @Html.LabelFor(expression: model => model.file)
+        @Html.EditorFor(model => model.file, new { htmlAttributes = new { type = "file" } })
+        @Html.ValidationMessageFor(model => model.file, validationMessage:"")
     </div>
     <div>
         @Html.LabelFor(model => model.time)

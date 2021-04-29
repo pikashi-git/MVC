@@ -30,6 +30,7 @@ namespace MVC網站.Controllers
             //ViewData["phone"] = phone;
             //ViewData["email"] = email;
             //ViewData["website"] = website;
+            //ViewData["file"] = file;
             //ViewData["time"] = time;
 
             /*
@@ -41,6 +42,7 @@ namespace MVC網站.Controllers
             //ViewData["phone"] = form["phone"];
             //ViewData["email"] = form["email"];
             //ViewData["website"] = form["website"];
+            //ViewData["file"] = form["file"];
             //ViewData["time"] = form["time"];
 
             /*
@@ -52,6 +54,7 @@ namespace MVC網站.Controllers
             ViewData["phone"] = testNodel.phone;
             ViewData["email"] = testNodel.Email;
             ViewData["website"] = testNodel.Website;
+            ViewData["file"] = testNodel.file;
             ViewData["time"] = testNodel.time;
             if (ModelState.IsValid)
             {
@@ -74,6 +77,7 @@ namespace MVC網站.Controllers
             //ViewData["email"] = testNodel.Email;
             //ViewData["website"] = testNodel.Website;
             //ViewData["time"] = testNodel.time;
+            //ViewData["file"] = testNodel.file;
             //ViewBag.Message = "資料通過驗證";
             //if (TryUpdateModel<Test1Model>(testNodel))
             //{
@@ -84,6 +88,7 @@ namespace MVC網站.Controllers
             //    ViewData["email"] = testNodel.Email;
             //    ViewData["website"] = testNodel.Website;
             //    ViewData["time"] = testNodel.time;
+            //    ViewData["file"] = testNodel.file;
             //    ViewBag.Message = "資料通過驗證";
             //}
 

@@ -31,12 +31,19 @@ namespace MVC網站.ViewModels.Test1
         public string phone { get; set; }
 
         [EmailAddress(ErrorMessage = "Email格式有問題")]
+        [DisplayName("信箱")]
         public string Email { get; set; }
 
         [Url(ErrorMessage = "網址格式有問題")]
+        [DisplayName("網址")]
         public string Website { get; set; }
 
         [DisplayName("輸入時間")]
         public DateTime? time { get; set; }
+
+        [FileExtensions(ErrorMessage = "上傳檔案不是指定類型", Extensions = "txt")]
+        //[FileExtensions(ErrorMessage = "上傳檔案不是指定類型")]
+        [DisplayName("上傳檔案")]
+        public string file { get; set; }
     }
 }
