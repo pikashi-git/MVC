@@ -53,6 +53,16 @@
         @Html.ValidationMessageFor(model => model.file, validationMessage:"")
     </div>
     <div>
+        @Html.LabelFor(expression: model => model.creditcard)
+        @Html.EditorFor(model => model.creditcard, new { htmlAttributes = new { type = "text" } })
+        @Html.ValidationMessageFor(model => model.creditcard,validationMessage:"")
+    </div>
+    <div>
+        @Html.LabelFor(expression: model => model.remote)
+        @Html.EditorFor(model => model.remote, new { htmlAttributes = new { type = "text" } })
+        @Html.ValidationMessageFor(model => model.remote)
+    </div>
+    <div>
         @Html.LabelFor(model => model.time)
         <input type="text" name="time" value='@ViewData["time"]' />
     </div>

@@ -30,5 +30,13 @@ namespace MVC網站.Controllers
         {
             return Content("這是測試" + TempData["TestName"] + "; " + ViewData["TestName1"]);
         }
+
+        public JsonResult TestRemote(string remote)
+        {
+            //if (remote.Equals("1"))
+            //    return Json(true, JsonRequestBehavior.AllowGet);
+            //else
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
     }
 }

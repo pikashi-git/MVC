@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using CompareAttribute = System.ComponentModel.DataAnnotations.CompareAttribute;
 
@@ -28,6 +25,7 @@ namespace MVC網站.ViewModels.Test1
 
         [DisplayName("輸入電話")]
         [RegularExpression(@"^[0-9]{2,4}-?[0-9]{3,4}-?[0-9]{4}$", ErrorMessage = "請輸入正確電話號碼")]
+        [DataType(DataType.PhoneNumber)]
         public string phone { get; set; }
 
         [EmailAddress(ErrorMessage = "Email格式有問題")]
@@ -38,12 +36,21 @@ namespace MVC網站.ViewModels.Test1
         [DisplayName("網址")]
         public string Website { get; set; }
 
+        [DataType(DataType.DateTime)]
         [DisplayName("輸入時間")]
         public DateTime? time { get; set; }
 
-        [FileExtensions(ErrorMessage = "上傳檔案不是指定類型", Extensions = "txt")]
+        [FileExtensions(ErrorMessage = "上傳檔案不是指定類型", Extensions = "txt,docx")]
         //[FileExtensions(ErrorMessage = "上傳檔案不是指定類型")]
         [DisplayName("上傳檔案")]
         public string file { get; set; }
+
+        [CreditCard(ErrorMessage = "格式有問題")]
+        [DisplayName("信用卡")]
+        public string creditcard { get; set; }
+
+        [DisplayName("Remote_Ajax測試")]
+        [Remote("TestRemote","Home",ErrorMessage ="remote屬性測試錯誤")]
+        public string remote { get; set; }
     }
 }

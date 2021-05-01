@@ -77,6 +77,7 @@ namespace MVC網站.Controllers
             //ViewData["email"] = testNodel.Email;
             //ViewData["website"] = testNodel.Website;
             //ViewData["time"] = testNodel.time;
+            //ViewData["time1"] = testNodel.time1;
             //ViewData["file"] = testNodel.file;
             //ViewBag.Message = "資料通過驗證";
             //if (TryUpdateModel<Test1Model>(testNodel))
@@ -88,6 +89,7 @@ namespace MVC網站.Controllers
             //    ViewData["email"] = testNodel.Email;
             //    ViewData["website"] = testNodel.Website;
             //    ViewData["time"] = testNodel.time;
+            //    ViewData["time1"] = testNodel.time1;
             //    ViewData["file"] = testNodel.file;
             //    ViewBag.Message = "資料通過驗證";
             //}
@@ -177,6 +179,14 @@ namespace MVC網站.Controllers
         public ActionResult Login()
         {
             return View();
+        }
+        [AllowAnonymous]
+        public JsonResult TestRemote(string remote)
+        {
+            //if (remote.Equals("1"))
+            //    return Json(true, JsonRequestBehavior.AllowGet);
+            //else
+                return Json(false, JsonRequestBehavior.AllowGet);
         }
     }
 }
