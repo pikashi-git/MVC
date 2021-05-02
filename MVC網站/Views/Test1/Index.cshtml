@@ -1,10 +1,9 @@
 ﻿
 @model MVC網站.ViewModels.Test1.Test1Model
-@{
-    Response.Write("AAA");
-    //var model = (IEnumerable<MVC網站.ViewModels.Test1.Test1Model>)Model;
-}
 
+@{ 
+    var data = (MVC網站.ViewModels.Test1.Test1Model)Model;
+}
 <h2>@ViewBag.Page</h2>
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
@@ -14,11 +13,8 @@
 </table>
 @{TempData["TestName"] = "Test name"; }
 @{ ViewData["TestName1"] = "Test name1";}
-@{ TempData["TestName2"] = "Test name2";}
-<div>@TempData["TestName"]</div>
-<div>@ViewData["TestName1"]</div>
 
-@if (ViewData["TestName1"] != TempData["TestName2"])
+@if (ViewData["TestName1"] != TempData["TestName"])
 {
     @:不一樣
 }
@@ -29,6 +25,38 @@ else
 
 @{ string str = "<div>測試Raw</div>";}
 @Html.Raw(str)
+
+@helper IsModelNull()
+{
+    if (Model is null)
+    {
+        @:Model是空
+    }
+    else
+    {
+        @:Model不是空
+    }
+}
+@functions
+{
+    public bool IsModelNulls()
+    {
+        if (Model is null)
+            return true;
+        else
+            return false;
+    }
+}
+
+@IsModelNull()
+@if (IsModelNulls())
+{
+    @:Model是空
+}
+else
+{
+    @:Model不是空
+}
 
 @using (Html.BeginForm())
 {
@@ -99,6 +127,7 @@ else
     <input type="submit" value="送出" />
     @*<input type="submit" value="送出" formaction="/Home/ForContentResult1" />*@
 }
+
 
 
 

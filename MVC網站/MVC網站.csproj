@@ -285,6 +285,8 @@
     <Content Include="Views\Test1\Login.cshtml" />
     <Content Include="Views\Test1\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_LayoutTest.cshtml" />
+    <Content Include="Views\Shared\Partial.cshtml" />
+    <Content Include="Views\Test1\Partial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -28,8 +28,10 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        AAA
+    <div class="container body-content">    
+        @{ ViewData["partial"] = "ABCD";}
+        @Html.Action("Partial")
+        @Html.Partial("Partial")
         @RenderPage("~/Views/Shared/Error.cshtml")
         @RenderSection("scripts", required: false)
         @RenderBody()

@@ -188,5 +188,11 @@ namespace MVC網站.Controllers
             //else
                 return Json(false, JsonRequestBehavior.AllowGet);
         }
+        [AllowAnonymous]
+        public ActionResult Partial()
+        {
+            ViewData["title"] = "測試";
+            return PartialView();
+        }
     }
 }
