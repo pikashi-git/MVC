@@ -14,7 +14,22 @@
 </table>
 @{TempData["TestName"] = "Test name"; }
 @{ ViewData["TestName1"] = "Test name1";}
+@{ TempData["TestName2"] = "Test name2";}
 <div>@TempData["TestName"]</div>
+<div>@ViewData["TestName1"]</div>
+
+@if (ViewData["TestName1"] != TempData["TestName2"])
+{
+    @:不一樣
+}
+else
+{
+    @:一樣
+}
+
+@{ string str = "<div>測試Raw</div>";}
+@Html.Raw(str)
+
 @using (Html.BeginForm())
 {
     <div>
@@ -50,12 +65,12 @@
     <div>
         @Html.LabelFor(expression: model => model.file)
         @Html.EditorFor(model => model.file, new { htmlAttributes = new { type = "file" } })
-        @Html.ValidationMessageFor(model => model.file, validationMessage:"")
+        @Html.ValidationMessageFor(model => model.file, validationMessage: "")
     </div>
     <div>
         @Html.LabelFor(expression: model => model.creditcard)
         @Html.EditorFor(model => model.creditcard, new { htmlAttributes = new { type = "text" } })
-        @Html.ValidationMessageFor(model => model.creditcard,validationMessage:"")
+        @Html.ValidationMessageFor(model => model.creditcard, validationMessage: "")
     </div>
     <div>
         @Html.LabelFor(expression: model => model.remote)
@@ -82,7 +97,8 @@
         驗證訊息:@ViewData["Message"]
     </div>
     <input type="submit" value="送出" />
-
     @*<input type="submit" value="送出" formaction="/Home/ForContentResult1" />*@
-
 }
+
+
+
