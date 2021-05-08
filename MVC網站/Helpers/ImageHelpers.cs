@@ -22,8 +22,9 @@ namespace MVC網站.Helpers
             var data = new Dictionary<string, string>() { { "src", src }, { "alt", alt }, { "title", "測試tagbuilder"} };
             tag.MergeAttributes(data, true);
             tag.AddCssClass("test");
-            tag.SetInnerText(AntiXssEncoder.HtmlEncode(innertext, true));
-            tag.InnerHtml = innertext;
+            tag.SetInnerText(innertext);
+            //tag.InnerHtml = innertext;
+            //tag.InnerHtml = AntiXssEncoder.HtmlEncode(innertext, true);
             return MvcHtmlString.Create(tag.ToString(TagRenderMode.Normal));
         }
     }

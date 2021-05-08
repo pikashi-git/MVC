@@ -10,10 +10,48 @@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <table class="table">
-    Index
-    @Html.Image("https://s.yimg.com/ny/api/res/1.2/ukP7byIUd4AB1Xmhm1oMCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTY4NS4yO2NmPXdlYnA-/https://s.yimg.com/os/creatr-uploaded-images/2021-03/f7b7d020-7c87-11eb-bbf7-6240fb656695"
+    <tr>
+        <td>
+            Index
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Image("https://s.yimg.com/ny/api/res/1.2/ukP7byIUd4AB1Xmhm1oMCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTY4NS4yO2NmPXdlYnA-/https://s.yimg.com/os/creatr-uploaded-images/2021-03/f7b7d020-7c87-11eb-bbf7-6240fb656695"
     , "台積電設廠")
-
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Image("img.abc", "https://s.yimg.com/ny/api/res/1.2/ukP7byIUd4AB1Xmhm1oMCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTY4NS4yO2NmPXdlYnA-/https://s.yimg.com/os/creatr-uploaded-images/2021-03/f7b7d020-7c87-11eb-bbf7-6240fb656695"
+    , "台積電設廠")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Url.Action("index")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Url.Action("index", "Home")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Url.Action("index", "Home", new { message = Url.Encode("<script>alert('test');</script>") })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Url.RouteUrl(new { Controller = "Home", Action = "index", Id = "0" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="@Url.Content("~/images/image1.png")" />
+        </td>
+    </tr>
 </table>
 @{TempData["TestName"] = "Test name"; }
 @{ ViewData["TestName1"] = "Test name1";}
