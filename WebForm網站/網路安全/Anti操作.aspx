@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="static測試A.aspx.cs" Inherits="Test.static測試A" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Anti操作.aspx.cs" Inherits="Test.網路安全.Anti操作" %>
 
 <!DOCTYPE html>
 
@@ -10,6 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Literal ID="ltTest" runat="server"></asp:Literal>
         </div>
     </form>
 </body>

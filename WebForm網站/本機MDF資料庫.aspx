@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="static測試B.aspx.cs" Inherits="Test.static測試B" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="本機MDF資料庫.aspx.cs" Inherits="Test.測試mdf" %>
 
 <!DOCTYPE html>
 

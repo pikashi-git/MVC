@@ -1,7 +1,8 @@
 ﻿
 @model MVC網站.ViewModels.Test1.Test1Model
+@using MVC網站.Helpers
 
-@{ 
+@{
     var data = (MVC網站.ViewModels.Test1.Test1Model)Model;
 }
 <h2>@ViewBag.Page</h2>
@@ -10,6 +11,9 @@
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <table class="table">
     Index
+    @Html.Image("https://s.yimg.com/ny/api/res/1.2/ukP7byIUd4AB1Xmhm1oMCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTY4NS4yO2NmPXdlYnA-/https://s.yimg.com/os/creatr-uploaded-images/2021-03/f7b7d020-7c87-11eb-bbf7-6240fb656695"
+    , "台積電設廠")
+
 </table>
 @{TempData["TestName"] = "Test name"; }
 @{ ViewData["TestName1"] = "Test name1";}

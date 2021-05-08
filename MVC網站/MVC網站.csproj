@@ -141,6 +141,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ImageHelpers.cs" />
     <Compile Include="Migrations\202103251546315_InitialCreate.cs" />
     <Compile Include="Migrations\202103251546315_InitialCreate.designer.cs">
       <DependentUpon>202103251546315_InitialCreate.cs</DependentUpon>

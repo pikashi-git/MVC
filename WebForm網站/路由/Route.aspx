@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="測試route.aspx.cs" Inherits="Test.測試route" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Route.aspx.cs" Inherits="Test.測試route" %>
 
 <!DOCTYPE html>
 

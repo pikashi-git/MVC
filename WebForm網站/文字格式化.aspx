@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="測試文字格式化.aspx.cs" Inherits="Test.測試文字格式化" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="文字格式化.aspx.cs" Inherits="Test.測試文字格式化" %>
 
 <!DOCTYPE html>
 

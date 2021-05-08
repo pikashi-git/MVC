@@ -11,10 +11,10 @@ namespace Test
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Write("之前值: " +測試static數值固定.code);
+            Response.Write("之前值: " +Static數值固定.code);
             Response.Write("<br />");
-            測試static數值固定.code = "static測試B";
-            Response.Write("現在值: "+ 測試static數值固定.code);
+            Static數值固定.code = "static測試B";
+            Response.Write("現在值: "+ Static數值固定.code);
         }
     }
 }

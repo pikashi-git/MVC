@@ -10,10 +10,11 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            string s;
-            TestDefaultArgs(s = "aaa");
+            string s; TestDefaultArgs(s = "aaa");
             TestDefaultArgs(arg: "aaa");
-            TestDefaultArgs(arg: "aaa", arg1: "bbb");
+            TestDefaultArgs(arg1: "bbb", arg: "aaa");
+            TestDefaultArgs(arg1: "bbb", arg: "aaa", arg2: "ccc");
+            TestDefaultArgs(arg1: "bbb", arg: "aaa", arg2: "ccc", arg3: "ddd");
 
             //TestToList();
 
@@ -25,7 +26,11 @@ namespace Console
         }
         static void TestDefaultArgs(string arg, string arg1)
         {
-            System.Console.WriteLine(arg+","+arg1);
+            System.Console.WriteLine(arg + "," + arg1);
+        }
+        static void TestDefaultArgs(string arg, string arg1, string arg2, string arg3 = "default")
+        {
+            System.Console.WriteLine(arg + "," + arg1 + "," + arg2 + "," + arg3);
         }
         static void TestToList()
         {

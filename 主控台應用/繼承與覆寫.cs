@@ -9,32 +9,14 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            測試繼承與覆寫();
-
-            System.Console.ReadLine();
-        }
-
-        static void 測試繼承與覆寫()
-        {
             Bus _bus = new Bus();
             _bus.Move();
             _bus.Stop();
+            // _bus.Fix(); //無法覆寫繼承的成員 'Action.Fix()'，因為其已密封。
+            
+            System.Console.ReadLine();
         }
     }
-
-    class Transportation
-    { 
-        public virtual void Move()
-        {
-            System.Console.WriteLine(@"It's moving!");
-        }
-
-        public void Stop()
-        {
-            System.Console.WriteLine(@"It's stoping!");
-        }
-    }
-
     class Bus: Transportation
     {
         public string Color { get; set; }
@@ -48,6 +30,29 @@ namespace Console
         public new void Stop()
         {
             System.Console.WriteLine(@"Bus is stoping!");
+        }
+        public override void Fix()
+        {
+            System.Console.WriteLine(@"Bus is fixing!");
+        }
+    }
+    class Transportation : Action
+    {
+        public virtual void Move()
+        {
+            System.Console.WriteLine(@"It's moving!");
+        }
+
+        public void Stop()
+        {
+            System.Console.WriteLine(@"It's stoping!");
+        }
+    }
+     class Action
+    {
+        public sealed virtual void Fix()
+        {
+            System.Console.WriteLine(@"it's fixing!");
         }
     }
 }
