@@ -1,12 +1,15 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式(TEST)</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: true)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -28,21 +31,16 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">    
+    <div class="container body-content">
         @{ ViewData["partial"] = "ABCD";}
         @Html.Action("Partial")
         @Html.Partial("Partial")
         @RenderPage("~/Views/Shared/Error.cshtml")
-        @RenderSection("scripts", required: false)
         @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 應用程式</p>
         </footer>
     </div>
-
-            @Scripts.Render("~/bundles/jquery")
-            @Scripts.Render("~/bundles/bootstrap")
-            @RenderSection("scripts", required: false)
-        </body>
-        </html>
+</body>
+</html>

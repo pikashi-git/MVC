@@ -6,9 +6,7 @@
     var data = (MVC網站.ViewModels.Test1.Test1Model)Model;
 }
 <h2>@ViewBag.Page</h2>
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
 <table class="table">
     <tr>
         <td>
@@ -168,6 +166,12 @@ else
     </div>
     <input type="submit" value="送出" />
     @*<input type="submit" value="送出" formaction="/Home/ForContentResult1" />*@
+
+    @section scripts
+    {
+        @Scripts.Render("~/bundles/jqueryUnobtrusive")
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 }
 
 
