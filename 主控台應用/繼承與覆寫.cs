@@ -31,7 +31,7 @@ namespace Console
         {
             System.Console.WriteLine(@"Bus is stoping!");
         }
-        public override void Fix()
+        public sealed override void Fix()
         {
             System.Console.WriteLine(@"Bus is fixing!");
         }
@@ -50,7 +50,7 @@ namespace Console
     }
      class Action
     {
-        public sealed virtual void Fix()
+        public virtual void Fix()
         {
             System.Console.WriteLine(@"it's fixing!");
         }
