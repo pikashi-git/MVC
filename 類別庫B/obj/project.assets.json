@@ -195,23 +195,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Webfuture\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\vincent\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Webfuture\\Desktop\\Git\\類別庫B\\類別庫B.csproj",
+      "projectUniqueName": "D:\\專案\\Git\\類別庫B\\類別庫B.csproj",
       "projectName": "類別庫B",
-      "projectPath": "C:\\Users\\Webfuture\\Desktop\\Git\\類別庫B\\類別庫B.csproj",
-      "packagesPath": "C:\\Users\\Webfuture\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Webfuture\\Desktop\\Git\\類別庫B\\obj\\",
+      "projectPath": "D:\\專案\\Git\\類別庫B\\類別庫B.csproj",
+      "packagesPath": "C:\\Users\\vincent\\.nuget\\packages\\",
+      "outputPath": "D:\\專案\\Git\\類別庫B\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Webfuture\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\vincent\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -224,8 +220,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\Webfuture\\Desktop\\Git\\類別庫A\\類別庫A.csproj": {
-              "projectPath": "C:\\Users\\Webfuture\\Desktop\\Git\\類別庫A\\類別庫A.csproj"
+            "D:\\專案\\Git\\類別庫A\\類別庫A.csproj": {
+              "projectPath": "D:\\專案\\Git\\類別庫A\\類別庫A.csproj"
             }
           }
         }
@@ -256,7 +252,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.408\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
