@@ -1,0 +1,10 @@
+﻿
+<h2>@ViewBag.Page</h2>
+
+<table class="table">
+    Login
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+    }
+</table>

@@ -174,7 +174,7 @@ namespace MVC網站.Controllers
             return View();
         }
         [AllowAnonymous]
-        [RequireHttps]
+        //[RequireHttps]
         [ValidateAntiForgeryToken]
         public ActionResult Login()
         {

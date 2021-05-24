@@ -1,0 +1,17 @@
+﻿@Html.Label("This is Test Partial Page!")
+
+@helper IsTitleNull()
+{
+    if (ViewData["title"] != null)
+    {
+        @ViewData["title"]
+    }
+    else
+    {
+        @:沒值
+    }
+}
+<br />
+@IsTitleNull()
+<br />
+@ViewData["partial"]
