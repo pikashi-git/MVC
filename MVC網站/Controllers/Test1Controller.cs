@@ -1,12 +1,13 @@
 ﻿using MVC網站.Filters;
 using MVC網站.ViewModels.Test1;
 using System;
+using System.Configuration;
 using System.IO;
 using System.Web.Mvc;
 
 namespace MVC網站.Controllers
 {
-    [Authorize]
+    ////[Authorize]
     public class Test1Controller : Controller
     {
         [AllowAnonymous]
@@ -20,6 +21,7 @@ namespace MVC網站.Controllers
         {
             ViewBag.Title = "Test Home Page";
             ViewBag.Page = "Test!";
+            
 
             /*
              * 參數方式
