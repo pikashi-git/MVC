@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "類別庫B", "類別庫B\�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC網站", "MVC網站\MVC網站.csproj", "{17C3C54E-0643-4F57-AA06-644D8A855169}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "留言板實作", "留言板實作\留言板實作.csproj", "{450E76CA-5CE2-4318-96C7-3C8E4FC1DA1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "留言板實作.Tests", "留言板實作.Tests\留言板實作.Tests.csproj", "{B37E15F8-3C8F-41B4-BE13-B1D433AB0FF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{17C3C54E-0643-4F57-AA06-644D8A855169}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17C3C54E-0643-4F57-AA06-644D8A855169}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17C3C54E-0643-4F57-AA06-644D8A855169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{450E76CA-5CE2-4318-96C7-3C8E4FC1DA1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{450E76CA-5CE2-4318-96C7-3C8E4FC1DA1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{450E76CA-5CE2-4318-96C7-3C8E4FC1DA1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{450E76CA-5CE2-4318-96C7-3C8E4FC1DA1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B37E15F8-3C8F-41B4-BE13-B1D433AB0FF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B37E15F8-3C8F-41B4-BE13-B1D433AB0FF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B37E15F8-3C8F-41B4-BE13-B1D433AB0FF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B37E15F8-3C8F-41B4-BE13-B1D433AB0FF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
