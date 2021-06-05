@@ -15,22 +15,32 @@ namespace 留言板實作.Services
 
         public List<guestbook> GetguestbookList()
         {
-            List<guestbook> guestbookList = null;
-
+            List<guestbook> guestbookList = new List<guestbook>();
+            DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(constr))
             {
-
-                string sql = string.Empty;
+                string sql = @" SELECT * FROM [guestbook]; ";
                 using (SqlCommand cmd = new SqlCommand(sql))
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = sql;
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
                     adp.Fill(dt);
                 }
             }
-
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    guestbook gb = new guestbook();
+                    gb.ID = (int)row["ID"];
+                    gb.userID = (int)row["userID"];
+                    gb.postContent = row["postContent"].ToString();
+                    gb.parent = (int)row["parent"];
+                    gb.createtime = (DateTime)row["createtime"];
+                    guestbookList.Add(gb);
+                }
+            }
             return guestbookList;
         }
     }
