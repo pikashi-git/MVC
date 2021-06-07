@@ -14,10 +14,13 @@ namespace 留言板實作.App_Code
         public CommandType CommandType { get; set; }
         public string CommandText { get; set; } 
         public SqlParameter[] ParameterList { get; set; }
+        public string Connection { get; set; }
+        public SqlConnection Conn { get; set; }
+        public SqlCommand Cmd { get; set; }
         public void Connect();
-        public bool Action();
-        public DataTable FillDataTable();
-        public DataSet FillDataSet();
+        public int Action();
+        public int FillDataTable(out DataTable dt);
+        public int FillDataSet(out DataSet ds);
         public void DisConnect();
     }
 }
