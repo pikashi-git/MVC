@@ -1,0 +1,2 @@
+D:\專案\Git\留言板實作\obj\Debug\留言板實作.csprojAssemblyReference.cache
+D:\專案\Git\留言板實作\obj\Debug\留言板實作.csproj.CoreCompileInputs.cache

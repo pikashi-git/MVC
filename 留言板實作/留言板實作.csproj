@@ -117,18 +117,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\IDB.cs" />
-    <Content Include="App_Code\guestbookDB.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GuestBookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IDB.cs" />
     <Compile Include="Models\guestbook.cs" />
     <Compile Include="Models\users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\guestbookDB.cs" />
     <Compile Include="Services\guestbookDBService.cs" />
     <Compile Include="ViewModels\guestbookViewModel.cs" />
   </ItemGroup>
@@ -168,6 +169,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\GuestBook\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
