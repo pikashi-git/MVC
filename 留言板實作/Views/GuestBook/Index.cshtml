@@ -4,8 +4,26 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>留言板</h2>
+<table>
+    
+    @*如果資料庫中不是零比資料, 則顯示資料, 並列出新增刪除修改連結*@
+    @if (!Model.guestbookList.Count.Equals(0))
+    {
+        foreach (var item in Model.guestbookList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(m => m.guestbookList)
+                </td>
+                <td></td>
+            </tr>
+        }
+    }
+     @*如果資料庫中為零筆資料, 則印出"資料庫中查無資料"*@
+    else
+    { }
+</table>
 
 @using (Html.BeginForm()) 
 {
