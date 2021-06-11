@@ -12,9 +12,9 @@ namespace 留言板實作.Services
 {
     public class guestbookDBService
     {
-        public List<guestbook> GetguestbookList()
+        public List<guestbookInfo> GetguestbookInfoList()
         {
-            List<guestbook> guestbookList = new List<guestbook>();
+            List<guestbookInfo> guestbookInfoList = new List<guestbookInfo>();
             DataTable dt = new DataTable();
 
             //using (SqlConnection con = new SqlConnection(constr))
@@ -29,21 +29,24 @@ namespace 留言板實作.Services
             //    }
             //}
 
-            guestbookDB DB = new guestbookDB(@" select * from guestbook ");
+            guestbookDB DB = new guestbookDB(@" 
+select A.*,B.names,B.nick from guestbook A inner join users B on A.userID=B.userID ");
             if (DB.FillDataTable(out dt) > 0 && dt != null && dt.Rows.Count > 0)
             {
                 foreach (DataRow row in dt.Rows)
                 {
-                    guestbook gb = new guestbook();
+                    guestbookInfo gb = new guestbookInfo();
                     gb.ID = (int)row["ID"];
                     gb.userID = (int)row["userID"];
                     gb.postContent = row["postContent"].ToString();
                     gb.parent = (int)row["parent"];
                     gb.createtime = (DateTime)row["createtime"];
-                    guestbookList.Add(gb);
+                    gb.names = row["names"].ToString();
+                    gb.nick = row["nick"].ToString();
+                    guestbookInfoList.Add(gb);
                 }
             }
-            return guestbookList;
+            return guestbookInfoList;
         }
     }
 }

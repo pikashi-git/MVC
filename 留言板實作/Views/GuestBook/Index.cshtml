@@ -1,4 +1,4 @@
-﻿@model 留言板實作.ViewModels.guestbookViewModel
+﻿@model 留言板實作.ViewModels.guestbookInfoViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -6,45 +6,61 @@
 
 <h2>留言板</h2>
 <table>
-    
+
     @*如果資料庫中不是零比資料, 則顯示資料, 並列出新增刪除修改連結*@
-    @if (!Model.guestbookList.Count.Equals(0))
+    @if (!Model.guestbookInfoList.Count.Equals(0))
     {
-        foreach (var item in Model.guestbookList)
+        foreach (var item in Model.guestbookInfoList)
         {
             <tr>
                 <td>
-                    @Html.DisplayNameFor(m => m.guestbookList)
+                    @Html.DisplayNameFor(m => m.guestbookInfoList[0].names)
                 </td>
-                <td></td>
+                <td>
+                    @item.names
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(m => m.guestbookInfoList[0].createtime)
+                </td>
+                <td>
+                    @item.createtime
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(m => m.guestbookInfoList[0].postContent)
+                </td>
+                <td>
+                    @item.postContent
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(m => m.guestbookInfoList[0].parent)
+                </td>
+                <td>
+                    @item.parent
+                </td>
             </tr>
         }
     }
-     @*如果資料庫中為零筆資料, 則印出"資料庫中查無資料"*@
+    @*如果資料庫中為零筆資料, 則印出"資料庫中查無資料"*@
     else
-    { }
+    {
+        <tr>
+            <td colspan="2">
+                資料庫內查無資料
+            </td>
+        </tr>
+    }
 </table>
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>guestbookViewModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back To List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+@*匯入驗證欄位所需Javascript*@
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval");
 }
