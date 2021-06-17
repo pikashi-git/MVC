@@ -19,7 +19,7 @@ namespace 留言板實作.Services
         public SqlCommand Cmd { get; set; }
         public guestbookDB(string sql, SqlParameter[] parms = null)
         {
-            Connection = System.Web.Configuration.WebConfigurationManager.AppSettings["GuestBook"];
+            Connection = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GuestBook"].ConnectionString;
             if (CommandType != CommandType.StoredProcedure && CommandType != CommandType.Text)
                 CommandType = CommandType.Text;
             CommandText = sql;
@@ -38,6 +38,7 @@ namespace 留言板實作.Services
 
             using (Cmd = new SqlCommand())
             {
+                Cmd.Connection = Conn;
                 Cmd.CommandType = CommandType;
                 Cmd.CommandText = CommandText;
                 if(ParameterList != null)
@@ -48,7 +49,7 @@ namespace 留言板實作.Services
 
             return count;
         }
-        public int FillDataSet(out DataSet ds)
+        public int GenerateDataSet(out DataSet ds)
         {
             int count = 0;
             ds = new DataSet();
@@ -56,9 +57,11 @@ namespace 留言板實作.Services
 
             using (Cmd = new SqlCommand())
             {
+                Cmd.Connection = Conn;
                 Cmd.CommandType = CommandType;
                 Cmd.CommandText = CommandText;
-                Cmd.Parameters.AddRange(ParameterList);
+                if (ParameterList != null)
+                    Cmd.Parameters.AddRange(ParameterList);
                 SqlDataAdapter adp = new SqlDataAdapter(Cmd);
                 count = adp.Fill(ds);
             }
@@ -67,7 +70,7 @@ namespace 留言板實作.Services
 
             return count;
         }
-        public int FillDataTable(out DataTable dt)
+        public int GenerateDataTable(out DataTable dt)
         {
             int count = 0;
             dt = new DataTable();
@@ -75,9 +78,11 @@ namespace 留言板實作.Services
 
             using (Cmd = new SqlCommand())
             {
+                Cmd.Connection = Conn;
                 Cmd.CommandType = CommandType;
                 Cmd.CommandText = CommandText;
-                Cmd.Parameters.AddRange(ParameterList);
+                if(ParameterList != null)
+                    Cmd.Parameters.AddRange(ParameterList);
                 SqlDataAdapter adp = new SqlDataAdapter(Cmd);
                 count = adp.Fill(dt);
             }

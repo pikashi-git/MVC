@@ -13,7 +13,7 @@ namespace 留言板實作.Controllers
         guestbookDBService Service = new guestbookDBService();
         public ActionResult Index()
         {
-            return View(Service.GetguestbookList());
+            return View(Service.GetguestbookInfoList());
         }
     }
 }

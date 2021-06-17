@@ -7,31 +7,20 @@ using System.Web;
 using 留言板實作.Models;
 using System.Data;
 using 留言板實作.Services;
+using 留言板實作.ViewModels;
 
 namespace 留言板實作.Services
 {
     public class guestbookDBService
     {
-        public List<guestbookInfo> GetguestbookInfoList()
+        public guestbookInfoViewModel GetguestbookInfoList()
         {
             List<guestbookInfo> guestbookInfoList = new List<guestbookInfo>();
             DataTable dt = new DataTable();
 
-            //using (SqlConnection con = new SqlConnection(constr))
-            //{
-            //    string sql = @" SELECT * FROM [guestbook]; ";
-            //    using (SqlCommand cmd = new SqlCommand(sql))
-            //    {
-            //        cmd.CommandType = CommandType.Text;
-            //        cmd.CommandText = sql;
-            //        SqlDataAdapter adp = new SqlDataAdapter(cmd);
-            //        adp.Fill(dt);
-            //    }
-            //}
-
             guestbookDB DB = new guestbookDB(@" 
 select A.*,B.names,B.nick from guestbook A inner join users B on A.userID=B.userID ");
-            if (DB.FillDataTable(out dt) > 0 && dt != null && dt.Rows.Count > 0)
+            if (DB.GenerateDataTable(out dt) > 0 && dt != null && dt.Rows.Count > 0)
             {
                 foreach (DataRow row in dt.Rows)
                 {
@@ -46,7 +35,9 @@ select A.*,B.names,B.nick from guestbook A inner join users B on A.userID=B.user
                     guestbookInfoList.Add(gb);
                 }
             }
-            return guestbookInfoList;
+            guestbookInfoViewModel model = new guestbookInfoViewModel();
+            model.guestbookInfoList = guestbookInfoList;
+            return model;
         }
     }
 }

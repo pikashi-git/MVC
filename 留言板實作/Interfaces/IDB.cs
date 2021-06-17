@@ -19,8 +19,8 @@ namespace 留言板實作.Interfaces
         SqlCommand Cmd { get; set; }
         void Connect();
         int Action();
-        int FillDataTable(out DataTable dt);
-        int FillDataSet(out DataSet ds);
+        int GenerateDataTable(out DataTable dt);
+        int GenerateDataSet(out DataSet ds);
         void DisConnect();
     }
 }

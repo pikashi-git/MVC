@@ -8,7 +8,7 @@
 <table>
 
     @*如果資料庫中不是零比資料, 則顯示資料, 並列出新增刪除修改連結*@
-    @if (!Model.guestbookInfoList.Count.Equals(0))
+    @if (Model != null && !Model.guestbookInfoList.Count.Equals(0))
     {
         foreach (var item in Model.guestbookInfoList)
         {
