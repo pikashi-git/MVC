@@ -10,17 +10,26 @@
         @*新增姓名欄位區塊*@
         <tr>
             <td>@Html.LabelFor(model => model.userID)</td>
-            <td>@Html.TextBoxFor(model => model.userID)</td>
+            <td>
+                @Html.TextBoxFor(model => model.userID)
+                @Html.ValidationMessageFor(model=>model.userID)
+            </td>
         </tr>
         @*新增內容欄位區塊*@
         <tr>
             <td>@Html.LabelFor(model => model.postContent)</td>
-            <td>@Html.TextAreaFor(model => model.postContent)</td>
+            <td>
+                @Html.TextAreaFor(model => model.postContent)
+                @Html.ValidationMessageFor(model=>model.postContent)
+            </td>
         </tr>
         @*新增回復文章編號欄位區塊*@
         <tr>
             <td>@Html.LabelFor(model => model.parent)</td>
-            <td>@Html.TextBoxFor(model => model.parent)</td>
+            <td>
+                @Html.TextBoxFor(model => model.parent)
+                @Html.ValidationMessageFor(model=>model.parent)
+            </td>
         </tr>
     </table>
     <input type="submit" value="新增留言" />   
