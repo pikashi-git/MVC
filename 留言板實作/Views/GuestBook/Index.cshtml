@@ -4,7 +4,13 @@
     ViewBag.Title = "Index";
 }
 
+@*載入新增資料頁面*@
+    <div id="CreateData">
+        @Html.Action("Create")
+    </div>
+
 <h2>留言板</h2>
+
 <table>
 
     @*如果資料庫中不是零比資料, 則顯示資料, 並列出新增刪除修改連結*@
@@ -57,7 +63,7 @@
     }
 </table>
 <div>
-    @Html.ActionLink("Back To List", "Index")
+    @Html.ActionLink("首頁", "Index")
 </div>
 @*匯入驗證欄位所需Javascript*@
 @section scripts

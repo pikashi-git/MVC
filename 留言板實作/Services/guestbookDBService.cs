@@ -8,6 +8,7 @@ using 留言板實作.Models;
 using System.Data;
 using 留言板實作.Services;
 using 留言板實作.ViewModels;
+using 留言板實作.Interfaces;
 
 namespace 留言板實作.Services
 {
@@ -38,6 +39,20 @@ select A.*,B.names,B.nick from guestbook A inner join users B on A.userID=B.user
             guestbookInfoViewModel model = new guestbookInfoViewModel();
             model.guestbookInfoList = guestbookInfoList;
             return model;
+        }
+
+        public void InsertGuestBook(guestbook newData)
+        {
+            IDB DB = new guestbookDB($@" 
+insert into guestbook(userID,postContent,parent) values('{newData.userID}','{newData.postContent}',{newData.parent}) ");
+            try
+            {
+                DB.Action();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

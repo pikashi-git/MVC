@@ -1,0 +1,28 @@
+﻿@model 留言板實作.Models.guestbook
+
+@*建立新增資料所需的表單*@
+@using (Html.BeginForm("Create", "GuestBook"))
+{
+    @*@Html.AntiForgeryToken()*@
+    
+    <h3>新增留言</h3>
+    <table>
+        @*新增姓名欄位區塊*@
+        <tr>
+            <td>@Html.LabelFor(model => model.userID)</td>
+            <td>@Html.TextBoxFor(model => model.userID)</td>
+        </tr>
+        @*新增內容欄位區塊*@
+        <tr>
+            <td>@Html.LabelFor(model => model.postContent)</td>
+            <td>@Html.TextAreaFor(model => model.postContent)</td>
+        </tr>
+        @*新增回復文章編號欄位區塊*@
+        <tr>
+            <td>@Html.LabelFor(model => model.parent)</td>
+            <td>@Html.TextBoxFor(model => model.parent)</td>
+        </tr>
+    </table>
+    <input type="submit" value="新增留言" />   
+}
+
