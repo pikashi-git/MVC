@@ -19,7 +19,7 @@ namespace 留言板實作.Services
             List<guestbookInfo> guestbookInfoList = new List<guestbookInfo>();
             DataTable dt = new DataTable();
 
-            guestbookDB DB = new guestbookDB(@" 
+            IDB DB = new guestbookDB(@" 
 select A.*,B.names,B.nick from guestbook A inner join users B on A.userID=B.userID ");
             if (DB.GenerateDataTable(out dt) > 0 && dt != null && dt.Rows.Count > 0)
             {
@@ -43,11 +43,40 @@ select A.*,B.names,B.nick from guestbook A inner join users B on A.userID=B.user
 
         public void InsertGuestBook(guestbook newData)
         {
-            IDB DB = new guestbookDB($@" 
-insert into guestbook(userID,postContent,parent) values('{newData.userID}','{newData.postContent}',{newData.parent}) ");
             try
             {
+                IDB DB = new guestbookDB($@" 
+insert into guestbook(userID,postContent,parent) values('{newData.userID}','{newData.postContent}',{newData.parent}) ");
                 DB.Action();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public guestbook GetGuestBook(int id)
+        {
+            try
+            {
+                guestbook guestBook = new guestbook();
+                IDB DB = new guestbookDB(@" 
+select * from guestbook where id=@id ");
+                DataTable dt = new DataTable();
+                if (DB.GenerateDataTable(out dt) > 0 && dt != null && dt.Rows.Count > 0)
+                {
+                    guestBook.ID = id;
+                    guestBook.userID = (int)dt.Rows[0]["userID"];
+                    guestBook.postContent = dt.Rows[0]["postContent"].ToString();
+                    guestBook.parent = (int)dt.Rows[0]["parent"];
+                    guestBook.createtime = (DateTime)dt.Rows[0]["createtime"];
+
+                    return guestBook;
+                }
+                else
+                {
+                    return null;
+                }
             }
             catch (Exception ex)
             {
