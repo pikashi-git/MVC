@@ -27,5 +27,29 @@ namespace 留言板實作.Controllers
             Service.InsertGuestBook(newData);
             return RedirectToAction("Index");
         }
+        public ActionResult Edit(int id)
+        {
+            guestbook data = Service.GetGuestBook(id);
+            return View(data);
+        }
+        [HttpPost]
+        public ActionResult Edit(int id, [Bind(Include ="userID,postContent")] guestbook data)
+        {
+            data.ID = id;
+            Service.UpdateGuestBook(data);
+            return RedirectToAction("Index");
+        }
+        public ActionResult Reply(int id)
+        {
+            guestbook data = Service.GetGuestBook(id);
+            return View(data);
+        }
+        [HttpPost]
+        public ActionResult Reply(int id, [Bind(Include = "userID,postContent")] guestbook data)
+        {
+            data.parent = id;
+            Service.ReplyGuestBook(data);
+            return RedirectToAction("Index");
+        }
     }
 }

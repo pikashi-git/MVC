@@ -172,6 +172,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\GuestBook\Index.cshtml" />
     <Content Include="Views\GuestBook\Create.cshtml" />
+    <Content Include="Views\GuestBook\Edit.cshtml" />
+    <Content Include="Views\GuestBook\Reply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

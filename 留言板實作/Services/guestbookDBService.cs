@@ -62,6 +62,9 @@ insert into guestbook(userID,postContent,parent) values('{newData.userID}','{new
                 guestbook guestBook = new guestbook();
                 IDB DB = new guestbookDB(@" 
 select * from guestbook where id=@id ");
+                List<SqlParameter> sqlParaList = new List<SqlParameter>();
+                sqlParaList.Add(new SqlParameter("id", SqlDbType.Int) { SqlValue = id });
+                DB.ParameterList = sqlParaList.ToArray();
                 DataTable dt = new DataTable();
                 if (DB.GenerateDataTable(out dt) > 0 && dt != null && dt.Rows.Count > 0)
                 {
@@ -77,6 +80,44 @@ select * from guestbook where id=@id ");
                 {
                     return null;
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void UpdateGuestBook(guestbook data)
+        {
+            try
+            {
+                IDB DB = new guestbookDB(@"
+update guestbook set userID=@userID,postContent=@postContent,updatetime=getdate() where ID=@ID ");
+                List<SqlParameter> sqlParaList = new List<SqlParameter>();
+                sqlParaList.Add(new SqlParameter("userID", SqlDbType.Int) { SqlValue = data.userID });
+                sqlParaList.Add(new SqlParameter("postContent", SqlDbType.NVarChar) { SqlValue = data.postContent });
+                sqlParaList.Add(new SqlParameter("ID", SqlDbType.Int) { SqlValue = data.ID });
+                DB.ParameterList = sqlParaList.ToArray();
+                DB.Action();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void ReplyGuestBook(guestbook data)
+        {
+            try
+            {
+                IDB DB = new guestbookDB($@" 
+insert into guestbook(userID,postContent,parent,createtime) values(@userID,@postContent,@parent,getdate()) ");
+                List<SqlParameter> sqlParaList = new List<SqlParameter>();
+                sqlParaList.Add(new SqlParameter("userID", SqlDbType.Int) { SqlValue = data.userID });
+                sqlParaList.Add(new SqlParameter("postContent", SqlDbType.NVarChar) { SqlValue = data.postContent });
+                sqlParaList.Add(new SqlParameter("parent", SqlDbType.Int) { SqlValue = data.parent });
+                DB.ParameterList = sqlParaList.ToArray();
+                DB.Action();
             }
             catch (Exception ex)
             {

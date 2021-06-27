@@ -1,0 +1,46 @@
+﻿@model 留言板實作.Models.guestbook
+
+@{
+    ViewBag.Title = "回復留言";
+}
+@*建立回覆留言所需的表單*@
+@using (Html.BeginForm())
+{
+    <h3>回復留言</h3>
+    @*建立回覆內容表單*@
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.userID)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.userID)
+                @Html.ValidationMessageFor(model => model.userID)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.postContent)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.postContent)
+                @Html.ValidationMessageFor(model => model.postContent)
+            </td>
+        </tr>
+    </table>
+    @*一個留言僅可回復一次, 若被回復則顯示返回列表頁連結*@
+    if (Model.parent != 0)
+    {
+        <text>此留言已回復, 請</text>
+        @Html.ActionLink("返回列表", "Index")
+    }
+    else
+    {
+        <input type="submit" value="回覆留言" />
+    }
+}
+
+@*匯入驗證欄位所需Javascript*@
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
