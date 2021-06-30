@@ -45,9 +45,12 @@ namespace 留言板實作.Controllers
             return View(data);
         }
         [HttpPost]
-        public ActionResult Reply(int id, [Bind(Include = "userID,postContent")] guestbook data)
+        public ActionResult Reply(int id, FormCollection form)
         {
+            guestbook data = new guestbook();
             data.parent = id;
+            data.userID = int.Parse(form["userID_reply"].ToString());
+            data.postContent = form["postContent_reply"].ToString();
             Service.ReplyGuestBook(data);
             return RedirectToAction("Index");
         }

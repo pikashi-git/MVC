@@ -14,8 +14,7 @@
                 @Html.LabelFor(model => model.userID)
             </td>
             <td>
-                @Html.TextBoxFor(model => model.userID)
-                @Html.ValidationMessageFor(model => model.userID)
+                @Model.userID
             </td>
         </tr>
         <tr>
@@ -23,21 +22,28 @@
                 @Html.LabelFor(model => model.postContent)
             </td>
             <td>
-                @Html.TextBoxFor(model => model.postContent)
-                @Html.ValidationMessageFor(model => model.postContent)
+                @Model.postContent
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="userID_reply">回覆者編號</label>
+            </td>
+            <td>
+                <input type="text" id="userID_reply" name="userID_reply" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="postContent_reply">回覆內容</label>
+            </td>
+            <td>
+                <input type="text" id="postContent_reply" name="postContent_reply" />
             </td>
         </tr>
     </table>
-    @*一個留言僅可回復一次, 若被回復則顯示返回列表頁連結*@
-    if (Model.parent != 0)
-    {
-        <text>此留言已回復, 請</text>
-        @Html.ActionLink("返回列表", "Index")
-    }
-    else
-    {
-        <input type="submit" value="回覆留言" />
-    }
+    <input type="submit" value="回覆留言" />
+    @Html.ActionLink("返回列表", "Index")
 }
 
 @*匯入驗證欄位所需Javascript*@
