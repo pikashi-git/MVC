@@ -10,7 +10,23 @@
     </div>
 
 <h2>留言板</h2>
-
+@*建立搜尋表單*@
+@using (Html.BeginForm("Index", "GuestBook", FormMethod.Get))
+{ 
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(model=>model.Search)
+            </td>
+            <td>
+                @Html.TextBoxFor(model=>model.Search)
+            </td>
+            <td>
+                <input type="submit" value="搜尋" />
+            </td>
+        </tr>
+    </table>
+}
 <table>
 
     @*如果資料庫中不是零比資料, 則顯示資料, 並列出新增刪除修改連結*@
@@ -62,6 +78,7 @@
                 <td colspan="2">
                     @Html.ActionLink("修改留言", "Edit", new { id = item.ID })
                     @Html.ActionLink("回覆留言", "Reply", new { id = item.ID })
+                    @Html.ActionLink("刪除留言", "Delete", new { id = item.ID })
                 </td>
             </tr>
             <tr>

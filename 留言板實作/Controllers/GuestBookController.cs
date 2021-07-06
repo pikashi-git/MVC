@@ -16,6 +16,12 @@ namespace 留言板實作.Controllers
         {
             return View(Service.GetguestbookInfoList());
         }
+        [HttpGet]
+        public ActionResult Index(string search, int page)
+        {
+            Paging pages = new Paging(page);
+            return View(Service.GetguestbookInfoList(pages, search));
+        }
         [ChildActionOnly]
         public ActionResult Create()
         {
@@ -52,6 +58,11 @@ namespace 留言板實作.Controllers
             data.userID = int.Parse(form["userID_reply"].ToString());
             data.postContent = form["postContent_reply"].ToString();
             Service.ReplyGuestBook(data);
+            return RedirectToAction("Index");
+        }
+        public ActionResult Delete(int id)
+        {
+            Service.DeleteGuestBook(id);
             return RedirectToAction("Index");
         }
     }

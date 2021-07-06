@@ -87,6 +87,83 @@ select * from guestbook where id=@id ");
             }
         }
 
+        public guestbookInfoViewModel GetguestbookInfoList(Paging page, string search = "")
+        {
+            try
+            {
+                IDB DB = null;
+                if (!string.IsNullOrEmpty(search))
+                {
+                    DB = new guestbookDB(@"
+select * from (
+	select row_number() over (order by A.id) as 序號,A.*,B.names,B.nick 
+    , (select count(*) from guestbook A inner join users B on A.userID=B.userID) as total
+	from guestbook A inner join users B on A.userID=B.userID
+) t
+where B.userID like @search or A.postContent like @search
+and 序號 > (@page-1)*@item and 序號 < @page*@item + 1
+ ");
+                    List<SqlParameter> sqlParaList = new List<SqlParameter>();
+                    sqlParaList.Add(new SqlParameter("search", SqlDbType.NVarChar) { SqlValue = '%' + search + '%' });
+                    sqlParaList.Add(new SqlParameter("page", SqlDbType.Int) { SqlValue = page.CurrentPage });
+                    sqlParaList.Add(new SqlParameter("item", SqlDbType.Int) { SqlValue = page.ItemCount });
+                    DB.ParameterList = sqlParaList.ToArray();
+                }
+                else
+                {
+                    DB = new guestbookDB(@"
+select * from (
+	select row_number() over (order by A.id) as 序號,A.*,B.names,B.nick 
+    , (select count(*) from guestbook A inner join users B on A.userID=B.userID) as total
+	from guestbook A inner join users B on A.userID=B.userID
+) t
+where 序號 > (@page-1)*@item and 序號 < @page*@item + 1
+ ");
+                    List<SqlParameter> sqlParaList = new List<SqlParameter>();
+                    sqlParaList.Add(new SqlParameter("page", SqlDbType.Int) { SqlValue = page.CurrentPage });
+                    sqlParaList.Add(new SqlParameter("item", SqlDbType.Int) { SqlValue = page.ItemCount });
+                    DB.ParameterList = sqlParaList.ToArray();
+                }
+
+                DataTable dt = new DataTable();
+                if (DB != null && DB.GenerateDataTable(out dt) > 0 && dt != null && dt.Rows.Count > 0)
+                {
+                    //頁次
+                    page.GeneratePage((int)dt.Rows[0]["total"]);
+
+                    guestbookInfoViewModel guestBookViewModel = new guestbookInfoViewModel();
+                    List<guestbookInfo> gbInfoList = new List<guestbookInfo>();
+                    guestBookViewModel.Search = search;
+                    guestBookViewModel.pages = page;
+                    guestBookViewModel.guestbookInfoList = gbInfoList;
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        guestbookInfo gbInfo = new guestbookInfo();
+                        gbInfo.ID = (int)row["ID"];
+                        gbInfo.userID = (int)row["userID"];
+                        gbInfo.postContent = row["postContent"].ToString();
+                        gbInfo.parent = (int)row["parent"];
+                        if (row["createtime"] != DBNull.Value)
+                            gbInfo.createtime = (DateTime)row["createtime"];
+                        if (row["updatetime"] != DBNull.Value)
+                            gbInfo.updatetime = (DateTime)row["updatetime"];
+                        gbInfo.names = row["names"].ToString();
+                        gbInfo.nick = row["nick"].ToString();
+                        gbInfoList.Add(gbInfo);
+                    }
+                    return guestBookViewModel;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public void UpdateGuestBook(guestbook data)
         {
             try
@@ -116,6 +193,23 @@ insert into guestbook(userID,postContent,parent,createtime) values(@userID,@post
                 sqlParaList.Add(new SqlParameter("userID", SqlDbType.Int) { SqlValue = data.userID });
                 sqlParaList.Add(new SqlParameter("postContent", SqlDbType.NVarChar) { SqlValue = data.postContent });
                 sqlParaList.Add(new SqlParameter("parent", SqlDbType.Int) { SqlValue = data.parent });
+                DB.ParameterList = sqlParaList.ToArray();
+                DB.Action();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void DeleteGuestBook(int id)
+        {
+            try
+            {
+                IDB DB = new guestbookDB(@"
+delete from guestbook where ID=@ID ");
+                List<SqlParameter> sqlParaList = new List<SqlParameter>();
+                sqlParaList.Add(new SqlParameter("ID", SqlDbType.Int) { SqlValue = id });
                 DB.ParameterList = sqlParaList.ToArray();
                 DB.Action();
             }
