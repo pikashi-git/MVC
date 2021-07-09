@@ -14,5 +14,4 @@ namespace 留言板實作.ViewModels
         public List<guestbookInfo> guestbookInfoList { get; set; }
         public Paging pages { get; set; }
     }
-    }
 }

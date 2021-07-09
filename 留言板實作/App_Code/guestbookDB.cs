@@ -8,7 +8,7 @@ using 留言板實作.Interfaces;
 
 namespace 留言板實作.App_Code
 {
-    public class guestbookDB : IDB
+    public class guestbookDB: IDB
     {
         public string ErrorMsg { get; set; }
         public CommandType CommandType { get; set; }
@@ -41,7 +41,7 @@ namespace 留言板實作.App_Code
                 Cmd.Connection = Conn;
                 Cmd.CommandType = CommandType;
                 Cmd.CommandText = CommandText;
-                if (ParameterList != null)
+                if(ParameterList != null)
                     Cmd.Parameters.AddRange(ParameterList);
                 count = Cmd.ExecuteNonQuery();
             }
@@ -81,7 +81,7 @@ namespace 留言板實作.App_Code
                 Cmd.Connection = Conn;
                 Cmd.CommandType = CommandType;
                 Cmd.CommandText = CommandText;
-                if (ParameterList != null)
+                if(ParameterList != null)
                     Cmd.Parameters.AddRange(ParameterList);
                 SqlDataAdapter adp = new SqlDataAdapter(Cmd);
                 count = adp.Fill(dt);

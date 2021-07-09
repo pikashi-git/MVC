@@ -9,6 +9,7 @@ using System.Data;
 using 留言板實作.Services;
 using 留言板實作.ViewModels;
 using 留言板實作.Interfaces;
+using 留言板實作.App_Code;
 
 namespace 留言板實作.Services
 {
@@ -87,7 +88,7 @@ select * from guestbook where id=@id ");
             }
         }
 
-        public guestbookInfoViewModel GetguestbookInfoList(Paging page, string search = "")
+        public guestbookInfoViewModel GetguestbookInfoList(string search, Paging page)
         {
             try
             {
@@ -95,13 +96,14 @@ select * from guestbook where id=@id ");
                 if (!string.IsNullOrEmpty(search))
                 {
                     DB = new guestbookDB(@"
-select * from (
+select * from 
+(
 	select row_number() over (order by A.id) as 序號,A.*,B.names,B.nick 
-    , (select count(*) from guestbook A inner join users B on A.userID=B.userID) as total
+    , (select count(*) from guestbook C inner join users D on C.userID=D.userID where C.userID like @search or C.postContent like @search) as total
 	from guestbook A inner join users B on A.userID=B.userID
+    where A.userID like @search or A.postContent like @search
 ) t
-where B.userID like @search or A.postContent like @search
-and 序號 > (@page-1)*@item and 序號 < @page*@item + 1
+where 序號 > (@page-1)*@item and 序號 < @page*@item + 1
  ");
                     List<SqlParameter> sqlParaList = new List<SqlParameter>();
                     sqlParaList.Add(new SqlParameter("search", SqlDbType.NVarChar) { SqlValue = '%' + search + '%' });
@@ -112,9 +114,10 @@ and 序號 > (@page-1)*@item and 序號 < @page*@item + 1
                 else
                 {
                     DB = new guestbookDB(@"
-select * from (
+select * from 
+(
 	select row_number() over (order by A.id) as 序號,A.*,B.names,B.nick 
-    , (select count(*) from guestbook A inner join users B on A.userID=B.userID) as total
+    , (select count(*) from guestbook C inner join users D on C.userID=D.userID) as total
 	from guestbook A inner join users B on A.userID=B.userID
 ) t
 where 序號 > (@page-1)*@item and 序號 < @page*@item + 1

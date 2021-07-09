@@ -95,6 +95,37 @@
             </td>
         </tr>
     }
+    <tr>
+        <td colspan="2">
+            @*若目前所在頁大於1則顯示回到第一頁*@
+            @if (Model.pages.CurrentPage > 1)
+            {
+                @Html.ActionLink(" 第一頁 ", "Index", new { search = Model.Search, page = 1 })
+                @Html.ActionLink(" 上一頁 ", "Index", new { search = Model.Search, page = Model.pages.CurrentPage - 1 })
+            }
+            @*顯示當前頁次前後各五頁*@
+            @for (var p = Model.pages.CurrentPage - 5; p < Model.pages.CurrentPage + 5; p++)
+            {
+                if (p > 0 && p < Model.pages.MaxPage+1)
+                {
+                    if (p == Model.pages.CurrentPage)
+                    {
+                        <b>@p</b>
+                    }
+                    else
+                    {
+                        @Html.ActionLink(p.ToString(), "Index", new { search = Model.Search, page = p.ToString() })
+                    }
+                }
+            }
+            @*若目前所在頁小於最大頁則顯示到最後頁*@
+            @if (Model.pages.CurrentPage < Model.pages.MaxPage)
+            { 
+                @Html.ActionLink(" 下一頁 ","Index",new { search = Model.Search, page = Model.pages.CurrentPage + 1 })
+                @Html.ActionLink(" 最後一頁 ","Index", new { search = Model.Search, page = Model.pages.MaxPage })
+            }
+        </td>
+    </tr>
 </table>
 <div>
     @Html.ActionLink("首頁", "Index")

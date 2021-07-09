@@ -12,15 +12,10 @@ namespace 留言板實作.Controllers
     public class GuestBookController : Controller
     {
         guestbookDBService Service = new guestbookDBService();
-        public ActionResult Index()
-        {
-            return View(Service.GetguestbookInfoList());
-        }
-        [HttpGet]
-        public ActionResult Index(string search, int page)
+        public ActionResult Index(string search, int page = 1)
         {
             Paging pages = new Paging(page);
-            return View(Service.GetguestbookInfoList(pages, search));
+            return View(Service.GetguestbookInfoList(search, pages));
         }
         [ChildActionOnly]
         public ActionResult Create()
