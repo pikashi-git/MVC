@@ -12,10 +12,19 @@ namespace 留言板實作.Controllers
     public class GuestBookController : Controller
     {
         guestbookDBService Service = new guestbookDBService();
-        public ActionResult Index(string search, int page = 1)
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult List(string search, int page = 1)
         {
             Paging pages = new Paging(page);
-            return View(Service.GetguestbookInfoList(search, pages));
+            return PartialView(Service.GetguestbookInfoList(search, pages));
+        }
+        [HttpPost]
+        public ActionResult List([Bind(Include = "search")] guestbookInfoViewModel data)
+        {
+            return RedirectToAction("List", new { search = data.Search });
         }
         [ChildActionOnly]
         public ActionResult Create()

@@ -5,133 +5,23 @@
 }
 
 @*載入新增資料頁面*@
-    <div id="CreateData">
-        @Html.Action("Create")
-    </div>
+<div id="CreateData">
+    @Html.Action("Create")
+</div>
 
 <h2>留言板</h2>
-@*建立搜尋表單*@
-@using (Html.BeginForm("Index", "GuestBook", FormMethod.Get))
-{ 
-    <table>
-        <tr>
-            <td>
-                @Html.LabelFor(model=>model.Search)
-            </td>
-            <td>
-                @Html.TextBoxFor(model=>model.Search)
-            </td>
-            <td>
-                <input type="submit" value="搜尋" />
-            </td>
-        </tr>
-    </table>
-}
-<table>
 
-    @*如果資料庫中不是零比資料, 則顯示資料, 並列出新增刪除修改連結*@
-    @if (Model != null && !Model.guestbookInfoList.Count.Equals(0))
-    {
-        foreach (var item in Model.guestbookInfoList)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(m => m.guestbookInfoList[0].ID)
-                </td>
-                <td>
-                    @item.ID
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(m => m.guestbookInfoList[0].names)
-                </td>
-                <td>
-                    @item.names
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(m => m.guestbookInfoList[0].createtime)
-                </td>
-                <td>
-                    @item.createtime
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(m => m.guestbookInfoList[0].postContent)
-                </td>
-                <td>
-                    @item.postContent
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(m => m.guestbookInfoList[0].parent)
-                </td>
-                <td>
-                    @item.parent
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    @Html.ActionLink("修改留言", "Edit", new { id = item.ID })
-                    @Html.ActionLink("回覆留言", "Reply", new { id = item.ID })
-                    @Html.ActionLink("刪除留言", "Delete", new { id = item.ID })
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">====================================================</td>
-            </tr>
-        }
-    }
-    @*如果資料庫中為零筆資料, 則印出"資料庫中查無資料"*@
-    else
-    {
-        <tr>
-            <td colspan="2">
-                資料庫內查無資料
-            </td>
-        </tr>
-    }
-    <tr>
-        <td colspan="2">
-            @*若目前所在頁大於1則顯示回到第一頁*@
-            @if (Model.pages.CurrentPage > 1)
-            {
-                @Html.ActionLink(" 第一頁 ", "Index", new { search = Model.Search, page = 1 })
-                @Html.ActionLink(" 上一頁 ", "Index", new { search = Model.Search, page = Model.pages.CurrentPage - 1 })
-            }
-            @*顯示當前頁次前後各五頁*@
-            @for (var p = Model.pages.CurrentPage - 5; p < Model.pages.CurrentPage + 5; p++)
-            {
-                if (p > 0 && p < Model.pages.MaxPage+1)
-                {
-                    if (p == Model.pages.CurrentPage)
-                    {
-                        <b>@p</b>
-                    }
-                    else
-                    {
-                        @Html.ActionLink(p.ToString(), "Index", new { search = Model.Search, page = p.ToString() })
-                    }
-                }
-            }
-            @*若目前所在頁小於最大頁則顯示到最後頁*@
-            @if (Model.pages.CurrentPage < Model.pages.MaxPage)
-            { 
-                @Html.ActionLink(" 下一頁 ","Index",new { search = Model.Search, page = Model.pages.CurrentPage + 1 })
-                @Html.ActionLink(" 最後一頁 ","Index", new { search = Model.Search, page = Model.pages.MaxPage })
-            }
-        </td>
-    </tr>
-</table>
+@Html.AntiForgeryToken()
+
+@*載入資料清單頁面*@
+@Html.Action("List")
+
 <div>
     @Html.ActionLink("首頁", "Index")
 </div>
 @*匯入驗證欄位所需Javascript*@
 @section scripts
 {
-    @Scripts.Render("~/bundles/jqueryval");
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery_unobtrusive")
 }
