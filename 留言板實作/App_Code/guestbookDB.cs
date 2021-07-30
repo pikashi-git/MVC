@@ -54,7 +54,6 @@ namespace 留言板實作.App_Code
             int count = 0;
             ds = new DataSet();
             Connect();
-
             using (Cmd = new SqlCommand())
             {
                 Cmd.Connection = Conn;
@@ -65,9 +64,7 @@ namespace 留言板實作.App_Code
                 SqlDataAdapter adp = new SqlDataAdapter(Cmd);
                 count = adp.Fill(ds);
             }
-
             DisConnect();
-
             return count;
         }
         public int GenerateDataTable(out DataTable dt)
@@ -75,7 +72,6 @@ namespace 留言板實作.App_Code
             int count = 0;
             dt = new DataTable();
             Connect();
-
             using (Cmd = new SqlCommand())
             {
                 Cmd.Connection = Conn;
@@ -86,10 +82,25 @@ namespace 留言板實作.App_Code
                 SqlDataAdapter adp = new SqlDataAdapter(Cmd);
                 count = adp.Fill(dt);
             }
-
             DisConnect();
-
             return count;
+        }
+        public SqlDataReader GenerateReader()
+        {
+            int count = 0;
+            SqlDataReader reader = null;
+            Connect();
+            using (Cmd = new SqlCommand())
+            {
+                Cmd.Connection = Conn;
+                Cmd.CommandType = CommandType;
+                Cmd.CommandText = CommandText;
+                if (ParameterList != null)
+                    Cmd.Parameters.AddRange(ParameterList);
+                reader = Cmd.ExecuteReader();
+            }
+            DisConnect();
+            return reader;
         }
         public void DisConnect()
         {

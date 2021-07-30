@@ -114,6 +114,9 @@
     <Compile Include="Static操作\Static測試_Class%28B%29.aspx.designer.cs">
       <DependentUpon>Static測試_Class%28B%29.aspx</DependentUpon>
     </Compile>
+    <Compile Include="XSD\guestbook.cs">
+      <DependentUpon>guestbook.xsd</DependentUpon>
+    </Compile>
     <Compile Include="XSD\guestbook.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -21,6 +21,7 @@ namespace 留言板實作.Interfaces
         int Action();
         int GenerateDataTable(out DataTable dt);
         int GenerateDataSet(out DataSet ds);
+        SqlDataReader GenerateReader();
         void DisConnect();
     }
 }

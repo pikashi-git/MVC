@@ -25,6 +25,7 @@ namespace 留言板實作.Models
         [Required(ErrorMessage = "請輸入帳號")]
         [StringLength(30,MinimumLength =5,ErrorMessage ="帳號長度需介於6-30字元")]
         [Remote("UserCheck", "users", ErrorMessage = "此帳號已被註冊過", HttpMethod = "post")]
+        //[Remote("AccountCheck", "users", ErrorMessage = "此帳號已被註冊過", HttpMethod = "post")]
         public string account { get; set; }
         
         [DisplayName("密碼")]
@@ -41,5 +42,8 @@ namespace 留言板實作.Models
         
         [DisplayName("角色")]
         public int role { get; set; }
+
+        [DisplayName("啟用狀態")]
+        public bool enabled { get; set; }
     }
 }

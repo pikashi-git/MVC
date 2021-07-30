@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Email驗證";
+}
+
+<h2>Email驗證</h2>
+
+@*顯示Email驗證結果*@
+驗證結果: @ViewData["ValidateResult"]
+驗證訊息: @ViewData["ValidateMMsg"]
+
+<br />
+@*顯示登入與註冊連結*@
+@Html.ActionLink("去登入","Login")
+@Html.ActionLink("再註冊", "Register")
+
