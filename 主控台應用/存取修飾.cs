@@ -1,4 +1,5 @@
-﻿using 類別庫Lib;
+﻿using System;
+using 類別庫Lib;
 
 namespace Console
 {
@@ -6,84 +7,107 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            TestGet();
+            測試存取();
 
-            System.Console.ReadLine(); 
+            System.Console.ReadLine();
         }
 
-        static void TestGet()
+        static void 測試存取()
         {
-            B b = new B();
-            b._public();
-            b.GetPrivate();
-            b.GetProtected();
-            b.GetInternal();
-            b._internal();
-            //b._private();
-            //b._protected();
-            b._c_interal();
+            類別B _類別B = new 類別B();
+            //Public存取
+            _類別B.類別BPublic();
+            //internal存取
+            _類別B.類別BInternal();
+            ////Protected存取
+            //try
+            //{
+            //    _類別B.類別BProtected();
+            //}
+            //catch (Exception ex)
+            //{
+            //    System.Console.WriteLine(ex.Message);
+            //}
+            ////Private存取
+            //try
+            //{
+            //    _類別B.類別BPrivate();
+            //}
+            //catch (Exception ex)
+            //{
+            //    System.Console.WriteLine(ex.Message);
+            //}
 
-            類別庫A _類別庫A = new 類別庫A();
-            _類別庫A.PublicDo();
-
-            類別庫B _類別庫B = new 類別庫B();
-            _類別庫B.PublicDo();
-            _類別庫B.類別庫B_類別庫A_PublicDo();
-        }
-    }
-
-    class A
-    {
-        protected void _protected()
-        {
-            System.Console.WriteLine("_protected");
-        }
-
-        internal void _internal()
-        {
-            System.Console.WriteLine("_internal");
-        }
-    }
-
-    class B : A
-    {
-        public void GetPrivate()
-        {
-            _private();
-        }
-
-        public void GetProtected()
-        {
-            _protected();
-        }
-
-        public void GetInternal()
-        {
-            _internal();
-        }
-
-        public void _public()
-        {
-            System.Console.WriteLine("_public");
-        }
-
-        private void _private()
-        {
-            System.Console.WriteLine("_private");
-        }
-
-        public void _c_interal()
-        {
-            C c = new C();
-            c._interal();
+            //@@存取繼承的類別A
+            //Public存取
+            _類別B.類別APublic();
+            //internal存取
+            _類別B.類別AInternal();
+            //Protected存取
+            //try
+            //{
+            //    _類別B.類別AProtected();
+            //}
+            //catch (Exception ex)
+            //{
+            //    System.Console.WriteLine(ex.Message);
+            //}
+            ////Private存取
+            //try
+            //{
+            //    _類別B.類別APrivate();
+            //}
+            //catch (Exception ex)
+            //{
+            //    System.Console.WriteLine(ex.Message);
+            //}
         }
     }
 
-    class C
+    class 類別B : 類別A
     {
-        internal void _interal()
+        public void 類別BPublic()
         {
-            System.Console.WriteLine("_c_internal");
+            System.Console.WriteLine("類別B: public");
+        }
+
+        internal void 類別BInternal()
+        {
+            System.Console.WriteLine("類別B: internal");
+        }
+
+        protected void 類別BProtected()
+        {
+            System.Console.WriteLine("類別B: protected");
+        }
+
+        private void 類別BPrivate()
+        {
+            System.Console.WriteLine("類別B: private");
+        }
+
+    }
+
+    class 類別A
+    {
+        public void 類別APublic()
+        {
+            System.Console.WriteLine("類別A: public");
+        }
+
+        internal void 類別AInternal()
+        {
+            System.Console.WriteLine("類別A: internal");
+        }
+
+        protected void 類別AProtected()
+        {
+            System.Console.WriteLine("類別A: protected");
+        }
+
+        private void 類別APrivate()
+        {
+            System.Console.WriteLine("類別A: private");
         }
     }
 }

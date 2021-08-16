@@ -15,42 +15,49 @@ namespace 留言板實作.Services
 {
     public class usersDBService
     {
+        mailService _mailService = new mailService();
         //註冊會員
-        public bool RegisterUser(users _users, out string message, out string authCode)
+        public bool RegisterUser(users _users, out string message)
         {
-            bool success = false;
+            bool success_1 = false;
+            bool success_2 = false;
             message = string.Empty;
-            authCode = string.Empty;
+            string authCode = string.Empty;
             try
             {
-                IDB DB = new guestbookDB(@" 
+                IDB DB = new guestbookDB(@"
 insert into users(names,nick,account,password,email,role) values(@names,@nick,@account,@password,@email,@role);
-set @authcode=(select authCode from users where account=@account); ");
+select convert(varchar(max),authCode) from users where account=@account; ");
                 List<SqlParameter> paraList = new List<SqlParameter>();
-                paraList.Add(new SqlParameter("name", _users.names) { SqlDbType = SqlDbType.NVarChar });
+                paraList.Add(new SqlParameter("names", _users.names) { SqlDbType = SqlDbType.NVarChar });
                 paraList.Add(new SqlParameter("nick", _users.nick) { SqlDbType = SqlDbType.NVarChar });
                 paraList.Add(new SqlParameter("account", _users.account) { SqlDbType = SqlDbType.NVarChar });
                 paraList.Add(new SqlParameter("password", HashPassword(_users.password)) { SqlDbType = SqlDbType.VarChar });
                 paraList.Add(new SqlParameter("email", _users.email) { SqlDbType = SqlDbType.VarChar });
                 paraList.Add(new SqlParameter("role", _users.role) { SqlDbType = SqlDbType.Bit });
-                paraList.Add(new SqlParameter("authcode", SqlDbType.UniqueIdentifier) { Direction = ParameterDirection.ReturnValue });
                 DB.ParameterList = paraList.ToArray();
-                DB.Action();
-                authCode = paraList.Where(a => a.ParameterName == "authcode").FirstOrDefault().Value.ToString();
-                message = @"已完成註冊";
-                success = true;
+                authCode = DB.ActionScalar();
+
+                if (authCode == null || string.Empty.Equals(authCode))
+                {
+                    message = @"新增會員失敗";
+                }
+                else
+                {
+                    success_1 = true;
+                    success_2 = SendValidateMail(authCode, _users, out message);
+                }
             }
             catch (Exception ex)
             {
                 //throw new Exception(ex.Message);
                 message = ex.Message;
-                success = false;
             }
-            return success;
+            return (success_1 & success_2);
         }
 
         //密碼Hash
-        public string HashPassword(string password)
+        string HashPassword(string password)
         {
             string hashPassword = string.Empty;
             string saltKey = @"qwerFDSA";
@@ -65,43 +72,56 @@ set @authcode=(select authCode from users where account=@account); ");
         //帳號檢查
         public bool AccountCheck(string account)
         {
-            bool exist = true;
+            bool exist = false;
             users _user = GetUserByAccount(account);
-            exist = _user == null ? false : true;
+            exist = (_user == null ? true : false);
             return exist;
         }
 
         //以帳號取得會員資料
-        users GetUserByAccount(string account, bool consinderEnable=false)
+        users GetUserByAccount(string account, bool consinderEnable = false, bool debug = false)
         {
             users _user = null;
             try
             {
-                string sql = @" select * from users where account=@account ";
+                string sql = @" select top 1 * from users where account=@account ";
                 if (consinderEnable)
                     sql += @" and enabled = 1 ";
                 IDB DB = new guestbookDB(sql);
                 List<SqlParameter> paraList = new List<SqlParameter>();
                 paraList.Add(new SqlParameter("account", account) { SqlDbType = SqlDbType.NVarChar });
                 DB.ParameterList = paraList.ToArray();
-                using (SqlDataReader reader = DB.GenerateReader())
+                SqlDataReader reader = DB.ActionReader();
+
+                if (reader.Read())
                 {
-                    if (reader.Read())
+                    //_user = new users();
+                    //_user.account = reader["account"].ToString();
+                    //_user.userID = (int)reader["userID"];
+                    //_user.names = reader["names"].ToString();
+                    //_user.nick = reader["nick"].ToString();
+                    //_user.email = reader["email"].ToString();
+                    //_user.role = int.Parse(reader["role"].ToString());
+                    //_user.authcode = reader["authcode"].ToString();
+
+                    _user = new users()
                     {
-                        _user = new users();
-                        _user.account = reader["account"].ToString();
-                        _user.userID = (int)reader["userID"];
-                        _user.names = reader["names"].ToString();
-                        _user.nick = reader["nick"].ToString();
-                        _user.email = reader["email"].ToString();
-                        _user.role = (int)reader["role"];
-                        _user.authcode = reader["authcode"].ToString();
-                    }
+                        account = reader["account"].ToString(),
+                        userID = (int)reader["userID"],
+                        names = reader["names"].ToString(),
+                        nick = reader["nick"].ToString(),
+                        email = reader["email"].ToString(),
+                        role = int.Parse(reader["role"].ToString()),
+                        authcode = reader["authcode"].ToString()
+                    };
                 }
+                reader.Close();
+                DB.DisConnect();
             }
             catch (Exception ex)
             {
                 _user = null;
+                throw new Exception(ex.Message);
             }
             return _user;
         }
@@ -143,6 +163,41 @@ update users set validateDate=GetDate(),enabled=1 where account=@account ");
             else
             {
                 message = @"請確認帳號是否無誤";
+            }
+            return success;
+        }
+
+        public bool SendValidateMail(string account)
+        {
+            bool success = false;
+            users _users = GetUserByAccount(account);
+            string msg = string.Empty;
+            success = SendValidateMail(_users.authcode, _users, out msg);
+
+            return success;
+        }
+
+        //寄發驗證信
+        public bool SendValidateMail(string authCode, users _users, out string message)
+        {
+            bool success = false;
+            message = string.Empty;
+            string contentTmp = System.IO.File.ReadAllText(HttpContext.Current.Server.MapPath("~/Views/Shared/RegisterEmailTmp.html"));
+            UriBuilder uri = new UriBuilder(HttpContext.Current.Request.Url)
+            {
+                Path = $@"~/Users/EmailValidate?auchCode={authCode}&account={_users.account}"
+            };
+            string content = string.Format(contentTmp, _users.names, uri.ToString());
+            bool sendStatus = _mailService.SendValidateMail(@"註冊會員驗證信", content, _users.email, _users.names);
+            if (sendStatus)
+            {
+                success = true;
+                message = @"寄送驗證信成功";
+            }
+            else
+            {
+                success = false;
+                message = @"寄送驗證信失敗";
             }
             return success;
         }

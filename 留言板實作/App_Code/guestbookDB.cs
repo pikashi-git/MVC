@@ -16,6 +16,7 @@ namespace 留言板實作.App_Code
         public SqlParameter[] ParameterList { get; set; }
         public string Connection { get; set; }
         public SqlConnection Conn { get; set; }
+        public SqlTransaction Transac { get; set; }
         public SqlCommand Cmd { get; set; }
         public guestbookDB(string sql, SqlParameter[] parms = null)
         {
@@ -36,25 +37,48 @@ namespace 留言板實作.App_Code
             int count = 0;
             Connect();
 
-            using (Cmd = new SqlCommand())
+            using (Transac = Conn.BeginTransaction())
             {
-                Cmd.Connection = Conn;
-                Cmd.CommandType = CommandType;
-                Cmd.CommandText = CommandText;
-                if(ParameterList != null)
-                    Cmd.Parameters.AddRange(ParameterList);
-                count = Cmd.ExecuteNonQuery();
+                using (Cmd = Conn.CreateCommand())
+                {
+                    Cmd.Connection = Conn;
+                    Cmd.Transaction = Transac;
+                    Cmd.CommandType = CommandType;
+                    Cmd.CommandText = CommandText;
+                    if (ParameterList != null)
+                        Cmd.Parameters.AddRange(ParameterList);
+                    count = Cmd.ExecuteNonQuery();
+                }
             }
-            DisConnect();
 
+            DisConnect();
             return count;
         }
-        public int GenerateDataSet(out DataSet ds)
+        public string ActionScalar()
+        {
+            string result = null;
+            Connect();
+
+            using (Cmd = Conn.CreateCommand())
+            {
+                Cmd.Connection = Conn;
+                //Cmd.Transaction = Transac;
+                Cmd.CommandType = CommandType;
+                Cmd.CommandText = CommandText;
+                if (ParameterList != null)
+                    Cmd.Parameters.AddRange(ParameterList);
+                result = Cmd.ExecuteScalar().ToString();
+            }
+
+            DisConnect();
+            return result;
+        }
+        public int ActionDataSet(out DataSet ds)
         {
             int count = 0;
             ds = new DataSet();
             Connect();
-            using (Cmd = new SqlCommand())
+            using (Cmd = Conn.CreateCommand())
             {
                 Cmd.Connection = Conn;
                 Cmd.CommandType = CommandType;
@@ -64,33 +88,34 @@ namespace 留言板實作.App_Code
                 SqlDataAdapter adp = new SqlDataAdapter(Cmd);
                 count = adp.Fill(ds);
             }
+
             DisConnect();
             return count;
         }
-        public int GenerateDataTable(out DataTable dt)
+        public int ActionDataTable(out DataTable dt)
         {
             int count = 0;
             dt = new DataTable();
             Connect();
-            using (Cmd = new SqlCommand())
+            using (Cmd = Conn.CreateCommand())
             {
                 Cmd.Connection = Conn;
                 Cmd.CommandType = CommandType;
                 Cmd.CommandText = CommandText;
-                if(ParameterList != null)
+                if (ParameterList != null)
                     Cmd.Parameters.AddRange(ParameterList);
                 SqlDataAdapter adp = new SqlDataAdapter(Cmd);
                 count = adp.Fill(dt);
             }
+
             DisConnect();
             return count;
         }
-        public SqlDataReader GenerateReader()
+        public SqlDataReader ActionReader()
         {
-            int count = 0;
             SqlDataReader reader = null;
             Connect();
-            using (Cmd = new SqlCommand())
+            using (Cmd = Conn.CreateCommand())
             {
                 Cmd.Connection = Conn;
                 Cmd.CommandType = CommandType;
@@ -99,8 +124,17 @@ namespace 留言板實作.App_Code
                     Cmd.Parameters.AddRange(ParameterList);
                 reader = Cmd.ExecuteReader();
             }
-            DisConnect();
+
+            //DisConnect();
             return reader;
+        }
+        public void TranRollBack()
+        {
+            Transac.Rollback();
+        }
+        public void TranCommit()
+        {
+            Transac.Commit();
         }
         public void DisConnect()
         {

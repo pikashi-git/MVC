@@ -13,10 +13,22 @@ namespace Console
             _bus.Move();
             _bus.Stop();
             // _bus.Fix(); //無法覆寫繼承的成員 'Action.Fix()'，因為其已密封。
-            
+
+            Moto _moto = new Moto();
+            _moto.Stop();
+
             System.Console.ReadLine();
         }
     }
+
+    class Moto : Transportation
+    {
+        public new void Stop()
+        {
+            System.Console.WriteLine(@"測試new前置存取");
+        }
+    }
+
     class Bus: Transportation
     {
         public string Color { get; set; }

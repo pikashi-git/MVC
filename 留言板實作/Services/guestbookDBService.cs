@@ -22,7 +22,7 @@ namespace 留言板實作.Services
 
             IDB DB = new guestbookDB(@" 
 select A.*,B.names,B.nick from guestbook A inner join users B on A.userID=B.userID ");
-            if (DB.GenerateDataTable(out dt) > 0 && dt != null && dt.Rows.Count > 0)
+            if (DB.ActionDataTable(out dt) > 0 && dt != null && dt.Rows.Count > 0)
             {
                 foreach (DataRow row in dt.Rows)
                 {
@@ -67,7 +67,7 @@ select * from guestbook where id=@id ");
                 sqlParaList.Add(new SqlParameter("id", SqlDbType.Int) { SqlValue = id });
                 DB.ParameterList = sqlParaList.ToArray();
                 DataTable dt = new DataTable();
-                if (DB.GenerateDataTable(out dt) > 0 && dt != null && dt.Rows.Count > 0)
+                if (DB.ActionDataTable(out dt) > 0 && dt != null && dt.Rows.Count > 0)
                 {
                     guestBook.ID = id;
                     guestBook.userID = (int)dt.Rows[0]["userID"];
@@ -129,7 +129,7 @@ where 序號 > (@page-1)*@item and 序號 < @page*@item + 1
                 }
 
                 DataTable dt = new DataTable();
-                if (DB != null && DB.GenerateDataTable(out dt) > 0 && dt != null && dt.Rows.Count > 0)
+                if (DB != null && DB.ActionDataTable(out dt) > 0 && dt != null && dt.Rows.Count > 0)
                 {
                     //頁次
                     page.GeneratePage((int)dt.Rows[0]["total"]);

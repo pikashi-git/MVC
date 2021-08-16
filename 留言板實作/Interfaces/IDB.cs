@@ -16,12 +16,16 @@ namespace 留言板實作.Interfaces
         SqlParameter[] ParameterList { get; set; }
         string Connection { get; set; }
         SqlConnection Conn { get; set; }
+        SqlTransaction Transac { get; set; }
         SqlCommand Cmd { get; set; }
         void Connect();
         int Action();
-        int GenerateDataTable(out DataTable dt);
-        int GenerateDataSet(out DataSet ds);
-        SqlDataReader GenerateReader();
+        string ActionScalar();
+        SqlDataReader ActionReader();
+        int ActionDataTable(out DataTable dt);
+        int ActionDataSet(out DataSet ds);
+        void TranRollBack();
+        void TranCommit();
         void DisConnect();
     }
 }

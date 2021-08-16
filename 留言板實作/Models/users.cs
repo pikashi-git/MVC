@@ -14,18 +14,18 @@ namespace 留言板實作.Models
         public int userID { get; set; }
 
         [DisplayName("姓名")]
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "姓名長度需介於6-30字元")]
+        [StringLength(5, MinimumLength = 3, ErrorMessage = "姓名長度需介於3-5字元")]
         public string names { get; set; }
 
         [DisplayName("措號")]
-        [StringLength(30,MinimumLength =3,ErrorMessage ="措號長度需介於6-30字元")]
+        [StringLength(10,MinimumLength =1,ErrorMessage ="措號長度需介於1-10字元")]
         public string nick { get; set; }
         
         [DisplayName("帳號")]
         [Required(ErrorMessage = "請輸入帳號")]
-        [StringLength(30,MinimumLength =5,ErrorMessage ="帳號長度需介於6-30字元")]
-        [Remote("UserCheck", "users", ErrorMessage = "此帳號已被註冊過", HttpMethod = "post")]
-        //[Remote("AccountCheck", "users", ErrorMessage = "此帳號已被註冊過", HttpMethod = "post")]
+        [StringLength(10,MinimumLength =3,ErrorMessage ="帳號長度需介於3-10字元")]
+        //[Remote("UserCheck", "users", ErrorMessage = "此帳號已被註冊過", HttpMethod = "post")]
+        [Remote("AccountCheck", "users", ErrorMessage = "此帳號已被註冊過", HttpMethod = "post")]
         public string account { get; set; }
         
         [DisplayName("密碼")]

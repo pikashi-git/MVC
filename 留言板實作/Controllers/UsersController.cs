@@ -14,7 +14,6 @@ namespace 留言板實作.Controllers
     public class UsersController : Controller
     {
         usersDBService _usersDBService = new usersDBService();
-        mailService _mailService = new mailService();
         // GET: Users
         public ActionResult Register()
         {
@@ -31,36 +30,20 @@ namespace 留言板實作.Controllers
                 //新增會員資料
                 _userRegisterViewModel.Users.password = _userRegisterViewModel.Password;
                 string message = string.Empty;
-                string authCode = string.Empty;
-                bool registerStatus = _usersDBService.RegisterUser(_userRegisterViewModel.Users, out message, out authCode);
+                bool registerStatus = _usersDBService.RegisterUser(_userRegisterViewModel.Users, out message);
+
                 if (registerStatus)
                 {
-                    //寄送驗證信
-                    string contentTmp = System.IO.File.ReadAllText("~/Views/Shared/RegisterEmailTmp.html");
-                    UriBuilder uri = new UriBuilder(Request.Url)
-                    {
-                        Path = Url.Action("EmailValidate", "users", new { auchCode = authCode, account = _userRegisterViewModel.Users.account })
-                    };
-                    string content = string.Format(contentTmp, _userRegisterViewModel.Users.names, uri.ToString());
-                    bool sendStatus = _mailService.SendValidateMail(@"註冊會員驗證信", content, _userRegisterViewModel.Users.email, _userRegisterViewModel.Users.names);
-                    if (sendStatus)
-                    {
-                        TempData["RegisterStatus"] = @"註冊成功, 請去收取驗證信!!";
-                        return RedirectToAction("RegisterResult", "users");
-                    }
-                    else
-                    {
-                        TempData["RegisterStatus"] = @"寄送驗證信失敗!!";
-                    }
+                    TempData["RegisterStatus"] = registerStatus;
+                    TempData["RegisterMsg"] = @"註冊成功, 請去收取驗證信!!";
                 }
                 else
                 {
-                    TempData["RegisterStatus"] = @"註冊失敗!!";
+                    TempData["RegisterStatus"] = registerStatus + ", " + message;
+                    TempData["RegisterMsg"] = (message.Equals(@"寄送驗證信失敗") ? $@"<br /><a href=""/Users/SendValidateMail?account={_userRegisterViewModel.Users.account}"">再寄一次</a>" : string.Empty);
                 }
             }
-            _userRegisterViewModel.Password = null;
-            _userRegisterViewModel.PasswordChk = null;
-            return View(_userRegisterViewModel);
+            return RedirectToAction("RegisterResult", "users");
         }
 
         //註冊結果
@@ -82,6 +65,22 @@ namespace 留言板實作.Controllers
             bool result = _usersDBService.validateEmail(account, authcode, out msg);
             ViewData["ValidateResult"] = result;
             ViewData["ValidateMMsg"] = msg;
+            return View();
+        }
+
+        //重寄認證信
+        public ActionResult SendValidateMail(string account)
+        {
+            bool success = _usersDBService.SendValidateMail(account);
+
+            if (success)
+            {
+                TempData["SendMailStatus"] = "寄送成功";
+            }
+            else
+            {
+                TempData["SendMailStatus"] = "寄送失敗";
+            }
             return View();
         }
     }

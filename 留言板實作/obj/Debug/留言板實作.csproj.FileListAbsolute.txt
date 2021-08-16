@@ -51,6 +51,8 @@ D:\專案\Git\留言板實作\bin\roslyn\vbc.rsp
 D:\專案\Git\留言板實作\bin\roslyn\VBCSCompiler.exe
 D:\專案\Git\留言板實作\bin\roslyn\VBCSCompiler.exe.config
 D:\專案\Git\留言板實作\bin\Antlr3.Runtime.dll
+D:\專案\Git\留言板實作\bin\EntityFramework.dll
+D:\專案\Git\留言板實作\bin\EntityFramework.SqlServer.dll
 D:\專案\Git\留言板實作\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\專案\Git\留言板實作\bin\Microsoft.Web.Infrastructure.dll
 D:\專案\Git\留言板實作\bin\Newtonsoft.Json.dll
@@ -62,6 +64,8 @@ D:\專案\Git\留言板實作\bin\System.Web.WebPages.Deployment.dll
 D:\專案\Git\留言板實作\bin\System.Web.WebPages.dll
 D:\專案\Git\留言板實作\bin\System.Web.WebPages.Razor.dll
 D:\專案\Git\留言板實作\bin\WebGrease.dll
+D:\專案\Git\留言板實作\bin\EntityFramework.xml
+D:\專案\Git\留言板實作\bin\EntityFramework.SqlServer.xml
 D:\專案\Git\留言板實作\bin\System.Web.Helpers.xml
 D:\專案\Git\留言板實作\bin\System.Web.Mvc.xml
 D:\專案\Git\留言板實作\bin\System.Web.Optimization.xml
@@ -83,8 +87,3 @@ D:\專案\Git\留言板實作\obj\Debug\留言板實作.csproj.CoreCompileInputs
 D:\專案\Git\留言板實作\obj\Debug\留言板實作.csproj.CopyComplete
 D:\專案\Git\留言板實作\obj\Debug\留言板實作.dll
 D:\專案\Git\留言板實作\obj\Debug\留言板實作.pdb
-D:\專案\Git\留言板實作\bin\EntityFramework.dll
-D:\專案\Git\留言板實作\bin\EntityFramework.SqlServer.dll
-D:\專案\Git\留言板實作\bin\EntityFramework.xml
-D:\專案\Git\留言板實作\bin\EntityFramework.SqlServer.xml
-D:\專案\Git\留言板實作\obj\Debug\留言板實作.csprojAssemblyReference.cache
