@@ -29,5 +29,7 @@ namespace 留言板實作.Models
 
         [DisplayName("更新時間")]
         public DateTime updatetime { get; set; }
+
+        public users user { get; set; } = new users();
     }
 }

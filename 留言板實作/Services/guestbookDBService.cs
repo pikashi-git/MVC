@@ -47,7 +47,7 @@ select A.*,B.names,B.nick from guestbook A inner join users B on A.userID=B.user
             try
             {
                 IDB DB = new guestbookDB($@" 
-insert into guestbook(userID,postContent,parent) values('{newData.userID}','{newData.postContent}',{newData.parent}) ");
+                insert into guestbook(userID,postContent,parent) values((select userID from users where account='{newData.user.account}'),'{newData.postContent}',{newData.parent}) ");
                 DB.Action();
             }
             catch (Exception ex)
@@ -74,7 +74,25 @@ select * from guestbook where id=@id ");
                     guestBook.postContent = dt.Rows[0]["postContent"].ToString();
                     guestBook.parent = (int)dt.Rows[0]["parent"];
                     guestBook.createtime = (DateTime)dt.Rows[0]["createtime"];
-
+                    //取會員資料
+                    IDB DBuser = new guestbookDB(@" 
+select * from users where userID=@userID ");
+                    List<SqlParameter> sqlParaList1 = new List<SqlParameter>();
+                    sqlParaList1.Add(new SqlParameter("userID", SqlDbType.Int) { SqlValue = guestBook.userID });
+                    DBuser.ParameterList = sqlParaList1.ToArray();
+                    dt = new DataTable();
+                    if (DBuser.ActionDataTable(out dt) > 0 && dt != null && dt.Rows.Count > 0)
+                    {
+                        guestBook.user = new users
+                        {
+                            account = Convert.ToString(dt.Rows[0]["account"]),
+                            email = Convert.ToString(dt.Rows[0]["email"]),
+                            names = Convert.ToString(dt.Rows[0]["names"]),
+                            nick = Convert.ToString(dt.Rows[0]["nick"]),
+                            role = dt.Rows[0]["role"].ToString(),
+                            userID = Convert.ToInt32(dt.Rows[0]["userID"])
+                        };
+                    }
                     return guestBook;
                 }
                 else
@@ -100,7 +118,8 @@ select * from
 (
 	select row_number() over (order by A.id) as 序號,A.*,B.names,B.nick 
     , (select count(*) from guestbook C inner join users D on C.userID=D.userID where C.userID like @search or C.postContent like @search) as total
-	from guestbook A inner join users B on A.userID=B.userID
+	from guestbook A 
+    join users B on A.userID=B.userID
     where A.userID like @search or A.postContent like @search
 ) t
 where 序號 > (@page-1)*@item and 序號 < @page*@item + 1

@@ -18,9 +18,10 @@ namespace 留言板實作.Services
                 email.SendMail();
                 success = true;
                 Msg = "已經寄送成功";
-            }
+        }
             catch (Exception ex)
             {
+                //throw new Exception(ex.Message);
                 success = false;
                 Msg = ex.Message;
             }

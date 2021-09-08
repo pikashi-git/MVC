@@ -48,6 +48,10 @@ namespace 留言板實作.App_Code
                     if (ParameterList != null)
                         Cmd.Parameters.AddRange(ParameterList);
                     count = Cmd.ExecuteNonQuery();
+                    if (count > 0)
+                        Transac.Commit();
+                    else
+                        Transac.Rollback();
                 }
             }
 
@@ -115,6 +119,7 @@ namespace 留言板實作.App_Code
         {
             SqlDataReader reader = null;
             Connect();
+
             using (Cmd = Conn.CreateCommand())
             {
                 Cmd.Connection = Conn;
@@ -127,14 +132,6 @@ namespace 留言板實作.App_Code
 
             //DisConnect();
             return reader;
-        }
-        public void TranRollBack()
-        {
-            Transac.Rollback();
-        }
-        public void TranCommit()
-        {
-            Transac.Commit();
         }
         public void DisConnect()
         {

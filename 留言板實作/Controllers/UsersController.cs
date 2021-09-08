@@ -8,6 +8,8 @@ using 留言板實作.Services;
 using 留言板實作.ViewModels;
 using System.Web.Configuration;
 using System.IO;
+using System.Web.Security;
+using 留言板實作.Security;
 
 namespace 留言板實作.Controllers
 {
@@ -64,7 +66,7 @@ namespace 留言板實作.Controllers
             string msg = string.Empty;
             bool result = _usersDBService.validateEmail(account, authcode, out msg);
             ViewData["ValidateResult"] = result;
-            ViewData["ValidateMMsg"] = msg;
+            ViewData["ValidateMsg"] = msg;
             return View();
         }
 
@@ -80,6 +82,69 @@ namespace 留言板實作.Controllers
             else
             {
                 TempData["SendMailStatus"] = "寄送失敗";
+            }
+            return View();
+        }
+
+        //登入
+        public ActionResult Login()
+        {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "GuestBook");
+            return View();
+        }
+
+        //登入
+        [HttpPost]
+        public ActionResult Login(userLoginViewModel _userLoginViewModel)
+        {
+            bool success = _usersDBService.LoginCheck(_userLoginViewModel.account, _userLoginViewModel.password, out string msg);
+            if (success)
+            {
+                /*
+                string role = _usersDBService.GetRole(_userLoginViewModel.account);
+                JwtService jwtService = new JwtService();
+                string token = jwtService.GenerateJwtToken(_userLoginViewModel.account, role);
+                string cookieName = WebConfigurationManager.AppSettings["cookieName"].ToString();
+                HttpCookie cookie = new HttpCookie(cookieName);
+                cookie.Value = Server.UrlEncode(token);
+                cookie.Expires = DateTime.Now.AddMinutes(Convert.ToInt32(WebConfigurationManager.AppSettings["expireMinutes"]));
+                Response.Cookies.Add(cookie);
+                */
+                _usersDBService.AddJwtCookie(_userLoginViewModel);
+                return RedirectToAction("Index", "GuestBook");
+            }
+            ModelState.AddModelError("loginMsg", msg);
+            //return View(_userLoginViewModel);
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            string cookieName = WebConfigurationManager.AppSettings["cookieName"].ToString();
+            HttpCookie cookie = new HttpCookie(cookieName);
+            cookie.Expires = DateTime.Now.AddYears(-1);
+            cookie.Values.Clear();
+            Response.Cookies.Set(cookie);
+            return RedirectToAction("Login");
+        }
+
+        [Authorize]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult ChangePassword(changPasswordViewModel _changPasswordViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                string msg = "";
+                _usersDBService.ChangeUserPassword(_changPasswordViewModel, User.Identity.Name, out msg);
+                ViewData["changePasswordMsg"] = "viewdata: " + msg;
+                ModelState.AddModelError("AddModelError", "AddModelError: " + msg);
             }
             return View();
         }

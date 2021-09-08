@@ -41,7 +41,7 @@ namespace 留言板實作.Models
         public string authcode { get; set; }
         
         [DisplayName("角色")]
-        public int role { get; set; }
+        public string role { get; set; }
 
         [DisplayName("啟用狀態")]
         public bool enabled { get; set; }

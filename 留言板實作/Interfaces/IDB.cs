@@ -24,8 +24,6 @@ namespace 留言板實作.Interfaces
         SqlDataReader ActionReader();
         int ActionDataTable(out DataTable dt);
         int ActionDataSet(out DataSet ds);
-        void TranRollBack();
-        void TranCommit();
         void DisConnect();
     }
 }

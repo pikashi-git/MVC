@@ -24,6 +24,18 @@
                     <li>@Html.ActionLink("首頁", "Index", "Home")</li>
                     <li>@Html.ActionLink("關於", "About", "Home")</li>
                     <li>@Html.ActionLink("連絡人", "Contact", "Home")</li>
+                    @*使用者登入後才顯示*@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>你好, @(User.Identity.Name)</li>
+                        <li>@Html.ActionLink("更改密碼", "ChangePassword", "Users")</li>
+                        <li>@Html.ActionLink("登出", "Logout", "Users")</li>
+                    }@*無使用者登入*@
+                    else
+                    {
+                        <li>@Html.ActionLink("註冊", "Register", "Users")</li>
+                        <li>@Html.ActionLink("登入", "Login", "Users")</li>
+                    }
                 </ul>
             </div>
         </div>
@@ -35,7 +47,13 @@
             <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 應用程式</p>
         </footer>
     </div>
-
+    @if (ViewData["alert"] != null)
+    {
+        <script type="text/javascript">
+        var message = @Html.Raw(Json.Encode(ViewData["alert"]));
+        alert(message);
+        </script>
+    }
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

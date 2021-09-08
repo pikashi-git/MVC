@@ -45,6 +45,9 @@
     <Reference Include="HtmlSanitizationLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
       <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="jose-jwt, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\jose-jwt.3.2.0\lib\net40\jose-jwt.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -71,6 +74,8 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Cookie\Cookie.aspx" />
+    <Content Include="JS\AddJS.aspx" />
     <Content Include="XSD\guestbook.xsc">
       <DependentUpon>guestbook.xsd</DependentUpon>
     </Content>
@@ -90,6 +95,8 @@
     </Content>
     <Content Include="Static操作\Static測試_Class%28A%29.aspx" />
     <Content Include="Static操作\Static測試_Class%28B%29.aspx" />
+    <Content Include="網路安全\JWTTest.aspx" />
+    <Content Include="網路安全\UserIdentity.aspx" />
     <Content Include="資料讀取\XSDTest.aspx" />
     <Content Include="資料讀取\本機MDF資料庫.aspx" />
     <Content Include="路由\Route.aspx" />
@@ -100,6 +107,20 @@
     <Content Include="網路安全\Anti操作.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cookie\Cookie.aspx.cs">
+      <DependentUpon>Cookie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cookie\Cookie.aspx.designer.cs">
+      <DependentUpon>Cookie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JS\AddJS.aspx.cs">
+      <DependentUpon>AddJS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JS\AddJS.aspx.designer.cs">
+      <DependentUpon>AddJS.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Static操作\Static測試_Class%28A%29.aspx.cs">
       <DependentUpon>Static測試_Class%28A%29.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -121,6 +142,20 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>guestbook.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="網路安全\JWTTest.aspx.cs">
+      <DependentUpon>JWTTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="網路安全\JWTTest.aspx.designer.cs">
+      <DependentUpon>JWTTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="網路安全\UserIdentity.aspx.cs">
+      <DependentUpon>UserIdentity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="網路安全\UserIdentity.aspx.designer.cs">
+      <DependentUpon>UserIdentity.aspx</DependentUpon>
     </Compile>
     <Compile Include="資料讀取\XSDTest.aspx.cs">
       <DependentUpon>XSDTest.aspx</DependentUpon>

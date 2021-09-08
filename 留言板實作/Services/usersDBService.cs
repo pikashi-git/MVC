@@ -10,6 +10,9 @@ using System.Data;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.UI.WebControls;
+using 留言板實作.Security;
+using 留言板實作.ViewModels;
+using System.Web.Configuration;
 
 namespace 留言板實作.Services
 {
@@ -34,7 +37,7 @@ select convert(varchar(max),authCode) from users where account=@account; ");
                 paraList.Add(new SqlParameter("account", _users.account) { SqlDbType = SqlDbType.NVarChar });
                 paraList.Add(new SqlParameter("password", HashPassword(_users.password)) { SqlDbType = SqlDbType.VarChar });
                 paraList.Add(new SqlParameter("email", _users.email) { SqlDbType = SqlDbType.VarChar });
-                paraList.Add(new SqlParameter("role", _users.role) { SqlDbType = SqlDbType.Bit });
+                paraList.Add(new SqlParameter("role", _users.role) { SqlDbType = SqlDbType.VarChar });
                 DB.ParameterList = paraList.ToArray();
                 authCode = DB.ActionScalar();
 
@@ -78,8 +81,15 @@ select convert(varchar(max),authCode) from users where account=@account; ");
             return exist;
         }
 
+        //角色
+        public string GetRole(string account)
+        {
+            users _users = GetUserByAccount(account);
+            return _users is null ? "" : _users.role.ToString();
+        }
+
         //以帳號取得會員資料
-        users GetUserByAccount(string account, bool consinderEnable = false, bool debug = false)
+        public users GetUserByAccount(string account, bool consinderEnable = false, bool debug = false)
         {
             users _user = null;
             try
@@ -92,18 +102,9 @@ select convert(varchar(max),authCode) from users where account=@account; ");
                 paraList.Add(new SqlParameter("account", account) { SqlDbType = SqlDbType.NVarChar });
                 DB.ParameterList = paraList.ToArray();
                 SqlDataReader reader = DB.ActionReader();
-
+                
                 if (reader.Read())
                 {
-                    //_user = new users();
-                    //_user.account = reader["account"].ToString();
-                    //_user.userID = (int)reader["userID"];
-                    //_user.names = reader["names"].ToString();
-                    //_user.nick = reader["nick"].ToString();
-                    //_user.email = reader["email"].ToString();
-                    //_user.role = int.Parse(reader["role"].ToString());
-                    //_user.authcode = reader["authcode"].ToString();
-
                     _user = new users()
                     {
                         account = reader["account"].ToString(),
@@ -111,8 +112,10 @@ select convert(varchar(max),authCode) from users where account=@account; ");
                         names = reader["names"].ToString(),
                         nick = reader["nick"].ToString(),
                         email = reader["email"].ToString(),
-                        role = int.Parse(reader["role"].ToString()),
-                        authcode = reader["authcode"].ToString()
+                        role = reader["role"].ToString(),
+                        authcode = reader["authcode"].ToString(),
+                        enabled = (bool)reader["enabled"],
+                        password = reader["password"].ToString()
                     };
                 }
                 reader.Close();
@@ -135,7 +138,7 @@ select convert(varchar(max),authCode) from users where account=@account; ");
             users _users = GetUserByAccount(account);
             if (_users != null)
             {
-                if (_users.authcode.Equals(authCode))
+                if (_users.authcode.Equals(authCode.ToLower()))
                 {
                     try
                     {
@@ -144,7 +147,7 @@ update users set validateDate=GetDate(),enabled=1 where account=@account ");
                         List<SqlParameter> paraList = new List<SqlParameter>();
                         paraList.Add(new SqlParameter("account", _users.account) { SqlDbType = SqlDbType.NVarChar });
                         DB.ParameterList = paraList.ToArray();
-                        DB.Action();
+                        int count = DB.Action();
 
                         success = true;
                         message = @"已成功驗證, 已可登入";
@@ -173,7 +176,6 @@ update users set validateDate=GetDate(),enabled=1 where account=@account ");
             users _users = GetUserByAccount(account);
             string msg = string.Empty;
             success = SendValidateMail(_users.authcode, _users, out msg);
-
             return success;
         }
 
@@ -185,7 +187,8 @@ update users set validateDate=GetDate(),enabled=1 where account=@account ");
             string contentTmp = System.IO.File.ReadAllText(HttpContext.Current.Server.MapPath("~/Views/Shared/RegisterEmailTmp.html"));
             UriBuilder uri = new UriBuilder(HttpContext.Current.Request.Url)
             {
-                Path = $@"~/Users/EmailValidate?auchCode={authCode}&account={_users.account}"
+                Path = $@"/Users/EmailValidate",
+                Query = $@"authCode={authCode}&account={_users.account}"
             };
             string content = string.Format(contentTmp, _users.names, uri.ToString());
             bool sendStatus = _mailService.SendValidateMail(@"註冊會員驗證信", content, _users.email, _users.names);
@@ -197,9 +200,70 @@ update users set validateDate=GetDate(),enabled=1 where account=@account ");
             else
             {
                 success = false;
-                message = @"寄送驗證信失敗";
+                message = $@"寄送驗證信失敗, {_mailService.Msg}" ;
             }
             return success;
+        }
+
+        //登入檢查
+        public bool LoginCheck(string account, string password, out string msg)
+        {
+            msg = string.Empty;
+            bool check = false;
+            users _user = GetUserByAccount(account);
+            if (!(_user is null))
+            {
+                if (_user.enabled)
+                {
+                    if (HashPassword(password).Equals(_user.password))
+                    {
+                        check = true;
+                        msg = @"已經登入成功";
+                    }
+                    else
+                    {
+                        msg = @"錯誤密碼登入失敗";
+                    }
+                }
+                else
+                {
+                    msg = @"尚未信箱驗證";
+                }
+            }
+            else
+            {
+                msg = @"登入失敗, 沒有這位使用者";
+            }
+            return check;
+        }
+
+        //加入JWT Cookie
+        public void AddJwtCookie(userLoginViewModel _userLoginViewModel) 
+        {
+            string role = GetRole(_userLoginViewModel.account);
+            JwtService jwtService = new JwtService();
+            string token = jwtService.GenerateJwtToken(_userLoginViewModel.account, role);
+            string cookieName = WebConfigurationManager.AppSettings["cookieName"].ToString();
+            HttpCookie cookie = new HttpCookie(cookieName);
+            cookie.Value = HttpContext.Current.Server.UrlEncode(token);
+            cookie.Expires = DateTime.Now.AddMinutes(Convert.ToInt32(WebConfigurationManager.AppSettings["expireMinutes"]));
+            HttpContext.Current.Response.Cookies.Add(cookie);
+        }
+
+        //更改密碼
+        public bool ChangeUserPassword(changPasswordViewModel _changPasswordViewModel, string account, out string msg)
+        {
+            msg = "更新密碼失敗";
+            bool changeStatus = false;
+            if (GetUserByAccount(account).password.Equals(HashPassword(_changPasswordViewModel.Password)))
+            {
+                string sql = $@" update users set password='{HashPassword(_changPasswordViewModel.NewPassword)}' where account='{account}'; ";
+                IDB DB = new guestbookDB(sql);
+                DB.Action();
+                changeStatus = true;
+                msg = "更新密碼成功";
+            }
+            return changeStatus;
         }
     }
 }
