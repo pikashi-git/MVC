@@ -11,8 +11,8 @@ namespace 留言板實作.Controllers
 {
     public class GuestBookController : Controller
     {
-        guestbookDBService Service = new guestbookDBService();
-        usersDBService _usersDbService = new usersDBService();
+        GuestbookDBService Service = new GuestbookDBService();
+        UsersDBService _usersDbService = new UsersDBService();
 
         public ActionResult Index()
         {
@@ -24,7 +24,7 @@ namespace 留言板實作.Controllers
             return PartialView(Service.GetguestbookInfoList(search, pages));
         }
         [HttpPost]
-        public ActionResult List([Bind(Include = "search")] guestbookInfoViewModel data)
+        public ActionResult List([Bind(Include = "search")] GuestbookInfoViewModel data)
         {
             return RedirectToAction("List", new { search = data.Search });
         }
@@ -35,26 +35,26 @@ namespace 留言板實作.Controllers
         }
         [Authorize]
         [HttpPost]
-        public ActionResult Create([Bind(Include = "postContent,parent")] guestbook newData)
+        public ActionResult Create([Bind(Include = "postContent,parent")] Guestbook newData)
         {
-            newData.user.account = User.Identity.Name;
+            newData.User.Account = User.Identity.Name;
             Service.InsertGuestBook(newData);
             return RedirectToAction("Index");
         }
         [Authorize]
         public ActionResult Edit(int id)
         {
-            guestbook data = Service.GetGuestBook(id);
+            Guestbook data = Service.GetGuestBook(id);
             return View(data);
         }
         [Authorize]
         [HttpPost]
-        public ActionResult Edit(int id, [Bind(Include ="ID,postContent")] guestbook data)
+        public ActionResult Edit(int id, [Bind(Include ="ID,postContent")] Guestbook data)
         {
-            users _user =_usersDbService.GetUserByAccount(User.Identity.Name);
-            guestbook data1 = Service.GetGuestBook(data.ID);
-            data.userID = data1.userID;
-            if (_user.userID != data1.userID)
+            Users _user =_usersDbService.GetUserByAccount(User.Identity.Name);
+            Guestbook data1 = Service.GetGuestBook(data.ID);
+            data.UserID = data1.UserID;
+            if (_user.UserID != data1.UserID)
             {
                 ViewData["alert"] = @"不是你的貼文";
                 return View(data);
@@ -69,18 +69,18 @@ namespace 留言板實作.Controllers
         [Authorize(Roles = "1,2")]
         public ActionResult Reply(int id)
         {
-            guestbook data = Service.GetGuestBook(id);
+            Guestbook data = Service.GetGuestBook(id);
             return View(data);
         }
         [Authorize(Roles = "1,2")]
         [HttpPost]
         public ActionResult Reply(int id, FormCollection form)
         {
-            users _user = _usersDbService.GetUserByAccount(User.Identity.Name);
-            guestbook data = new guestbook();
-            data.parent = id;
-            data.userID = _user.userID;
-            data.postContent = form["postContent_reply"].ToString();
+            Users _user = _usersDbService.GetUserByAccount(User.Identity.Name);
+            Guestbook data = new Guestbook();
+            data.Parent = id;
+            data.UserID = _user.UserID;
+            data.PostContent = form["postContent_reply"].ToString();
             Service.ReplyGuestBook(data);
             return RedirectToAction("Index");
         }

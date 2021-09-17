@@ -8,7 +8,7 @@ using 留言板實作.Interfaces;
 
 namespace 留言板實作.App_Code
 {
-    public class guestbookDB: IDB
+    public class GuestbookDB: IDB
     {
         public string ErrorMsg { get; set; }
         public CommandType CommandType { get; set; }
@@ -18,7 +18,7 @@ namespace 留言板實作.App_Code
         public SqlConnection Conn { get; set; }
         public SqlTransaction Transac { get; set; }
         public SqlCommand Cmd { get; set; }
-        public guestbookDB(string sql, SqlParameter[] parms = null)
+        public GuestbookDB(string sql, SqlParameter[] parms = null)
         {
             Connection = System.Web.Configuration.WebConfigurationManager.ConnectionStrings["GuestBook"].ConnectionString;
             if (CommandType != CommandType.StoredProcedure && CommandType != CommandType.Text)

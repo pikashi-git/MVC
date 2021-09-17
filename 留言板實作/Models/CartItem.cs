@@ -5,11 +5,10 @@ using System.Web;
 
 namespace 留言板實作.Models
 {
-    public class Item
+    public class CartItem
     {
+        public string CartId { get; set; }
         public int ItemID { get; set; }
-        public string Name { get; set; }
-        public int Price { get; set; }
-        public string Image { get; set; }
+        public Item Item { get; set; }
     }
 }

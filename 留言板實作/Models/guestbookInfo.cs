@@ -7,7 +7,7 @@ using System.Web;
 
 namespace 留言板實作.Models
 {
-    public class guestbookInfo
+    public class GuestbookInfo
     {
         [DisplayName("編號")]
         public int ID { get; set; }
@@ -15,26 +15,26 @@ namespace 留言板實作.Models
         [DisplayName("會員編號")]
         [Required(ErrorMessage = "請輸入會員編號")]
         [StringLength(5, ErrorMessage = "填寫內容過長")]
-        public int userID { get; set; }
+        public int UserID { get; set; }
 
         [DisplayName("張貼內容")]
         [Required(ErrorMessage = "張貼內容不能空白")]
         [StringLength(100, ErrorMessage = "張貼內容過多")]
-        public string postContent { get; set; }
+        public string PostContent { get; set; }
 
         [DisplayName("回應貼文編號")]
-        public int parent { get; set; }
+        public int Parent { get; set; }
 
         [DisplayName("張貼時間")]
-        public DateTime createtime { get; set; }
+        public DateTime Createtime { get; set; }
 
         [DisplayName("更新時間")]
-        public DateTime updatetime { get; set; }
+        public DateTime Updatetime { get; set; }
 
         [DisplayName("姓名")]
-        public string names { get; set; }
+        public string Names { get; set; }
 
         [DisplayName("綽號")]
-        public string nick { get; set; }
+        public string Nick { get; set; }
     }
 }

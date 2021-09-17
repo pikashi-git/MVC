@@ -6,7 +6,7 @@ using 留言板實作.App_Code;
 
 namespace 留言板實作.Services
 {
-    public class mailService
+    public class MailService
     {
         public string Msg { get; set; }
         public bool SendValidateMail(string subject, string content, string to, string toName)

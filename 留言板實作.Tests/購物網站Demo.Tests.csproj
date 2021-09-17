@@ -99,9 +99,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\留言板實作\留言板實作.csproj">
+    <ProjectReference Include="..\留言板實作\購物網站Demo.csproj">
       <Project>{450E76CA-5CE2-4318-96C7-3C8E4FC1DA1E}</Project>
-      <Name>留言板實作</Name>
+      <Name>購物網站Demo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace 留言板實作.Models
+namespace 留言板實作.Services
 {
     public class Paging
     {

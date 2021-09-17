@@ -15,7 +15,8 @@ namespace 留言板實作.Controllers
 {
     public class UsersController : Controller
     {
-        usersDBService _usersDBService = new usersDBService();
+        CartDBService cartService = new CartDBService();
+        UsersDBService _usersDBService = new UsersDBService();
         // GET: Users
         public ActionResult Register()
         {
@@ -25,12 +26,12 @@ namespace 留言板實作.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(userRegisterViewModel _userRegisterViewModel)
+        public ActionResult Register(UserRegisterViewModel _userRegisterViewModel)
         {
             if (ModelState.IsValid)
             {
                 //新增會員資料
-                _userRegisterViewModel.Users.password = _userRegisterViewModel.Password;
+                _userRegisterViewModel.Users.Password = _userRegisterViewModel.Password;
                 string message = string.Empty;
                 bool registerStatus = _usersDBService.RegisterUser(_userRegisterViewModel.Users, out message);
 
@@ -42,7 +43,7 @@ namespace 留言板實作.Controllers
                 else
                 {
                     TempData["RegisterStatus"] = registerStatus + ", " + message;
-                    TempData["RegisterMsg"] = (message.Equals(@"寄送驗證信失敗") ? $@"<br /><a href=""/Users/SendValidateMail?account={_userRegisterViewModel.Users.account}"">再寄一次</a>" : string.Empty);
+                    TempData["RegisterMsg"] = (message.Equals(@"寄送驗證信失敗") ? $@"<br /><a href=""/Users/SendValidateMail?account={_userRegisterViewModel.Users.Account}"">再寄一次</a>" : string.Empty);
                 }
             }
             return RedirectToAction("RegisterResult", "users");
@@ -55,16 +56,16 @@ namespace 留言板實作.Controllers
         }
 
         //檢查帳號是否可註冊
-        public JsonResult AccountCheck(userRegisterViewModel _userRegisterViewModel)
+        public JsonResult AccountCheck(UserRegisterViewModel _userRegisterViewModel)
         {
-            return Json(_usersDBService.AccountCheck(_userRegisterViewModel.Users.account), JsonRequestBehavior.AllowGet);
+            return Json(_usersDBService.AccountCheck(_userRegisterViewModel.Users.Account), JsonRequestBehavior.AllowGet);
         }
 
         //驗證信驗證
         public ActionResult EmailValidate(string account, string authcode)
         {
             string msg = string.Empty;
-            bool result = _usersDBService.validateEmail(account, authcode, out msg);
+            bool result = _usersDBService.ValidateEmail(account, authcode, out msg);
             ViewData["ValidateResult"] = result;
             ViewData["ValidateMsg"] = msg;
             return View();
@@ -96,21 +97,16 @@ namespace 留言板實作.Controllers
 
         //登入
         [HttpPost]
-        public ActionResult Login(userLoginViewModel _userLoginViewModel)
+        public ActionResult Login(UserLoginViewModel _userLoginViewModel)
         {
-            bool success = _usersDBService.LoginCheck(_userLoginViewModel.account, _userLoginViewModel.password, out string msg);
+            bool success = _usersDBService.LoginCheck(_userLoginViewModel.Account, _userLoginViewModel.Password, out string msg);
             if (success)
             {
-                /*
-                string role = _usersDBService.GetRole(_userLoginViewModel.account);
-                JwtService jwtService = new JwtService();
-                string token = jwtService.GenerateJwtToken(_userLoginViewModel.account, role);
-                string cookieName = WebConfigurationManager.AppSettings["cookieName"].ToString();
-                HttpCookie cookie = new HttpCookie(cookieName);
-                cookie.Value = Server.UrlEncode(token);
-                cookie.Expires = DateTime.Now.AddMinutes(Convert.ToInt32(WebConfigurationManager.AppSettings["expireMinutes"]));
-                Response.Cookies.Add(cookie);
-                */
+                Session.Clear();
+                Cart _cartSave = cartService.GetCart(_userLoginViewModel.Account);
+                if (_cartSave != null)
+                    Session["cartSave"] = _cartSave;
+
                 _usersDBService.AddJwtCookie(_userLoginViewModel);
                 return RedirectToAction("Index", "GuestBook");
             }
@@ -137,7 +133,7 @@ namespace 留言板實作.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult ChangePassword(changPasswordViewModel _changPasswordViewModel)
+        public ActionResult ChangePassword(ChangPasswordViewModel _changPasswordViewModel)
         {
             if (ModelState.IsValid)
             {

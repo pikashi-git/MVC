@@ -7,15 +7,15 @@ using System.Web;
 
 namespace 留言板實作.ViewModels
 {
-    public class userLoginViewModel
+    public class UserLoginViewModel
     {
         [DisplayName("帳號")]
         [Required(ErrorMessage ="請輸入帳號")]
         [MinLength(3, ErrorMessage ="最小長度3")]
-        public string account { get; set; }
+        public string Account { get; set; }
 
         [DisplayName("密碼")]
         [Required(ErrorMessage ="請輸入密碼")]
-        public string password { get; set; }
+        public string Password { get; set; }
     }
 }

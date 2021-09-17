@@ -7,7 +7,7 @@ using System.Web;
 
 namespace 留言板實作.ViewModels
 {
-    public class changPasswordViewModel
+    public class ChangPasswordViewModel
     {
         [DisplayName("舊密碼")]
         [Required(ErrorMessage ="請輸入舊密碼")]

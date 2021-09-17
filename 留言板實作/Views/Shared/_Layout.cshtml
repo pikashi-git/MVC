@@ -30,7 +30,9 @@
                         <li>你好, @(User.Identity.Name)</li>
                         <li>@Html.ActionLink("更改密碼", "ChangePassword", "Users")</li>
                         <li>@Html.ActionLink("登出", "Logout", "Users")</li>
-                    }@*無使用者登入*@
+                        <li>@Html.ActionLink("購物車", "Index", "cart")</li>
+                    }
+                    @*無使用者登入*@
                     else
                     {
                         <li>@Html.ActionLink("註冊", "Register", "Users")</li>

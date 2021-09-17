@@ -8,9 +8,9 @@ using 留言板實作.Models;
 
 namespace 留言板實作.ViewModels
 {
-    public class userRegisterViewModel
+    public class UserRegisterViewModel
     {
-        public users Users { get; set; }
+        public Users Users { get; set; }
         [DisplayName("密碼")]
         [Required(ErrorMessage="請輸入密碼")]
         public string Password { get; set; }
