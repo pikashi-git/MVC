@@ -14,25 +14,34 @@ namespace 留言板實作.Controllers
         GuestbookDBService Service = new GuestbookDBService();
         UsersDBService _usersDbService = new UsersDBService();
 
+        //留言板首頁
         public ActionResult Index()
         {
             return View();
         }
+
+        //清單
         public ActionResult List(string search, int page = 1)
         {
             Paging pages = new Paging(page);
             return PartialView(Service.GetguestbookInfoList(search, pages));
         }
+
+        //清單
         [HttpPost]
         public ActionResult List([Bind(Include = "search")] GuestbookInfoViewModel data)
         {
             return RedirectToAction("List", new { search = data.Search });
         }
+
+        //建立留言
         [ChildActionOnly]
         public ActionResult Create()
         {
             return PartialView();
         }
+
+        //建立留言
         [Authorize]
         [HttpPost]
         public ActionResult Create([Bind(Include = "postContent,parent")] Guestbook newData)
@@ -41,12 +50,16 @@ namespace 留言板實作.Controllers
             Service.InsertGuestBook(newData);
             return RedirectToAction("Index");
         }
+
+        //編輯留言
         [Authorize]
         public ActionResult Edit(int id)
         {
             Guestbook data = Service.GetGuestBook(id);
             return View(data);
         }
+
+        //編輯留言
         [Authorize]
         [HttpPost]
         public ActionResult Edit(int id, [Bind(Include ="ID,postContent")] Guestbook data)
@@ -66,12 +79,16 @@ namespace 留言板實作.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        //回復留言
         [Authorize(Roles = "1,2")]
         public ActionResult Reply(int id)
         {
             Guestbook data = Service.GetGuestBook(id);
             return View(data);
         }
+
+        //回復留言
         [Authorize(Roles = "1,2")]
         [HttpPost]
         public ActionResult Reply(int id, FormCollection form)
@@ -84,6 +101,8 @@ namespace 留言板實作.Controllers
             Service.ReplyGuestBook(data);
             return RedirectToAction("Index");
         }
+
+        //刪除留言
         [Authorize(Roles = "1,2")]
         public ActionResult Delete(int id)
         {

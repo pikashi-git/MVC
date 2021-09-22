@@ -132,6 +132,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\GuestBookController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -142,6 +143,7 @@
     <Compile Include="Models\Guestbook.cs" />
     <Compile Include="Models\GuestbookInfo.cs" />
     <Compile Include="Models\Items.cs" />
+    <Compile Include="Services\ItemService.cs" />
     <Compile Include="Services\Paging.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,8 +157,9 @@
     <Compile Include="ViewModels\CartItemViewModel.cs" />
     <Compile Include="ViewModels\ChangPasswordViewModel.cs" />
     <Compile Include="ViewModels\GuestbookInfoViewModel.cs" />
+    <Compile Include="ViewModels\ItemCreateViewModel.cs" />
     <Compile Include="ViewModels\ItemDetailViewModel.cs" />
-    <Compile Include="ViewModels\ItemViewModel.cs" />
+    <Compile Include="ViewModels\ItemListViewModel.cs" />
     <Compile Include="ViewModels\UserLoginViewModel.cs" />
     <Compile Include="ViewModels\UserRegisterViewModel.cs" />
   </ItemGroup>
@@ -211,6 +214,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Upload\" />
+    <Folder Include="Views\Item\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

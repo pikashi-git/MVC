@@ -12,9 +12,20 @@ namespace 留言板實作.Services
 {
     public class CartDBService
     {
-        //// 檢查購物車商品
-        //public bool checkCartItem(string cartID, int itemID)
-        
+        // 檢查購物車商品
+        public bool checkCartItem(string cartID, int itemID)
+        {
+            bool inCart = false;
+            string sql = @" select * from cartItem where cart_id=@cartID and itemID=@itemID; ";
+            IDB DB = new GuestbookDB(sql);
+            List<SqlParameter> paraList = new List<SqlParameter>();
+            paraList.Add(new SqlParameter("cartID", SqlDbType.VarChar) { Value = cartID });
+            paraList.Add(new SqlParameter("itemID", SqlDbType.Int) { Value = itemID });
+            DB.ParameterList = paraList.ToArray();
+            inCart = DB.ActionScalar() != null ? true : false;
+            return inCart;
+        }
+
         //取得購物車商品
         public List<CartItem> GetCartItems(string cartID) 
         {
@@ -50,7 +61,7 @@ namespace 留言板實作.Services
         {
             msg = string.Empty;
             bool rtv = false;
-            string sql = @" insert into cartItem(cart_id,itemID) values(@cartID, @itemID);  ";
+            string sql = @" insert into cartItem(cart_id,itemID) values(@cartID, @itemID); ";
             IDB DB = new GuestbookDB(sql);
             List<SqlParameter> sqlparaList = new List<SqlParameter>();
             sqlparaList.Add(new SqlParameter("cartID", SqlDbType.VarChar) { Value = cartID });
@@ -68,7 +79,7 @@ namespace 留言板實作.Services
         {
             msg = string.Empty;
             bool rtv = false;
-            string sql = @" delete from cartItem where cart_id=@cartID and itemID=@itemID;  ";
+            string sql = @" delete from cartItem where cart_id=@cartID and itemID=@itemID; ";
             IDB DB = new GuestbookDB(sql);
             List<SqlParameter> sqlparaList = new List<SqlParameter>();
             sqlparaList.Add(new SqlParameter("cartID", SqlDbType.VarChar) { Value = cartID });
@@ -133,7 +144,7 @@ namespace 留言板實作.Services
         {
             msg = string.Empty;
             bool rtv = false;
-            string sql = @" insert into cart(userID, cart_id) values((select userID from users where account=@account), @cartID);  ";
+            string sql = @" insert into cart(userID, cart_id) values((select userID from users where account=@account), @cartID); ";
             IDB DB = new GuestbookDB(sql);
             List<SqlParameter> sqlparaList = new List<SqlParameter>();
             sqlparaList.Add(new SqlParameter("account", SqlDbType.NVarChar) { Value = account });
@@ -151,7 +162,7 @@ namespace 留言板實作.Services
         {
             msg = string.Empty;
             bool rtv = false;
-            string sql = @" delete from cart where userID=(select userID from users where account=@account);  ";
+            string sql = @" delete from cart where userID=(select userID from users where account=@account); ";
             IDB DB = new GuestbookDB(sql);
             List<SqlParameter> sqlparaList = new List<SqlParameter>();
             sqlparaList.Add(new SqlParameter("cartID", SqlDbType.NVarChar) { Value = account });

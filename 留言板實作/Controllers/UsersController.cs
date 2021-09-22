@@ -17,7 +17,8 @@ namespace 留言板實作.Controllers
     {
         CartDBService cartService = new CartDBService();
         UsersDBService _usersDBService = new UsersDBService();
-        // GET: Users
+        
+        //註冊
         public ActionResult Register()
         {
             if (User.Identity.IsAuthenticated)
@@ -25,6 +26,7 @@ namespace 留言板實作.Controllers
             return View();
         }
 
+        //註冊
         [HttpPost]
         public ActionResult Register(UserRegisterViewModel _userRegisterViewModel)
         {
@@ -115,6 +117,7 @@ namespace 留言板實作.Controllers
             return View();
         }
 
+        //登出
         public ActionResult Logout()
         {
             string cookieName = WebConfigurationManager.AppSettings["cookieName"].ToString();
@@ -125,12 +128,14 @@ namespace 留言板實作.Controllers
             return RedirectToAction("Login");
         }
 
+        //更改密碼
         [Authorize]
         public ActionResult ChangePassword()
         {
             return View();
         }
 
+        //更改密碼
         [Authorize]
         [HttpPost]
         public ActionResult ChangePassword(ChangPasswordViewModel _changPasswordViewModel)
