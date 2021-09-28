@@ -1,0 +1,90 @@
+﻿@model 購物網站MVC_Demo.ViewModels.UserRegisterViewModel
+
+@{
+    ViewBag.Title = "註冊";
+}
+
+<h2>註冊標題</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false)
+
+    @*建立註冊帳號所需表格*@
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Users.Account)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Users.Account)
+                @Html.ValidationMessageFor(model => model.Users.Account)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Password)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.PasswordChk)
+            </td>
+            <td>
+                @Html.PasswordFor(model => model.PasswordChk)
+                @Html.ValidationMessageFor(model => model.PasswordChk)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Users.Names)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Users.Names)
+                @Html.ValidationMessageFor(model => model.Users.Names)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Users.Nick)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Users.Nick)
+                @Html.ValidationMessageFor(model => model.Users.Nick)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Users.Role)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Users.Role)
+                @Html.ValidationMessageFor(model => model.Users.Role)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Users.Email)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Users.Email)
+                @Html.ValidationMessageFor(model => model.Users.Email)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="註冊" />
+            </td>
+        </tr>
+    </table>
+}
+
+@*匯入驗證欄位所需Javascript*@
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

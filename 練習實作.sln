@@ -3,19 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormPage_Test", "WebForm網站\FormPage_Test.csproj", "{3F9AE9B4-6F26-458C-A313-99C09BDE98C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebForm_Test", "WebForm_Test\WebForm_Test.csproj", "{3F9AE9B4-6F26-458C-A313-99C09BDE98C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "主控台應用_Test", "主控台應用\主控台應用_Test.csproj", "{5221F943-E176-4B35-B8F0-1AE3C3B48AF3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "主控台應用_Test", "主控台應用_Test\主控台應用_Test.csproj", "{5221F943-E176-4B35-B8F0-1AE3C3B48AF3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "類別庫A", "類別庫A\類別庫A.csproj", "{225933FF-BA14-4D32-8AD8-7D1C9CD91CF3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "類別庫B", "類別庫B\類別庫B.csproj", "{041E7E5B-CC24-429F-951F-ABBF1EE10810}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Test", "MVC網站\MVC_Test.csproj", "{17C3C54E-0643-4F57-AA06-644D8A855169}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Test", "MVC_Test\MVC_Test.csproj", "{17C3C54E-0643-4F57-AA06-644D8A855169}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "購物網站Demo", "留言板實作\購物網站Demo.csproj", "{450E76CA-5CE2-4318-96C7-3C8E4FC1DA1E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "購物網站MVC_Demo", "購物網站MVC_Demo\購物網站MVC_Demo.csproj", "{450E76CA-5CE2-4318-96C7-3C8E4FC1DA1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "購物網站Demo.Tests", "留言板實作.Tests\購物網站Demo.Tests.csproj", "{B37E15F8-3C8F-41B4-BE13-B1D433AB0FF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "購物網站MVC_Demo.Tests", "購物網站MVC_Demo.Tests\購物網站MVC_Demo.Tests.csproj", "{B37E15F8-3C8F-41B4-BE13-B1D433AB0FF4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPage_Test", "RazorPage_Test\RazorPage_Test.csproj", "{B5CF2270-8601-4B76-96D5-061E4169B12A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreMVC_Test", "CoreMVC_Test\CoreMVC_Test.csproj", "{ED6977B5-C420-4863-9232-1EF0D7A0C885}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{B37E15F8-3C8F-41B4-BE13-B1D433AB0FF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B37E15F8-3C8F-41B4-BE13-B1D433AB0FF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B37E15F8-3C8F-41B4-BE13-B1D433AB0FF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5CF2270-8601-4B76-96D5-061E4169B12A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5CF2270-8601-4B76-96D5-061E4169B12A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5CF2270-8601-4B76-96D5-061E4169B12A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5CF2270-8601-4B76-96D5-061E4169B12A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED6977B5-C420-4863-9232-1EF0D7A0C885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED6977B5-C420-4863-9232-1EF0D7A0C885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED6977B5-C420-4863-9232-1EF0D7A0C885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED6977B5-C420-4863-9232-1EF0D7A0C885}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

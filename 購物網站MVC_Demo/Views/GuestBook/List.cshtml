@@ -1,0 +1,129 @@
+﻿@model 購物網站MVC_Demo.ViewModels.GuestbookInfoViewModel
+
+    <div id="DataList">
+
+        @*建立搜尋表單, 使用AjaxHelper*@
+        @using (Ajax.BeginForm("List", "GuestBook", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "DataList" }))
+        {
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Search)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Search)
+                    </td>
+                    <td>
+                        <input type="submit" value="搜尋" />
+                    </td>
+                </tr>
+            </table>
+        }
+        <table>
+
+            @*如果資料庫中不是零筆資料, 則顯示資料, 並列出新增刪除修改連結*@
+            @if (Model != null && !Model.GuestbookInfoList.Count.Equals(0))
+            {
+                foreach (var item in Model.GuestbookInfoList)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(m => m.GuestbookInfoList[0].ID)
+                        </td>
+                        <td>
+                            @item.ID
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(m => m.GuestbookInfoList[0].Names)
+                        </td>
+                        <td>
+                            @item.Names
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(m => m.GuestbookInfoList[0].Createtime)
+                        </td>
+                        <td>
+                            @item.Createtime
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(m => m.GuestbookInfoList[0].PostContent)
+                        </td>
+                        <td>
+                            @item.PostContent
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(m => m.GuestbookInfoList[0].Parent)
+                        </td>
+                        <td>
+                            @item.Parent
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            @Html.ActionLink("修改留言", "Edit", new { id = item.ID })
+                            @if (User.IsInRole("1"))
+                            {
+                                @Html.ActionLink("回覆留言", "Reply", new { id = item.ID })
+                                @Html.ActionLink("刪除留言", "Delete", new { id = item.ID })
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">====================================================</td>
+                    </tr>
+                }
+            }
+            @*如果資料庫中為零筆資料, 則印出"資料庫中查無資料"*@
+            else
+            {
+                <tr>
+                    <td colspan="2">
+                        資料庫內查無資料
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="2">
+                    @if (Model != null && !Model.GuestbookInfoList.Count.Equals(0))
+                    {
+                        @*若目前所在頁大於1則顯示回到第一頁*@
+                        if (Model.Pages.CurrentPage > 1)
+                        {
+                            @Ajax.ActionLink(" 第一頁 ", "List", new { search = Model.Search, page = 1 }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "DataList" })
+                            @Ajax.ActionLink(" 上一頁 ", "List", new { search = Model.Search, page = Model.Pages.CurrentPage - 1 }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "DataList" })
+                        }
+                        @*顯示當前頁次前後各五頁*@
+                        for (var p = Model.Pages.CurrentPage - 5; p < Model.Pages.CurrentPage + 5; p++)
+                        {
+                            if (p > 0 && p < Model.Pages.MaxPage + 1)
+                            {
+                                if (p == Model.Pages.CurrentPage)
+                                {
+                                    <b>@p</b>
+                                }
+                                else
+                                {
+                                    @Ajax.ActionLink(p.ToString(), "List", new { search = Model.Search, page = p.ToString() }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "DataList" })
+                                }
+                            }
+                        }
+                        @*若目前所在頁小於最大頁則顯示到最後頁*@
+                        if (Model.Pages.CurrentPage < Model.Pages.MaxPage)
+                        {
+                            @Ajax.ActionLink(" 下一頁 ", "List", new { search = Model.Search, page = Model.Pages.CurrentPage + 1 }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "DataList" })
+                            @Ajax.ActionLink(" 最後一頁 ", "List", new { search = Model.Search, page = Model.Pages.MaxPage }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "DataList" })
+                        }
+                    }
+                </td>
+            </tr>
+        </table>
+
+    </div>

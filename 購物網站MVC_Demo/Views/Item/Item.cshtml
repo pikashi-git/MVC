@@ -1,0 +1,39 @@
+﻿@model 購物網站MVC_Demo.ViewModels.ItemDetailViewModel
+
+@{
+    ViewBag.Title = "商品資料-" + Model.ItemData.Name;
+}
+
+<h2>@Model.ItemData.Name</h2>
+@*顯示商品資訊*@
+@Html.DisplayNameFor(model => model.ItemData.Price):
+@Html.DisplayTextFor(model => model.ItemData.Price)
+<img src="@Html.Encode(Url.Content("~/Upload/"+Model.ItemData.Image))" />
+<br />
+@*限制使用者登入才顯示*@
+@if (User.Identity.IsAuthenticated)
+{
+    @*已在購物車中, 可移除*@
+    if (Model.InCart)
+    {
+    <text>商品已在購物車中, 從購物車中</text>
+        @Html.ActionLink("取出", "CartItemRemove", "Cart", new { itemID = Model.ItemData.ItemID, target = "Item" })
+
+    }
+    @*未在購物車中, 可加入*@
+    else
+    {
+        @Html.ActionLink("放入購物車", "CartItemAdd", "Cart", new { itemID = Model.ItemData.ItemID, target = "Item" })
+    }
+    @*管理者可刪除商品*@
+    if (User.IsInRole("1"))
+    {
+        @Html.ActionLink("刪除", "Remove", "Item", new { itemID = Model.ItemData.ItemID })
+    }
+}
+@*未登入會員*@
+else
+{
+    <text>要使用購物車請先</text>
+    @Html.ActionLink("登入", "Login", "Users")
+}

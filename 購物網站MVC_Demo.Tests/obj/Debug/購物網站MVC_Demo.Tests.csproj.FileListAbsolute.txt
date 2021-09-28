@@ -1,0 +1,2 @@
+D:\專案\Git\購物網站MVC_Demo.Tests\obj\Debug\購物網站MVC_Demo.Tests.csprojAssemblyReference.cache
+D:\專案\Git\購物網站MVC_Demo.Tests\obj\Debug\購物網站MVC_Demo.Tests.csproj.CoreCompileInputs.cache

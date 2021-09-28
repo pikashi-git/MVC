@@ -1,0 +1,36 @@
+﻿@model 購物網站MVC_Demo.Models.Guestbook
+
+@{
+    ViewBag.Title = "回復留言";
+}
+@*建立回覆留言所需的表單*@
+@using (Html.BeginForm())
+{
+    <h3>回復留言</h3>
+    @*建立回覆內容表單*@
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.postContent)
+            </td>
+            <td>
+                @Model.postContent
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="postContent_reply">回覆內容</label>
+            </td>
+            <td>
+                <input type="text" id="postContent_reply" name="postContent_reply" />
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="回覆留言" />
+    @Html.ActionLink("返回列表", "Index")
+}
+
+@*匯入驗證欄位所需Javascript*@
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
