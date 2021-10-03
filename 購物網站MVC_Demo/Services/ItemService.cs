@@ -27,6 +27,7 @@ namespace 購物網站MVC_Demo.Services
                 {
                     item = new Item()
                     {
+                        ItemID = Convert.ToInt32(reader["itemID"]),
                         Name = Convert.ToString(reader["name"]),
                         Price = Convert.ToInt32(reader["price"]),
                         Image = Convert.ToString(reader["image"])

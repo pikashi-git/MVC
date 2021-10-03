@@ -16,13 +16,16 @@ namespace 購物網站MVC_Demo.Services
         public bool checkCartItem(string cartID, int itemID)
         {
             bool inCart = false;
-            string sql = @" select * from cartItem where cart_id=@cartID and itemID=@itemID; ";
-            IDB DB = new GuestbookDB(sql);
-            List<SqlParameter> paraList = new List<SqlParameter>();
-            paraList.Add(new SqlParameter("cartID", SqlDbType.VarChar) { Value = cartID });
-            paraList.Add(new SqlParameter("itemID", SqlDbType.Int) { Value = itemID });
-            DB.ParameterList = paraList.ToArray();
-            inCart = DB.ActionScalar() != null ? true : false;
+            if (cartID != null)
+            {
+                string sql = @" select * from cartItem where cart_id=@cartID and itemID=@itemID; ";
+                IDB DB = new GuestbookDB(sql);
+                List<SqlParameter> paraList = new List<SqlParameter>();
+                paraList.Add(new SqlParameter("cartID", SqlDbType.VarChar) { Value = cartID });
+                paraList.Add(new SqlParameter("itemID", SqlDbType.Int) { Value = itemID });
+                DB.ParameterList = paraList.ToArray();
+                inCart = DB.ActionScalar() != null ? true : false;
+            }
             return inCart;
         }
 

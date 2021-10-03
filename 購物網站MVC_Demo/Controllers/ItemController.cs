@@ -69,12 +69,21 @@ namespace 購物網站MVC_Demo.Controllers
         {
             if (data.ItemImage != null)
             {
-                string fileName = Path.GetFileName(data.ItemImage.FileName);
-                string fileUrl = Path.Combine(Server.MapPath("~/Upload/"), fileName);
-                data.ItemImage.SaveAs(fileUrl);
-                data.ItemData.Image = fileName;
-                itemService.AddItem(data.ItemData);
-                return RedirectToAction("Index");
+                string[] allow = new string[] { ".jpg", ".png" };
+                if (allow.Contains(Path.GetExtension(data.ItemImage.FileName)))
+                {
+                    string fileName = Path.GetFileName(data.ItemImage.FileName);
+                    string fileUrl = Path.Combine(Server.MapPath("~/Upload/"), fileName);
+                    data.ItemImage.SaveAs(fileUrl);
+                    data.ItemData.Image = fileName;
+                    itemService.AddItem(data.ItemData);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("ItemImage", "上傳檔案格式錯誤");
+                    return View(data);
+                }
             }
             else
             {

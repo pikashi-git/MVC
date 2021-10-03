@@ -13,9 +13,9 @@ namespace 購物網站MVC_Demo.ViewModels
         public Item ItemData { get; set; }
 
         [DisplayName("商品圖片")]
-        [FileExtensions(ErrorMessage ="所上傳檔案不是圖片")]
-        public HttpPostedFile ItemImage { get; set; }
-        //[FileExtensions(ErrorMessage = "所上傳檔案不是圖片", Extensions = "jpg,png")]
-        //public HttpPostedFileBase ItemImage { get; set; }
+        //[FileExtensions(ErrorMessage ="所上傳檔案不是圖片")]
+        [FileExtensions(ErrorMessage = "所上傳檔案不是圖片", Extensions = "jpg,png")]
+        public HttpPostedFileBase ItemImage { get; set; }
+
     }
 }

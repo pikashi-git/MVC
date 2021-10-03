@@ -123,7 +123,8 @@ where C.userID like @search or C.postContent like @search;
                     DB.ParameterList = sqlParaList.ToArray();
                     string total = DB.ActionScalar();
                     page.GeneratePage(Convert.ToInt32(total));
-                    
+                    sqlParaList.Clear();
+
                     DB = new GuestbookDB(@"
 select * from 
 (
@@ -142,6 +143,12 @@ where 序號 > (@page-1)*@item and 序號 < @page*@item + 1
                 }
                 else
                 {
+                    DB = new GuestbookDB(@"
+select count(*) from guestbook C inner join users D on C.userID=D.userID 
+ ");
+                    string total = DB.ActionScalar();
+                    page.GeneratePage(Convert.ToInt32(total));
+
                     DB = new GuestbookDB(@"
 select * from 
 (

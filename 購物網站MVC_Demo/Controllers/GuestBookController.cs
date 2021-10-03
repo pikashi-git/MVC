@@ -24,7 +24,8 @@ namespace 購物網站MVC_Demo.Controllers
         public ActionResult List(string search, int page = 1)
         {
             Paging pages = new Paging(page);
-            return PartialView(Service.GetguestbookInfoList(search, pages));
+            PartialViewResult result = PartialView(Service.GetguestbookInfoList(search, pages));
+            return result;
         }
 
         //清單

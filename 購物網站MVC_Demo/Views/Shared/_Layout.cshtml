@@ -27,6 +27,7 @@
                     @*使用者登入後才顯示*@
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <li>@Html.ActionLink("商品首頁","Index","Item")</li>
                         <li>你好, @(User.Identity.Name)</li>
                         <li>@Html.ActionLink("更改密碼", "ChangePassword", "Users")</li>
                         <li>@Html.ActionLink("登出", "Logout", "Users")</li>

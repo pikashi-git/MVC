@@ -16,19 +16,18 @@
         @*購物車功能需登入*@
         @if (User.Identity.IsAuthenticated)
         {
-            @*已在購物車中可移除*@
+            @*已在購物車中可取出購物車*@
             if (Model.InCart)
             {
-                <text>已在購物車中, 從購物車中</text>
                 @*使用Ajax Helper呼叫*@
-                @Ajax.ActionLink("取出", "CartItemRemove", "Cart"
+                @Ajax.ActionLink("取出購物車", "CartItemRemove", "Cart"
                 , new { itemID = Model.ItemData.ItemID, target = "ItemBlock" }
                 , new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ItemBlock-" + Model.ItemData.ItemID })
             }
-            @*未在購物車中可加入*@
+            @*未在購物車中可加入購物車*@
             {
                 @*使用Ajax Helper呼叫*@
-                @Ajax.ActionLink("放入", "CartItemAdd", "Cart"
+                @Ajax.ActionLink("放入購物車", "CartItemAdd", "Cart"
                 , new { itemID = Model.ItemData.ItemID, target = "ItemBlock" }
                 , new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ItemBlock-" + Model.ItemData.ItemID })
             }
@@ -36,29 +35,8 @@
         @*若無登入, 顯示登入連結*@
         else
         {
-            < text > 要使用購物車請先 </ text >
+            <text>要使用購物車請先</text>
             @Html.ActionLink("登入", "Login", "Users")
         }
     </tr>
 </table>
-
-
-
-<div>
-    <h4>ItemDetailViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.InCart)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.InCart)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
