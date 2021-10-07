@@ -6,20 +6,29 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CoreMVC_Test.Models;
+using CoreDBLibrary.Models;
 
 namespace CoreMVC_Test.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly GuestBookContext _GuestBookContext;
+        public HomeController(GuestBookContext guestBookContext)
         {
-            _logger = logger;
+            _GuestBookContext = guestBookContext;
         }
 
         public IActionResult Index()
         {
+            ViewData["Content"] = (from a in _GuestBookContext.Guestbooks
+                                 where a.Id == 43
+                                 select a.PostContent).SingleOrDefault();
             return View();
         }
 

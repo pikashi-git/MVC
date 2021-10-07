@@ -19,7 +19,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "購物網站MVC_Demo.Tests"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPage_Test", "RazorPage_Test\RazorPage_Test.csproj", "{B5CF2270-8601-4B76-96D5-061E4169B12A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreMVC_Test", "CoreMVC_Test\CoreMVC_Test.csproj", "{ED6977B5-C420-4863-9232-1EF0D7A0C885}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreMVC_Test", "CoreMVC_Test\CoreMVC_Test.csproj", "{ED6977B5-C420-4863-9232-1EF0D7A0C885}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDBLibrary", "CoreDBLibrary\CoreDBLibrary.csproj", "{CDCCDBCC-F817-4AFD-BCC8-2792F9452988}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{ED6977B5-C420-4863-9232-1EF0D7A0C885}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED6977B5-C420-4863-9232-1EF0D7A0C885}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED6977B5-C420-4863-9232-1EF0D7A0C885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDCCDBCC-F817-4AFD-BCC8-2792F9452988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDCCDBCC-F817-4AFD-BCC8-2792F9452988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDCCDBCC-F817-4AFD-BCC8-2792F9452988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDCCDBCC-F817-4AFD-BCC8-2792F9452988}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

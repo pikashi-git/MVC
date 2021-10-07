@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using 留言板實作.Controllers;
 using 購物網站MVC_Demo;
 using 購物網站MVC_Demo.Controllers;
 

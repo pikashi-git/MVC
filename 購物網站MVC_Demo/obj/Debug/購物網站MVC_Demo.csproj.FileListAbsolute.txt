@@ -88,3 +88,4 @@ D:\專案\Git\購物網站MVC_Demo\obj\Debug\購物網站MVC_Demo.csproj.CoreCom
 D:\專案\Git\購物網站MVC_Demo\obj\Debug\購物網站MVC_Demo.csproj.CopyComplete
 D:\專案\Git\購物網站MVC_Demo\obj\Debug\留言板實作.dll
 D:\專案\Git\購物網站MVC_Demo\obj\Debug\留言板實作.pdb
+D:\專案\Git\購物網站MVC_Demo\obj\Debug\購物網站MVC_Demo.csprojAssemblyReference.cache

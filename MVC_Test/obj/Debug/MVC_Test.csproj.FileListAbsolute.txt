@@ -97,3 +97,4 @@ D:\專案\Git\MVC_Test\obj\Debug\MVC_Test.csproj.CoreCompileInputs.cache
 D:\專案\Git\MVC_Test\obj\Debug\MVC_Test.csproj.CopyComplete
 D:\專案\Git\MVC_Test\obj\Debug\MVC網站.dll
 D:\專案\Git\MVC_Test\obj\Debug\MVC網站.pdb
+D:\專案\Git\MVC_Test\obj\Debug\MVC_Test.csprojAssemblyReference.cache
