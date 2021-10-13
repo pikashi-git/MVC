@@ -1,0 +1,12 @@
+D:\專案\Git\CoreDBLibrary\bin\Release\netcoreapp3.1\CoreDBLibrary.deps.json
+D:\專案\Git\CoreDBLibrary\bin\Release\netcoreapp3.1\CoreDBLibrary.runtimeconfig.json
+D:\專案\Git\CoreDBLibrary\bin\Release\netcoreapp3.1\CoreDBLibrary.runtimeconfig.dev.json
+D:\專案\Git\CoreDBLibrary\bin\Release\netcoreapp3.1\CoreDBLibrary.dll
+D:\專案\Git\CoreDBLibrary\bin\Release\netcoreapp3.1\CoreDBLibrary.pdb
+D:\專案\Git\CoreDBLibrary\obj\Release\netcoreapp3.1\CoreDBLibrary.csprojAssemblyReference.cache
+D:\專案\Git\CoreDBLibrary\obj\Release\netcoreapp3.1\CoreDBLibrary.AssemblyInfoInputs.cache
+D:\專案\Git\CoreDBLibrary\obj\Release\netcoreapp3.1\CoreDBLibrary.AssemblyInfo.cs
+D:\專案\Git\CoreDBLibrary\obj\Release\netcoreapp3.1\CoreDBLibrary.csproj.CoreCompileInputs.cache
+D:\專案\Git\CoreDBLibrary\obj\Release\netcoreapp3.1\CoreDBLibrary.dll
+D:\專案\Git\CoreDBLibrary\obj\Release\netcoreapp3.1\CoreDBLibrary.pdb
+D:\專案\Git\CoreDBLibrary\obj\Release\netcoreapp3.1\CoreDBLibrary.genruntimeconfig.cache

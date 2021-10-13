@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\專案\\Git\\RazorPage_Test\\RazorPage_Test.csproj",
-      "projectName": "RazorPage_Test",
-      "projectPath": "D:\\專案\\Git\\RazorPage_Test\\RazorPage_Test.csproj",
+      "projectUniqueName": "D:\\專案\\Git\\RazorPage_Test\\RazorPage.csproj",
+      "projectName": "RazorPage",
+      "projectPath": "D:\\專案\\Git\\RazorPage_Test\\RazorPage.csproj",
       "packagesPath": "C:\\Users\\vincent\\.nuget\\packages\\",
       "outputPath": "D:\\專案\\Git\\RazorPage_Test\\obj\\",
       "projectStyle": "PackageReference",

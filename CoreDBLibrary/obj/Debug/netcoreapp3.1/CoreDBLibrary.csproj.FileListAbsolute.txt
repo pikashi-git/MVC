@@ -9,3 +9,4 @@ D:\專案\Git\CoreDBLibrary\bin\Debug\netcoreapp3.1\CoreDBLibrary.runtimeconfig.
 D:\專案\Git\CoreDBLibrary\bin\Debug\netcoreapp3.1\CoreDBLibrary.runtimeconfig.dev.json
 D:\專案\Git\CoreDBLibrary\obj\Debug\netcoreapp3.1\CoreDBLibrary.genruntimeconfig.cache
 D:\專案\Git\CoreDBLibrary\obj\Debug\netcoreapp3.1\CoreDBLibrary.csproj.CoreCompileInputs.cache
+D:\專案\Git\CoreDBLibrary\obj\Debug\netcoreapp3.1\CoreDBLibrary.csprojAssemblyReference.cache

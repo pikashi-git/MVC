@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UIO5eP0idRBANdyktAhzG7Jh3wyF3oYgHJQcuQEZStIu1KeQ/chaa1RUkYE1WCCl7YvpPuzSYeG2hJLRf/LwMA==",
+  "dgSpecHash": "ANNsjTnMEirREEHK/CeZrXRXnW2rUkCOjY7EvacICWoqBizNw+GtI196DZR7oe4WJ6AHbj25nakf18S5aNeXjA==",
   "success": true,
-  "projectFilePath": "D:\\專案\\Git\\RazorPage_Test\\RazorPage_Test.csproj",
+  "projectFilePath": "D:\\專案\\Git\\RazorPage_Test\\RazorPage.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vincent\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
   ],
