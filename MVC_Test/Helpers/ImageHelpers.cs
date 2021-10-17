@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security.AntiXss;
 
-namespace MVC_Test.Helpers
+namespace NetMVC.Helpers
 {
     public static class ImageHelpers
     {

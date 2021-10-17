@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MVC_Test.Filters
+namespace NetMVC.Filters
 {
     public class CustomFilter : ActionFilterAttribute
     {

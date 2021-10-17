@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetWebForm.資料讀取;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -7,7 +8,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Test.XSD;
 
 namespace Test.資料讀取
 {
@@ -15,8 +15,8 @@ namespace Test.資料讀取
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            guestbook gb = new guestbook();
-            gb = (guestbook)GetDataTable();
+            guestbook _guestbook = new guestbook();
+            _guestbook = (guestbook)GetDataTable();
         }
 
         DataSet GetDataTable()

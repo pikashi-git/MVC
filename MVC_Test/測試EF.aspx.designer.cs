@@ -7,10 +7,8 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace MVC_Test
+namespace NetMVC
 {
-
-
     public partial class 測試EF
     {
 

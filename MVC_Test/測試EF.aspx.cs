@@ -1,4 +1,4 @@
-﻿using MVC_Test.Models;
+﻿using NetMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MVC_Test
+namespace EMDX
 {
     public partial class 測試EF : System.Web.UI.Page
     {
@@ -17,7 +17,7 @@ namespace MVC_Test
             DoSelectByKey2(ef, 1, name: "group1");
 
             DoSelectByKey(ef, 3);
-            DoSelectByArgs(ef, "JOJO");
+            DoSelectByAge(ef, 23);
             DoSelect(ef);
 
             //DoUpdate(ef);
@@ -60,10 +60,10 @@ namespace MVC_Test
             ef.users.Add(_users);
             ef.SaveChanges();
         }
-        void DoSelectByArgs(testDBEntities ef, string key)
+        void DoSelectByAge(testDBEntities ef, int age)
         {
             //List<users> _users = ef.users.Where(x => x.userName == key).ToList();
-            List<users> _users = ef.users.Where(x => x.age == 23).ToList();
+            List<users> _users = ef.users.Where(x => x.age == age).ToList();
             foreach (users _u in _users)
             {
                 Response.Write(_u.userID + ", " + _u.userName + ", " + _u.age + ", " + _u.address);

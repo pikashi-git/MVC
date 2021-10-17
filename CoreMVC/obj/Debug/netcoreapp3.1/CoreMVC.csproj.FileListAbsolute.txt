@@ -79,3 +79,4 @@ D:\專案\Git\CoreMVC\obj\Debug\netcoreapp3.1\staticwebassets\CoreMVC.StaticWebA
 D:\專案\Git\CoreMVC\obj\Debug\netcoreapp3.1\CoreMVC.dll
 D:\專案\Git\CoreMVC\obj\Debug\netcoreapp3.1\CoreMVC.pdb
 D:\專案\Git\CoreMVC\obj\Debug\netcoreapp3.1\CoreMVC.genruntimeconfig.cache
+D:\專案\Git\CoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index2.cshtml.g.cs

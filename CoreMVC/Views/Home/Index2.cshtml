@@ -1,0 +1,21 @@
+﻿@using CoreMVC.Models
+@model IEnumerable<Employee>
+
+@{ 
+    Layout = null;
+}
+
+    <html>
+<head></head>
+<body>
+    @foreach (var item in Model)
+    {
+    <div>
+        <p>編號:@item.Id</p>
+        <p>編號:@item.Name</p>
+        <p>編號:@item.Age</p>
+        <p>編號:@item.Gender</p>
+    </div>
+    }
+</body>
+    </html>

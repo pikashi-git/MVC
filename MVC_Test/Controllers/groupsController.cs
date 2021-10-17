@@ -6,9 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MVC_Test.Models;
+using MVC網站.Models;
+using NetMVC.Models;
 
-namespace MVC_Test.Controllers
+namespace NetMVC.Controllers
 {
     public class groupsController : Controller
     {
@@ -27,7 +28,7 @@ namespace MVC_Test.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            groups groups = db.groups.Find(id);
+            group groups = db.groups.Find(id);
             if (groups == null)
             {
                 return HttpNotFound();
@@ -46,7 +47,7 @@ namespace MVC_Test.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "groupID,groupName,area,misc")] groups groups)
+        public ActionResult Create([Bind(Include = "groupID,groupName,area,misc")] group groups)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +66,7 @@ namespace MVC_Test.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            groups groups = db.groups.Find(id);
+            group groups = db.groups.Find(id);
             if (groups == null)
             {
                 return HttpNotFound();
@@ -78,7 +79,7 @@ namespace MVC_Test.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "groupID,groupName,area,misc")] groups groups)
+        public ActionResult Edit([Bind(Include = "groupID,groupName,area,misc")] group groups)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +97,7 @@ namespace MVC_Test.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            groups groups = db.groups.Find(id);
+            group groups = db.groups.Find(id);
             if (groups == null)
             {
                 return HttpNotFound();
@@ -109,7 +110,7 @@ namespace MVC_Test.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(short id)
         {
-            groups groups = db.groups.Find(id);
+            group groups = db.groups.Find(id);
             db.groups.Remove(groups);
             db.SaveChanges();
             return RedirectToAction("Index");

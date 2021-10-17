@@ -1,11 +1,11 @@
-﻿using MVC_Test.Filters;
-using MVC_Test.ViewModels.Test1;
+﻿using NetMVC.Filters;
+using NetMVC.ViewModels.Test1;
 using System;
 using System.Configuration;
 using System.IO;
 using System.Web.Mvc;
 
-namespace MVC_Test.Controllers
+namespace NetMVC.Controllers
 {
     ////[Authorize]
     public class Test1Controller : Controller

@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace MVC_Test.Models
+namespace NetMVC.Models
 {
     public class DepartmentContext : DbContext
     {
@@ -19,8 +19,8 @@ namespace MVC_Test.Models
         {
         }
 
-        public System.Data.Entity.DbSet<MVC_Test.Models.Department> Departments { get; set; }
+        public System.Data.Entity.DbSet<NetMVC.Models.Department> Departments { get; set; }
 
-        public System.Data.Entity.DbSet<MVC_Test.Models.Location> Locations { get; set; }
+        public System.Data.Entity.DbSet<NetMVC.Models.Location> Locations { get; set; }
     }
 }

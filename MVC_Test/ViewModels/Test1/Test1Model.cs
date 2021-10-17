@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using CompareAttribute = System.ComponentModel.DataAnnotations.CompareAttribute;
 
-namespace MVC_Test.ViewModels.Test1
+namespace NetMVC.ViewModels.Test1
 {
     public class Test1Model
     {

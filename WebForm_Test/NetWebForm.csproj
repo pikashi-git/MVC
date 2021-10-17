@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Test</RootNamespace>
-    <AssemblyName>Test</AssemblyName>
+    <RootNamespace>NetWebForm</RootNamespace>
+    <AssemblyName>NetWebForm</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -42,6 +42,12 @@
     <Reference Include="AntiXssLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
       <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\AntiXssLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlSanitizationLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
       <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
     </Reference>
@@ -49,6 +55,8 @@
       <HintPath>..\packages\jose-jwt.3.2.0\lib\net40\jose-jwt.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,6 +75,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="EntityFramework\GuestBookEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GuestBookEntity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EntityFramework\GuestBookEntity.edmx.diagram">
+      <DependentUpon>GuestBookEntity.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -75,16 +90,27 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="Cookie\Cookie.aspx" />
+    <Content Include="EntityFramework\EntityFramework.aspx" />
+    <Content Include="EntityFramework\GuestBookEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GuestBookEntity.edmx</DependentUpon>
+      <LastGenOutput>GuestBookEntity.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityFramework\GuestBookEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GuestBookEntity.edmx</DependentUpon>
+      <LastGenOutput>GuestBookEntity.cs</LastGenOutput>
+    </Content>
     <Content Include="JS\AddJS.aspx" />
-    <Content Include="XSD\guestbook.xsc">
+    <Content Include="資料讀取\guestbook.xsc">
       <DependentUpon>guestbook.xsd</DependentUpon>
     </Content>
-    <None Include="XSD\guestbook.xsd">
+    <None Include="資料讀取\guestbook.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>guestbook.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="XSD\guestbook.xss">
+    <Content Include="資料讀取\guestbook.xss">
       <DependentUpon>guestbook.xsd</DependentUpon>
     </Content>
   </ItemGroup>
@@ -114,6 +140,46 @@
     <Compile Include="Cookie\Cookie.aspx.designer.cs">
       <DependentUpon>Cookie.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EntityFramework\cart.cs">
+      <DependentUpon>GuestBookEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\cartItem.cs">
+      <DependentUpon>GuestBookEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\EntityFramework.aspx.cs">
+      <DependentUpon>EntityFramework.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntityFramework\EntityFramework.aspx.designer.cs">
+      <DependentUpon>EntityFramework.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\guestbook.cs">
+      <DependentUpon>GuestBookEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\GuestBookEntity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GuestBookEntity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\GuestBookEntity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GuestBookEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\GuestBookEntity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GuestBookEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\item.cs">
+      <DependentUpon>GuestBookEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\role.cs">
+      <DependentUpon>GuestBookEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\user.cs">
+      <DependentUpon>GuestBookEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="JS\AddJS.aspx.cs">
       <DependentUpon>AddJS.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -135,14 +201,6 @@
     <Compile Include="Static操作\Static測試_Class%28B%29.aspx.designer.cs">
       <DependentUpon>Static測試_Class%28B%29.aspx</DependentUpon>
     </Compile>
-    <Compile Include="XSD\guestbook.cs">
-      <DependentUpon>guestbook.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="XSD\guestbook.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>guestbook.xsd</DependentUpon>
-    </Compile>
     <Compile Include="網路安全\JWTTest.aspx.cs">
       <DependentUpon>JWTTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -156,6 +214,11 @@
     </Compile>
     <Compile Include="網路安全\UserIdentity.aspx.designer.cs">
       <DependentUpon>UserIdentity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="資料讀取\guestbook.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>guestbook.xsd</DependentUpon>
     </Compile>
     <Compile Include="資料讀取\XSDTest.aspx.cs">
       <DependentUpon>XSDTest.aspx</DependentUpon>
@@ -206,6 +269,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

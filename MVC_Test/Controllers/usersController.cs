@@ -6,37 +6,36 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MVC_Test.Models;
+using MVC網站.Models;
 
-namespace MVC_Test.Controllers
+namespace MVC網站.Controllers
 {
     public class usersController : Controller
     {
         private testDBEntities db = new testDBEntities();
 
-        [ActionName("Default")]
-        //[HttpPost]
+        // GET: users
         public ActionResult Index()
         {
             return View(db.users.ToList());
         }
 
-        
+        // GET: users/Details/5
         public ActionResult Details(short? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            users users = db.users.Find(id);
-            if (users == null)
+            user user = db.users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(users);
+            return View(user);
         }
 
-        [NonAction]
+        // GET: users/Create
         public ActionResult Create()
         {
             return View();
@@ -47,16 +46,16 @@ namespace MVC_Test.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userID,userName,age,address,groupID")] users users)
+        public ActionResult Create([Bind(Include = "userID,userName,age,address,groupID")] user user)
         {
             if (ModelState.IsValid)
             {
-                db.users.Add(users);
+                db.users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(users);
+            return View(user);
         }
 
         // GET: users/Edit/5
@@ -66,12 +65,12 @@ namespace MVC_Test.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            users users = db.users.Find(id);
-            if (users == null)
+            user user = db.users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(users);
+            return View(user);
         }
 
         // POST: users/Edit/5
@@ -79,15 +78,15 @@ namespace MVC_Test.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userID,userName,age,address,groupID")] users users)
+        public ActionResult Edit([Bind(Include = "userID,userName,age,address,groupID")] user user)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(users).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(users);
+            return View(user);
         }
 
         // GET: users/Delete/5
@@ -97,12 +96,12 @@ namespace MVC_Test.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            users users = db.users.Find(id);
-            if (users == null)
+            user user = db.users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(users);
+            return View(user);
         }
 
         // POST: users/Delete/5
@@ -110,8 +109,8 @@ namespace MVC_Test.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(short id)
         {
-            users users = db.users.Find(id);
-            db.users.Remove(users);
+            user user = db.users.Find(id);
+            db.users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

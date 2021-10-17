@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="測試EF.aspx.cs" Inherits="MVC_Test.測試EF" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="測試EF.aspx.cs" Inherits="NetMVC.測試EF" %>
 
 <!DOCTYPE html>
 

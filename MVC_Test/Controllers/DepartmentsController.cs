@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MVC_Test.Models;
+using NetMVC.Models;
 
-namespace MVC_Test.Controllers
+namespace NetMVC.Controllers
 {
     public class DepartmentsController : Controller
     {

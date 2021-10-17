@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace MVC_Test.Models
+namespace NetMVC.Models
 {
     [Table("Location")]
     public class Location

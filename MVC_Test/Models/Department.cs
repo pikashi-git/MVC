@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace MVC_Test.Models
+namespace NetMVC.Models
 {
     public class Department
     {
