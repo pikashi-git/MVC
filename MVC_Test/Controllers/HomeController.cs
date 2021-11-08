@@ -11,9 +11,24 @@ namespace NetMVC.Controllers
     {
         public ActionResult Index()
         {
+            //Response.Write("<p>AAA</p>");
+            //Response.End();
+
             ViewBag.Message = ConfigurationManager.AppSettings["testXMLTransform"];
 
             return View();
+        }
+
+        [ActionName("IndexTest")]
+        public ActionResult Index1()
+        {
+            return View("Index");
+        }
+
+        [NonAction]
+        public ActionResult IndexNonAction()
+        {
+            return View("Index");
         }
 
         public ActionResult About()
@@ -45,6 +60,26 @@ namespace NetMVC.Controllers
         public ActionResult CustomView(string view)
         {
             return View(view);
+        }
+
+        public ActionResult HttpDelete1()
+        {
+            return View();
+        }
+
+        //[HttpDelete]
+        //[HttpPut]
+        //[HttpGet]
+        [HttpPost]
+        public ActionResult HttpDelete2()
+        {
+            return Content("HttpDelete Attribute");
+        }
+
+        [HttpPut]
+        public ActionResult HttpPut()
+        {
+            return Content("HttpPut Attribute");
         }
     }
 }

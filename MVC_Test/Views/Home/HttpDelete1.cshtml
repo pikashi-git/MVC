@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "HttpDelete1";
+}
+
+<h2>HttpDelete1</h2>
+
+<form action="/Home/HttpDelete2" method="post">
+    @*@(Html.HttpMethodOverride(HttpVerbs.Put))*@
+    <input type="submit" value="送出" />
+</form>
+

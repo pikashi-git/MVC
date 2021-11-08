@@ -1,3 +1,4 @@
+D:\專案\Git\CoreEmpty\bin\Debug\netcoreapp3.1\web.config
 D:\專案\Git\CoreEmpty\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\專案\Git\CoreEmpty\bin\Debug\netcoreapp3.1\appsettings.json
 D:\專案\Git\CoreEmpty\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -7,7 +8,6 @@ D:\專案\Git\CoreEmpty\bin\Debug\netcoreapp3.1\CoreEmpty.runtimeconfig.json
 D:\專案\Git\CoreEmpty\bin\Debug\netcoreapp3.1\CoreEmpty.runtimeconfig.dev.json
 D:\專案\Git\CoreEmpty\bin\Debug\netcoreapp3.1\CoreEmpty.dll
 D:\專案\Git\CoreEmpty\bin\Debug\netcoreapp3.1\CoreEmpty.pdb
-D:\專案\Git\CoreEmpty\obj\Debug\netcoreapp3.1\CoreEmpty.csprojAssemblyReference.cache
 D:\專案\Git\CoreEmpty\obj\Debug\netcoreapp3.1\CoreEmpty.AssemblyInfoInputs.cache
 D:\專案\Git\CoreEmpty\obj\Debug\netcoreapp3.1\CoreEmpty.AssemblyInfo.cs
 D:\專案\Git\CoreEmpty\obj\Debug\netcoreapp3.1\CoreEmpty.csproj.CoreCompileInputs.cache
@@ -18,4 +18,4 @@ D:\專案\Git\CoreEmpty\obj\Debug\netcoreapp3.1\staticwebassets\CoreEmpty.Static
 D:\專案\Git\CoreEmpty\obj\Debug\netcoreapp3.1\CoreEmpty.dll
 D:\專案\Git\CoreEmpty\obj\Debug\netcoreapp3.1\CoreEmpty.pdb
 D:\專案\Git\CoreEmpty\obj\Debug\netcoreapp3.1\CoreEmpty.genruntimeconfig.cache
-D:\專案\Git\CoreEmpty\bin\Debug\netcoreapp3.1\web.config
+D:\專案\Git\CoreEmpty\obj\Debug\netcoreapp3.1\CoreEmpty.csprojAssemblyReference.cache

@@ -84,8 +84,8 @@ D:\專案\Git\購物網站MVC_Demo\bin\zh-Hant\System.Web.Razor.resources.dll
 D:\專案\Git\購物網站MVC_Demo\bin\zh-Hant\System.Web.WebPages.resources.dll
 D:\專案\Git\購物網站MVC_Demo\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
 D:\專案\Git\購物網站MVC_Demo\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
+D:\專案\Git\購物網站MVC_Demo\obj\Debug\購物網站MVC_Demo.csprojAssemblyReference.cache
 D:\專案\Git\購物網站MVC_Demo\obj\Debug\購物網站MVC_Demo.csproj.CoreCompileInputs.cache
 D:\專案\Git\購物網站MVC_Demo\obj\Debug\購物網站MVC_Demo.csproj.CopyComplete
 D:\專案\Git\購物網站MVC_Demo\obj\Debug\留言板實作.dll
 D:\專案\Git\購物網站MVC_Demo\obj\Debug\留言板實作.pdb
-D:\專案\Git\購物網站MVC_Demo\obj\Debug\購物網站MVC_Demo.csprojAssemblyReference.cache

@@ -16,7 +16,7 @@ namespace NetWebForm.EntityFramework
     public partial class GuestBookEntities : DbContext
     {
         public GuestBookEntities()
-            : base("name=GuestBookEntities")
+            : base("name=GuestBookEntities1")
         {
         }
     

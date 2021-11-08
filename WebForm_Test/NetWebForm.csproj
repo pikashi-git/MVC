@@ -102,6 +102,8 @@
       <LastGenOutput>GuestBookEntity.cs</LastGenOutput>
     </Content>
     <Content Include="JS\AddJS.aspx" />
+    <Content Include="Request值\index.aspx" />
+    <Content Include="Request值\index2.aspx" />
     <Content Include="資料讀取\guestbook.xsc">
       <DependentUpon>guestbook.xsd</DependentUpon>
     </Content>
@@ -186,6 +188,20 @@
     </Compile>
     <Compile Include="JS\AddJS.aspx.designer.cs">
       <DependentUpon>AddJS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Request值\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Request值\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Request值\index2.aspx.cs">
+      <DependentUpon>index2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Request值\index2.aspx.designer.cs">
+      <DependentUpon>index2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Static操作\Static測試_Class%28A%29.aspx.cs">
       <DependentUpon>Static測試_Class%28A%29.aspx</DependentUpon>
