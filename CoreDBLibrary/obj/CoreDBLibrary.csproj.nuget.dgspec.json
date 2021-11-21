@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\專案\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj": {}
+    "D:\\專案\\GitHub\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj": {}
   },
   "projects": {
-    "D:\\專案\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj": {
+    "D:\\專案\\GitHub\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\專案\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj",
+        "projectUniqueName": "D:\\專案\\GitHub\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj",
         "projectName": "CoreDBLibrary",
-        "projectPath": "D:\\專案\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj",
+        "projectPath": "D:\\專案\\GitHub\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj",
         "packagesPath": "C:\\Users\\vincent\\.nuget\\packages\\",
-        "outputPath": "D:\\專案\\Git\\CoreDBLibrary\\obj\\",
+        "outputPath": "D:\\專案\\GitHub\\Git\\CoreDBLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vincent\\AppData\\Roaming\\NuGet\\NuGet.Config",

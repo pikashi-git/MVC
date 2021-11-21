@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RjYlzAaQIdPn+FljorrqLgcAZG+36I7HCes1GqcD6GjLwdljAX9K2p/OKQfwZtOIGz0Zk0JM0hrRtPCOMH5VXw==",
+  "dgSpecHash": "JE5Sebo1y1qkiZLDIuKSMcQy3c3ewXUSkjkH+Pr00vM6fX222yV/OmD924E0VPlnSgcydjPEi7iSqYH6lFZupw==",
   "success": true,
-  "projectFilePath": "D:\\專案\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj",
+  "projectFilePath": "D:\\專案\\GitHub\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vincent\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\vincent\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

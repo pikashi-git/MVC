@@ -1,27 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "D:\\專案\\Git\\類別庫B\\類別庫B.csproj": {}
+    "D:\\專案\\GitHub\\Git\\類別庫B\\類別庫B.csproj": {}
   },
   "projects": {
-    "D:\\專案\\Git\\類別庫A\\類別庫A.csproj": {
+    "D:\\專案\\GitHub\\Git\\類別庫A\\類別庫A.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\專案\\Git\\類別庫A\\類別庫A.csproj",
+        "projectUniqueName": "D:\\專案\\GitHub\\Git\\類別庫A\\類別庫A.csproj",
         "projectName": "類別庫A",
-        "projectPath": "D:\\專案\\Git\\類別庫A\\類別庫A.csproj"
+        "projectPath": "D:\\專案\\GitHub\\Git\\類別庫A\\類別庫A.csproj"
       },
       "frameworks": {
         "net472": {}
       }
     },
-    "D:\\專案\\Git\\類別庫B\\類別庫B.csproj": {
+    "D:\\專案\\GitHub\\Git\\類別庫B\\類別庫B.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\專案\\Git\\類別庫B\\類別庫B.csproj",
+        "projectUniqueName": "D:\\專案\\GitHub\\Git\\類別庫B\\類別庫B.csproj",
         "projectName": "類別庫B",
-        "projectPath": "D:\\專案\\Git\\類別庫B\\類別庫B.csproj",
+        "projectPath": "D:\\專案\\GitHub\\Git\\類別庫B\\類別庫B.csproj",
         "packagesPath": "C:\\Users\\vincent\\.nuget\\packages\\",
-        "outputPath": "D:\\專案\\Git\\類別庫B\\obj\\",
+        "outputPath": "D:\\專案\\GitHub\\Git\\類別庫B\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vincent\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,8 +37,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "D:\\專案\\Git\\類別庫A\\類別庫A.csproj": {
-                "projectPath": "D:\\專案\\Git\\類別庫A\\類別庫A.csproj"
+              "D:\\專案\\GitHub\\Git\\類別庫A\\類別庫A.csproj": {
+                "projectPath": "D:\\專案\\GitHub\\Git\\類別庫A\\類別庫A.csproj"
               }
             }
           }

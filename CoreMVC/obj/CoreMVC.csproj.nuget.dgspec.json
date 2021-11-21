@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\專案\\Git\\CoreMVC\\CoreMVC.csproj": {}
+    "D:\\專案\\GitHub\\Git\\CoreMVC\\CoreMVC.csproj": {}
   },
   "projects": {
-    "D:\\專案\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj": {
+    "D:\\專案\\GitHub\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\專案\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj",
+        "projectUniqueName": "D:\\專案\\GitHub\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj",
         "projectName": "CoreDBLibrary",
-        "projectPath": "D:\\專案\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj",
+        "projectPath": "D:\\專案\\GitHub\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj",
         "packagesPath": "C:\\Users\\vincent\\.nuget\\packages\\",
-        "outputPath": "D:\\專案\\Git\\CoreDBLibrary\\obj\\",
+        "outputPath": "D:\\專案\\GitHub\\Git\\CoreDBLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vincent\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -74,14 +74,14 @@
         }
       }
     },
-    "D:\\專案\\Git\\CoreMVC\\CoreMVC.csproj": {
+    "D:\\專案\\GitHub\\Git\\CoreMVC\\CoreMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\專案\\Git\\CoreMVC\\CoreMVC.csproj",
+        "projectUniqueName": "D:\\專案\\GitHub\\Git\\CoreMVC\\CoreMVC.csproj",
         "projectName": "CoreMVC",
-        "projectPath": "D:\\專案\\Git\\CoreMVC\\CoreMVC.csproj",
+        "projectPath": "D:\\專案\\GitHub\\Git\\CoreMVC\\CoreMVC.csproj",
         "packagesPath": "C:\\Users\\vincent\\.nuget\\packages\\",
-        "outputPath": "D:\\專案\\Git\\CoreMVC\\obj\\",
+        "outputPath": "D:\\專案\\GitHub\\Git\\CoreMVC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vincent\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -97,8 +97,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\專案\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj": {
-                "projectPath": "D:\\專案\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj"
+              "D:\\專案\\GitHub\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj": {
+                "projectPath": "D:\\專案\\GitHub\\Git\\CoreDBLibrary\\CoreDBLibrary.csproj"
               }
             }
           }

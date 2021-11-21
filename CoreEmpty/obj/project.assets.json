@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\專案\\Git\\CoreEmpty\\CoreEmpty.csproj",
+      "projectUniqueName": "D:\\專案\\GitHub\\Git\\CoreEmpty\\CoreEmpty.csproj",
       "projectName": "CoreEmpty",
-      "projectPath": "D:\\專案\\Git\\CoreEmpty\\CoreEmpty.csproj",
+      "projectPath": "D:\\專案\\GitHub\\Git\\CoreEmpty\\CoreEmpty.csproj",
       "packagesPath": "C:\\Users\\vincent\\.nuget\\packages\\",
-      "outputPath": "D:\\專案\\Git\\CoreEmpty\\obj\\",
+      "outputPath": "D:\\專案\\GitHub\\Git\\CoreEmpty\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vincent\\AppData\\Roaming\\NuGet\\NuGet.Config",

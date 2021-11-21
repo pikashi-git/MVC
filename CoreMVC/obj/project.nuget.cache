@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7h7Ku5Eg8jnEADRCrzJhUWPF0Q1WoNTnERfW0NdJKNoDX9RopZBVq2h7poaZz4wKHrRclIP8/CzKXRhxaFRxjQ==",
+  "dgSpecHash": "zYK+FLx4SV0cUQ0BhaQM2abOmcs+HF1xz4y0lOxeGCajsa4+dtP3Ol9nF136ZkHH04GdByu+49bE+3mpyWso7w==",
   "success": true,
-  "projectFilePath": "D:\\專案\\Git\\CoreMVC\\CoreMVC.csproj",
+  "projectFilePath": "D:\\專案\\GitHub\\Git\\CoreMVC\\CoreMVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vincent\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\vincent\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

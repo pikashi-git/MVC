@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\專案\\Git\\RazorPage_Test\\RazorPage.csproj",
+      "projectUniqueName": "D:\\專案\\GitHub\\Git\\RazorPage_Test\\RazorPage.csproj",
       "projectName": "RazorPage",
-      "projectPath": "D:\\專案\\Git\\RazorPage_Test\\RazorPage.csproj",
+      "projectPath": "D:\\專案\\GitHub\\Git\\RazorPage_Test\\RazorPage.csproj",
       "packagesPath": "C:\\Users\\vincent\\.nuget\\packages\\",
-      "outputPath": "D:\\專案\\Git\\RazorPage_Test\\obj\\",
+      "outputPath": "D:\\專案\\GitHub\\Git\\RazorPage_Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vincent\\AppData\\Roaming\\NuGet\\NuGet.Config",
