@@ -1,0 +1,27 @@
+﻿@model 購物網站MVC_Demo.ViewModels.GuestbookInfoViewModel
+
+@{
+    ViewBag.Title = "留言列表";
+}
+
+@*載入新增資料頁面*@
+<div id="CreateData">
+    @Html.Action("Create")
+</div>
+
+<h2>留言板</h2>
+
+@Html.AntiForgeryToken()
+
+@*載入資料清單頁面*@
+@Html.Action("List")
+
+<div>
+    @Html.ActionLink("首頁", "Index", "Home")
+</div>
+@*匯入驗證欄位所需Javascript*@
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery_unobtrusive")
+}

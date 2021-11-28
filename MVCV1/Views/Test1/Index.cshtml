@@ -1,0 +1,181 @@
+﻿
+@model NetMVC.ViewModels.Test1.Test1Model
+@using NetMVC.Helpers
+
+@{
+    var data = (NetMVC.ViewModels.Test1.Test1Model)Model;
+}
+<h2>@ViewBag.Page</h2>
+A
+@ViewBag.Message
+B
+<table class="table">
+    <tr>
+        <td>
+            Index
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Image("https://s.yimg.com/ny/api/res/1.2/ukP7byIUd4AB1Xmhm1oMCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTY4NS4yO2NmPXdlYnA-/https://s.yimg.com/os/creatr-uploaded-images/2021-03/f7b7d020-7c87-11eb-bbf7-6240fb656695"
+    , "台積電設廠")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Image("img.abc", "https://s.yimg.com/ny/api/res/1.2/ukP7byIUd4AB1Xmhm1oMCg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTY4NS4yO2NmPXdlYnA-/https://s.yimg.com/os/creatr-uploaded-images/2021-03/f7b7d020-7c87-11eb-bbf7-6240fb656695"
+    , "台積電設廠")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Url.Action("index")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Url.Action("index", "Home")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Url.Action("index", "Home", new { message = Url.Encode("<script>alert('test');</script>") })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Url.RouteUrl(new { Controller = "Home", Action = "index", Id = "0" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="@Url.Content("~/images/image1.png")" />
+        </td>
+    </tr>
+</table>
+@{TempData["TestName"] = "Test name"; }
+@{ ViewData["TestName1"] = "Test name1";}
+
+@if (ViewData["TestName1"] != TempData["TestName"])
+{
+    @:不一樣
+}
+else
+{
+    @:一樣
+}
+
+@{ string str = "<div>測試Raw</div>";}
+@Html.Raw(str)
+
+@helper IsModelNull()
+{
+    if (Model is null)
+    {
+        @:Model是空
+    }
+    else
+    {
+        @:Model不是空
+    }
+}
+@functions
+{
+    public bool IsModelNulls()
+    {
+        if (Model is null)
+            return true;
+        else
+            return false;
+    }
+}
+
+@IsModelNull()
+@if (IsModelNulls())
+{
+    @:Model是空
+}
+else
+{
+    @:Model不是空
+}
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(model => model.name)
+        <input type="text" name="name" value='@ViewData["name"]' />
+        @Html.ValidationMessageFor(model => model.name)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.age)
+        <input type="text" name="age" value='@ViewData["age"]' />
+        @Html.ValidationMessageFor(model => model.age)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.reage)
+        <input type="text" name="reage" value='@ViewData["reage"]' />
+        @Html.ValidationMessageFor(model => model.reage)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.phone)
+        <input type="text" name="phone" value='@ViewData["phone"]' />
+        @Html.ValidationMessageFor(model => model.phone)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Email)
+        <input type="text" name="email" value='@ViewData["email"]' />
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Website)
+        <input type="text" name="website" value='@ViewData["website"]' />
+        @Html.ValidationMessageFor(model => model.Website)
+    </div>
+    <div>
+        @Html.LabelFor(expression: model => model.file)
+        @Html.EditorFor(model => model.file, new { htmlAttributes = new { type = "file" } })
+        @Html.ValidationMessageFor(model => model.file, validationMessage: "")
+    </div>
+    <div>
+        @Html.LabelFor(expression: model => model.creditcard)
+        @Html.EditorFor(model => model.creditcard, new { htmlAttributes = new { type = "text" } })
+        @Html.ValidationMessageFor(model => model.creditcard, validationMessage: "")
+    </div>
+    <div>
+        @Html.LabelFor(expression: model => model.remote)
+        @Html.EditorFor(model => model.remote, new { htmlAttributes = new { type = "text" } })
+        @Html.ValidationMessageFor(model => model.remote)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.time)
+        <input type="text" name="time" value='@ViewData["time"]' />
+    </div>
+    <div>
+        使用者輸入姓名:@ViewData["name"]
+    </div>
+    <div>
+        使用者輸入AGE:@ViewData["age"]
+    </div>
+    <div>
+        使用者輸入PHONE:@ViewData["phone"]
+    </div>
+    <div>
+        使用者輸入預約時間:@ViewData["time"]
+    </div>
+    <div>
+        驗證訊息:@ViewData["Message"]
+    </div>
+    <input type="submit" value="送出" />
+    @*<input type="submit" value="送出" formaction="/Home/ForContentResult1" />*@
+
+    @section scripts
+    {
+        @Scripts.Render("~/bundles/jqueryUnobtrusive")
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+}
+
+
+
+

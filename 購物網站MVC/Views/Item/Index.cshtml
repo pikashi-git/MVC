@@ -1,0 +1,83 @@
+﻿@model 購物網站MVC_Demo.ViewModels.ItemListViewModel
+
+@{
+    ViewBag.Title = "商品首頁";
+}
+
+    <h2>商品首頁</h2>
+    <table>
+        @*判斷是否有資料*@
+        @if (Model.IdList.Count > 0)
+        {
+            @*每5個1列*@
+        int counts = 5;
+        int rows = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Model.IdList.Count) / counts));
+       
+            for (int i = 0; i < rows; i++)
+            {
+                <tr>
+                    @for (int j = 0; j < counts; j++)
+                    {
+                        if (i * counts + (j + 1) <= Model.IdList.Count)
+                        {
+                    <td id="ItemBlock-@(Model.IdList[i * counts + j])">
+                        @Html.Partial("ItemBlock", Model.ItemDetailList[i * counts + j])
+                    </td>
+                        }
+                    }
+                </tr>
+            }
+        }
+        @*顯示尚未有商品訊息*@
+        else
+        {
+            <tr>
+                <td colspan="2">尚未有商品上架</td>
+            </tr>
+        }
+        @if (Model.IdList.Count > 0)
+        {
+            <tr>
+                <td>
+                    @*頁數>1=>顯示上一頁與最前頁按鈕*@
+                    @if (Model.Page.CurrentPage > 1)
+                    {
+                        @Html.ActionLink("<<", "Index", new { Page = 1 })
+                        @Html.ActionLink("<", "Index", new { Page = Model.Page.CurrentPage - 1 })
+                    }
+                </td>
+                <td>
+                    @*顯示當前頁數前後各5頁按鈕*@
+                    @for (var page = Model.Page.CurrentPage - 5; page <= Model.Page.CurrentPage + 5; page++)
+                    {
+                        if (page > 0 && page <= Model.Page.MaxPage)
+                        {
+                            if (page == Model.Page.CurrentPage)
+                            {
+                                <strong>@page</strong>
+                            }
+                            else
+                            {
+                                @Html.ActionLink(page.ToString(), "Index", new { Page = page })
+                            }
+                        }
+                    }
+                </td>
+                <td>
+                    @*頁數<MaxPage=>顯示下一頁與最後一頁按鈕*@
+                    @if (Model.Page.CurrentPage < Model.Page.MaxPage)
+                    {
+                        @Html.ActionLink(">", "Index", new { Page = Model.Page.CurrentPage + 1 })
+                        @Html.ActionLink(">>", "Index", new { Page = Model.Page.MaxPage })
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+@*當使用者為管理者, 產生新增商品的超連結*@
+@if (User.Identity.IsAuthenticated && User.IsInRole("1"))
+{ 
+    <a href="@Url.Action("Create")">
+        <input type="button" value="新增商品" />
+    </a>
+}

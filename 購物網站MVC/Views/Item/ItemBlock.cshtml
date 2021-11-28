@@ -1,0 +1,42 @@
+﻿@model 購物網站MVC_Demo.ViewModels.ItemDetailViewModel
+
+<table>
+    <tr>
+        @*顯示圖片*@
+        <td>
+            <img width="100" src="@Html.Encode(Url.Content("~/Upload/"+Model.ItemData.Image))" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink(Model.ItemData.Name,"Item",new { itemID = Model.ItemData.ItemID })
+        </td>
+    </tr>
+    <tr>
+        @*購物車功能需登入*@
+        @if (User.Identity.IsAuthenticated)
+        {
+            @*已在購物車中可取出購物車*@
+            if (Model.InCart)
+            {
+                @*使用Ajax Helper呼叫*@
+                @Ajax.ActionLink("取出購物車", "CartItemRemove", "Cart"
+                , new { itemID = Model.ItemData.ItemID, target = "ItemBlock" }
+                , new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ItemBlock-" + Model.ItemData.ItemID })
+            }
+            @*未在購物車中可加入購物車*@
+            {
+                @*使用Ajax Helper呼叫*@
+                @Ajax.ActionLink("放入購物車", "CartItemAdd", "Cart"
+                , new { itemID = Model.ItemData.ItemID, target = "ItemBlock" }
+                , new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ItemBlock-" + Model.ItemData.ItemID })
+            }
+        }
+        @*若無登入, 顯示登入連結*@
+        else
+        {
+            <text>要使用購物車請先</text>
+            @Html.ActionLink("登入", "Login", "Users")
+        }
+    </tr>
+</table>
